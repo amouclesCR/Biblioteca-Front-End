@@ -1,3 +1,26 @@
-<p>
-  seccion works!
-</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-4">
+      <h1>Secciones</h1>
+    </div>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Sección</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sec of listaSeccion; let i = index">
+          <td>{{i}}</td>
+          <td>{{sec.sec_nombre}}</td>
+          <td>{{sec.sec_ubicacion}}</td>
+          <td>
+            <button type="button"></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
