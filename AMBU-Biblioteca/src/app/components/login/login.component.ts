@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LoginServiceService } from 'src/app/services/login-service.service';
+
+import { Login } from '../../interfaces/interfaces/login';
+import { LoginService } from '../../services/login.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,10 +12,11 @@ export class LoginComponent implements OnInit {
 
   // ATRIBUTOS
   private formGroupLogin: FormGroup;
+  private login: Login;
 
   constructor(
     private formBuilderLogin: FormBuilder,
-    private loginService: LoginServiceService
+    private loginService: LoginService
   ) { }
 
   // FUNCIONES
@@ -27,10 +30,12 @@ export class LoginComponent implements OnInit {
   Submit() {
     if (this.formGroupLogin.valid) {
       
-      let nombreUsuario = this.FGLogin['nombreUsuario'].value;
-      let clave = this.FGLogin['clave'].value;
-
-      this.loginService.Login(nombreUsuario, clave).subscribe(
+      this.login = {
+        usu_nombre_usuario: this.FGLogin['nombreUsuario'].value,
+        usu_clave: this.FGLogin['clave'].value
+      }
+      
+      this.loginService.Login(this.login).subscribe(
         res => {
           console.log(res);
         },
