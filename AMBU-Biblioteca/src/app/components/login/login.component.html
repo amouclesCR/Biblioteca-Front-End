@@ -1,0 +1,29 @@
+<div class="form-login">
+  <form [formGroup]="formGroupLogin" class="col-2 form-login-border" (ngSubmit)="Submit()">
+    <div class="form-group">
+      <label for="nombreUsuario">Usuario</label>
+      <input type="text" class="form-control form-control-sm" formControlName="nombreUsuario" id="nombreUsuario"
+        autocomplete="username" placeholder="Escriba su usuario"
+        [ngClass]="{'is-invalid': FGLogin.nombreUsuario.errors && FGLogin.nombreUsuario.touched}">
+      <div *ngIf="FGLogin.nombreUsuario.errors?.required" class="invalid-feedback">
+        <div class="form-control-feedback text-danger" *ngIf="FGLogin.nombreUsuario.errors?.required">
+          * El usuario es requerido
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="clave">Clave</label>
+      <input type="password" class="form-control form-control-sm" formControlName="clave" id="clave"
+        autocomplete="new-password" placeholder="Escriba la contraseña"
+        [ngClass]="{'is-invalid': FGLogin.clave.errors && FGLogin.clave.touched}">
+      <div *ngIf="FGLogin.clave.errors?.required" class="invalid-feedback">
+        <div class="form-control-feedback text-danger" *ngIf="FGLogin.clave.errors?.required">
+          * La contraseña es requerida
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-lg btn-block btn-primary" type="submit" [disabled]="formGroupLogin.invalid">Ingresar</button>
+    </div>
+  </form>
+</div>
