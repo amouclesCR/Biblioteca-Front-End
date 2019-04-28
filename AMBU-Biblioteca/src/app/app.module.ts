@@ -9,12 +9,18 @@ import { LoginService } from './services/login.service';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { ActivosComponent } from './components/activos/activos.component';
+import { SeccionListComponent } from './components/seccion-list/seccion-list.component';
+import { SeccionMantenimientoComponent } from './components/seccion-mantenimiento/seccion-mantenimiento.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    NavbarComponent
+    NavbarComponent,
+    ActivosComponent,
+    SeccionListComponent,
+    SeccionMantenimientoComponent
   ],
   imports: [
     BrowserModule,
