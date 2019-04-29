@@ -21,4 +21,8 @@ export class ActivoService {
  GetActivos() {
   return this.httpSeccion.get<Activo[]>(this.url+'activo/', {observe: 'response'});
  }
+
+ GetActivo(id: number) {
+  return this.httpSeccion.get<Activo>(this.url+'activo/'+id, {observe: 'response'});
+ }
 }
