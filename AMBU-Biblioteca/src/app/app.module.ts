@@ -14,6 +14,8 @@ import { SeccionListComponent } from './components/seccion-list/seccion-list.com
 import { SeccionMantenimientoComponent } from './components/seccion-mantenimiento/seccion-mantenimiento.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SeccionDetallesComponent } from './components/seccion-detalles/seccion-detalles.component';
+import { SeccionService } from './services/seccion.service';
+import { AlertasService } from './services/alertas.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +36,9 @@ import { SeccionDetallesComponent } from './components/seccion-detalles/seccion-
     FontAwesomeModule
   ],
   providers: [
-    LoginService
+    LoginService,
+    SeccionService, 
+    AlertasService
   ],
   bootstrap: [AppComponent]
 })

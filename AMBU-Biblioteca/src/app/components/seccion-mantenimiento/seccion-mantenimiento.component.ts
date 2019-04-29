@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Seccion } from '../../interfaces/seccion';
 import { SeccionService } from '../../services/seccion.service';
+import { AlertasService } from '../../services/alertas.service';
 import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-seccion-mantenimiento',
@@ -20,7 +21,8 @@ export class SeccionMantenimientoComponent implements OnInit {
   constructor(
     private formBuilderSeccion: FormBuilder,
     private seccionService: SeccionService,
-    private activetedRouter: ActivatedRoute
+    private activetedRouter: ActivatedRoute,
+    private alertas: AlertasService
   ) { }
 
   // FUNCIONES
@@ -48,10 +50,10 @@ export class SeccionMantenimientoComponent implements OnInit {
       }
     );
   }
-  
+
   CargarComponente() {
     this.ObtenerId();
-    this.btnMensaje = this.id > 0? "Actualizar" : "Agregar";
+    this.btnMensaje = this.id > 0 ? "Actualizar" : "Agregar";
     this.IniciarFormulario();
     if (this.id > 0) {
       this.ObtenerSeccion();
@@ -61,15 +63,25 @@ export class SeccionMantenimientoComponent implements OnInit {
   ActualizarSeccion() {
     this.seccionService.UpdateSeccion(this.seccion).subscribe(
       res => {
-        
-      });
+        this.alertas.successInfoAlert("Sección actualizada correctamente");
+      },
+      err => {
+        this.alertas.errorAlert("Ha ocurrido un problema durante la actualización de la sección." +
+          " Por favor, contacte con el administrador. Status Code: " + err.status);
+      }
+    );
   }
 
   CrearSeccion() {
     this.seccionService.PostSeccion(this.seccion).subscribe(
       res => {
-        
-      });
+        this.alertas.successInfoAlert("Sección creada correctamente");
+      },
+      err => {
+        this.alertas.errorAlert("Ha ocurrido un problema durante la creación de la sección." +
+          " Por favor, contacte con el administrador. Status Code: " + err.status);
+      }
+    );
   }
 
   Submit() {
