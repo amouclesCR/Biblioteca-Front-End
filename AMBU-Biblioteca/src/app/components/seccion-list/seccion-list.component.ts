@@ -30,7 +30,7 @@ export class SeccionListComponent implements OnInit {
   }
 
   Detalle(id: number) {
-    this.router.navigate(['dashboard/seccion-detalles']);
+    this.router.navigate(['dashboard/seccion-detalles', id]);
   }
   Agregar(id: number) {
     this.router.navigate(['dashboard/seccion-crear']);

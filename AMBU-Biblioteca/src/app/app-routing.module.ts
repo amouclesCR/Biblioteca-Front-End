@@ -11,7 +11,7 @@ const routes: Routes = [
     {path: 'seccion-list', component: SeccionListComponent},
     {path: 'seccion-actualizar/:id', component: SeccionMantenimientoComponent},
     {path: 'seccion-crear', component: SeccionMantenimientoComponent},
-    {path: 'seccion-detalles', component: SeccionDetallesComponent}
+    {path: 'seccion-detalles/:id', component: SeccionDetallesComponent}
   ]}
 ];
 

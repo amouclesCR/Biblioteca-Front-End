@@ -5,7 +5,7 @@ export interface Activo {
     act_descripcion: string;
     act_observacion: string;
     act_numero_activo: string;
-    act_calor: string;
+    act_color: string;
     act_serie: string;
     act_modelo: string;
     act_marca: string;
