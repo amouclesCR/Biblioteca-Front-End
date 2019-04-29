@@ -12,6 +12,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { ActivosComponent } from './components/activos/activos.component';
 import { SeccionListComponent } from './components/seccion-list/seccion-list.component';
 import { SeccionMantenimientoComponent } from './components/seccion-mantenimiento/seccion-mantenimiento.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SeccionDetallesComponent } from './components/seccion-detalles/seccion-detalles.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,14 +22,16 @@ import { SeccionMantenimientoComponent } from './components/seccion-mantenimient
     NavbarComponent,
     ActivosComponent,
     SeccionListComponent,
-    SeccionMantenimientoComponent
+    SeccionMantenimientoComponent,
+    SeccionDetallesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FontAwesomeModule
   ],
   providers: [
     LoginService

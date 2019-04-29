@@ -6,9 +6,15 @@
     <table class="table">
       <thead class="thead-dark">
         <tr>
-          <th scope="col">#</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Sección</th>
+          <th scope="col" width="5%">#</th>
+          <th scope="col" width="42%">Nombre</th>
+          <th scope="col" width="42%">Sección</th>
+          <th scope="col" width="5%"></th>
+          <th scope="col" width="5%">
+            <button type="button" class="btn btn-plus" (click)="Agregar()">
+              <fa-icon [icon]="faPlus"></fa-icon>
+            </button>
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -17,7 +23,14 @@
           <td>{{sec.sec_nombre}}</td>
           <td>{{sec.sec_ubicacion}}</td>
           <td>
-            <button type="button"></button>
+            <button type="button" class="btn" (click)="Detalle(sec.id)">
+              <fa-icon [icon]="faBook"></fa-icon>
+            </button>
+          </td>
+          <td>
+            <button type="button" class="btn" (click)="Editar(sec.id)">
+              <fa-icon [icon]="faEdit"></fa-icon>
+            </button>
           </td>
         </tr>
       </tbody>
