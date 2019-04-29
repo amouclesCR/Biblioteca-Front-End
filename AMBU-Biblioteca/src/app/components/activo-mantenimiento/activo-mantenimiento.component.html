@@ -1,0 +1,24 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="col-lg-4 col-md-4 col-sm-4">
+        <h1>Activos</h1>
+      </div>
+      <div class="form-container">
+        <form [formGroup]="formGroupActivo">
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control form-control-sm" formControlName="nombre" id="nombre"
+              placeholder="Escriba el nombre"
+              [ngClass]="{'is-invalid': FGControls.nombre.errors && FGControls.nombre.touched}">
+            <div *ngIf="FGControls.nombre.errors?.required" class="invalid-feedback">
+              <div class="form-control-feedback text-danger" *ngIf="FGControls.nombre.errors?.required">
+                * El nombre es requerido
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

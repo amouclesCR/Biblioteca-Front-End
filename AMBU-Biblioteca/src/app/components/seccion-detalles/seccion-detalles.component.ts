@@ -3,7 +3,7 @@ import { ActivoService } from 'src/app/services/activo.service';
 import { SeccionService } from 'src/app/services/seccion.service';
 import { Activo } from '../../interfaces/activo';
 import { Seccion } from '../../interfaces/seccion';
-import { faEdit, faBook, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-seccion-detalles',
@@ -16,7 +16,6 @@ export class SeccionDetallesComponent implements OnInit {
   private listaActivo: Activo[];
   private seccion: Seccion;
   private faEdit = faEdit;
-  private faBook= faBook;
   private faPlus = faPlus;
   private id: number;
 
@@ -49,7 +48,7 @@ export class SeccionDetallesComponent implements OnInit {
   }
 
   GetActivosBySeccion() {
-    this.activoServicio.GetActivos(this.id).subscribe(
+    this.activoServicio.GetActivosBySeccion(this.id).subscribe(
       res => {
         this.listaActivo = res.body;
       }

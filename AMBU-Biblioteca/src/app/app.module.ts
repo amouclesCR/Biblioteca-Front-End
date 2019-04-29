@@ -16,6 +16,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SeccionDetallesComponent } from './components/seccion-detalles/seccion-detalles.component';
 import { SeccionService } from './services/seccion.service';
 import { AlertasService } from './services/alertas.service';
+import { ActivoMantenimientoComponent } from './components/activo-mantenimiento/activo-mantenimiento.component';
+import { ActivoListComponent } from './components/activo-list/activo-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +27,9 @@ import { AlertasService } from './services/alertas.service';
     ActivosComponent,
     SeccionListComponent,
     SeccionMantenimientoComponent,
-    SeccionDetallesComponent
+    SeccionDetallesComponent,
+    ActivoMantenimientoComponent,
+    ActivoListComponent
   ],
   imports: [
     BrowserModule,

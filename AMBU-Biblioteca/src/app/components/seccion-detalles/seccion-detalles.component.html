@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-4">
+        <div class="col-lg-4 col-md-4 col-sm-4" *ngIf="seccion">
           <h1>Sección: {{seccion.sec_nombre}}</h1>
         </div>
         <table class="table">
@@ -9,8 +9,8 @@
               <th scope="col" width="5%">#</th>
               <th scope="col" width="10%">N° Activo</th>
               <th scope="col" width="10%">Descripción</th>
-              <th scope="col" width="10%">Serie</th>
               <th scope="col" width="10%">Color</th>
+              <th scope="col" width="10%">Serie</th>
               <th scope="col" width="10%">Modelo</th>
               <th scope="col" width="10%">Marca</th>
               <th scope="col" width="10%">Observaciones</th>

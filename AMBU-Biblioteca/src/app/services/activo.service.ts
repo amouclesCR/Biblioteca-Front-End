@@ -7,14 +7,18 @@ import { Observable } from 'rxjs';
 })
 export class ActivoService {
  // ATRIBUTOS
- private readonly url = "http://localhost:8000/api/activobyseccion/"
+ private readonly url = "http://localhost:8000/api/"
   
  constructor(
    private httpSeccion: HttpClient
  ) { }
 
  // FUNCIONES
- GetActivos(id: number): Observable<HttpResponse<Activo[]>>{
-   return this.httpSeccion.get<Activo[]>(this.url+id, {observe: 'response'});
+ GetActivosBySeccion(id: number): Observable<HttpResponse<Activo[]>>{
+   return this.httpSeccion.get<Activo[]>(this.url+'activobyseccion/'+id, {observe: 'response'});
+ }
+
+ GetActivos() {
+  return this.httpSeccion.get<Activo[]>(this.url+'activo/', {observe: 'response'});
  }
 }

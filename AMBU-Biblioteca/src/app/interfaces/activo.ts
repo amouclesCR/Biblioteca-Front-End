@@ -1,4 +1,5 @@
 import { Usuario } from './usuario';
+import { Seccion } from './seccion';
 
 export interface Activo {
     id: number;
@@ -15,4 +16,6 @@ export interface Activo {
     act_subestatus: string;
     act_usuario_responsabe: number;
     act_usuario: Usuario;
+    act_seccion: number;
+    act_seccion_modelo: Seccion;
 }
