@@ -12,8 +12,6 @@ export interface Activo {
     act_marca: string;
     act_estatus: string;
     act_costo: string;
-    act_organizacion: string;
-    act_subestatus: string;
     act_usuario_responsabe: number;
     act_usuario: Usuario;
     act_seccion: number;

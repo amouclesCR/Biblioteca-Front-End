@@ -6,23 +6,32 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ActivoService {
- // ATRIBUTOS
- private readonly url = "http://localhost:8000/api/"
-  
- constructor(
-   private httpSeccion: HttpClient
- ) { }
+  // ATRIBUTOS
+  private readonly url = "http://localhost:8000/api/"
+  private readonly ACTIVO = "activo/";
 
- // FUNCIONES
- GetActivosBySeccion(id: number): Observable<HttpResponse<Activo[]>>{
-   return this.httpSeccion.get<Activo[]>(this.url+'activobyseccion/'+id, {observe: 'response'});
- }
+  constructor(
+    private httpactivo: HttpClient
+  ) { }
 
- GetActivos() {
-  return this.httpSeccion.get<Activo[]>(this.url+'activo/', {observe: 'response'});
- }
+  // FUNCIONES
+  GetActivosBySeccion(id: number): Observable<HttpResponse<Activo[]>> {
+    return this.httpactivo.get<Activo[]>(this.url + 'activobyseccion/' + id, { observe: 'response' });
+  }
 
- GetActivo(id: number) {
-  return this.httpSeccion.get<Activo>(this.url+'activo/'+id, {observe: 'response'});
- }
+  GetActivos() {
+    return this.httpactivo.get<Activo[]>(this.url + this.ACTIVO, { observe: 'response' });
+  }
+
+  GetActivo(id: number) {
+    return this.httpactivo.get<Activo>(this.url + this.ACTIVO + id, { observe: 'response' });
+  }
+
+  UpdateActivo(activo: Activo): Observable<HttpResponse<Activo>> {
+    return this.httpactivo.put<Activo>(this.url + this.ACTIVO + activo.id, activo, { observe: 'response' });
+  }
+
+  PostActivo(activo: Activo): Observable<HttpResponse<Activo>> {
+    return this.httpactivo.post<Activo>(this.url + this.ACTIVO, activo, { observe: 'response' });
+  }
 }

@@ -40,11 +40,11 @@ export class SeccionDetallesComponent implements OnInit {
   }
 
   Agregar(id: number) {
-    this.router.navigate(['dashboard/seccion-crear']);
+    this.router.navigate(['dashboard/activo-crear']);
   }
 
   Editar(id: number) {
-    this.router.navigate(['dashboard/seccion-actualizar', id]);
+    this.router.navigate(['dashboard/activo-actualizar', id]);
   }
 
   GetActivosBySeccion() {
