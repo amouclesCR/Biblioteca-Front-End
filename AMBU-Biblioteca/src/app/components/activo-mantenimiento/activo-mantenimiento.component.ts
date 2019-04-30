@@ -1,13 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AlertasService } from '../../services/alertas.service';
-import { Activo } from '../../interfaces/activo';
-import { ActivoService } from '../../services/activo.service';
-import { SeccionService } from '../../services/seccion.service';
 import { ActivatedRoute } from '@angular/router';
-import { Seccion } from 'src/app/interfaces/seccion';
-import { UsuarioService } from 'src/app/services/usuario.service';
-import { Usuario } from 'src/app/interfaces/usuario';
+import { UsuarioService, SeccionService, ActivoService, AlertasService } from 'src/app/services/index';
+import { Usuario, Activo, Seccion } from 'src/app/interfaces/index';
 @Component({
   selector: 'app-activo-mantenimiento',
   templateUrl: './activo-mantenimiento.component.html',

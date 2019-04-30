@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SeccionService } from '../../services/index';
-import { Seccion } from 'src/app/interfaces/seccion';
+import { Seccion } from 'src/app/interfaces/index';
 import { faEdit, faBook, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 @Component({

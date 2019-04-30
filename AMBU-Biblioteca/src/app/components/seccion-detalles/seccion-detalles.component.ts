@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivoService, SeccionService } from 'src/app/services/index';
-import { Activo } from '../../interfaces/activo';
-import { Seccion } from '../../interfaces/seccion';
+import { Activo, Seccion } from '../../interfaces/index';
 import { faEdit, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute, Router } from '@angular/router';
 @Component({

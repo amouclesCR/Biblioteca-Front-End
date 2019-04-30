@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Seccion } from '../../interfaces/seccion';
+import { Seccion } from '../../interfaces/index';
 import {SeccionService, AlertasService} from '../../services/index';
 import { ActivatedRoute } from '@angular/router';
 @Component({

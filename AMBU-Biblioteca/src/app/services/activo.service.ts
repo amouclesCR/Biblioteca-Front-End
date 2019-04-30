@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Activo } from '../interfaces/activo';
+import { Activo } from '../interfaces/index';
 import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'

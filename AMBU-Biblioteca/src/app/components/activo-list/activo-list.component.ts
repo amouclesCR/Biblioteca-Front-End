@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivoService } from '../../services/activo.service';
-import { Activo } from '../../interfaces/activo';
+import { ActivoService } from '../../services/index';
+import { Activo } from '../../interfaces/index';
 import { faEdit, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 @Component({
