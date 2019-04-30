@@ -1,3 +1,11 @@
 .btn-plus {
     color: aliceblue;
 }
+
+.table-container {
+    overflow-x: auto;
+    max-width: 100%;
+}
+.filter-container div{
+   margin-right: 5%;
+}
