@@ -33,7 +33,7 @@
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4">
               <div class="form-group">
-                <label for="seccion">seccion</label>
+                <label for="seccion">Seccion</label>
                 <select type="text" class="form-control form-control-sm" formControlName="seccion" id="seccion"
                   placeholder="Escriba el seccion"
                   [ngClass]="{'is-invalid': FGControls.seccion.errors && FGControls.seccion.touched}">
@@ -52,7 +52,7 @@
                   id="usuario_responsabe" placeholder="Escriba el usuario_responsabe"
                   [ngClass]="{'is-invalid': FGControls.usuario_responsabe.errors && FGControls.usuario_responsabe.touched}">
                   <option value="">Seleccione un valor</option>
-                  <option [value]="usu.id" *ngFor="let usu of listaUsuario">{{usu.usu_nombre}}</option>
+                  <option [value]="usu.id" *ngFor="let usu of listaUsuario">{{usu.usu_identificacion}}</option>
                 </select>
                 <div *ngIf="FGControls.usuario_responsabe.errors?.required" class="invalid-feedback">
                   <div class="form-control-feedback text-danger" *ngIf="FGControls.usuario_responsabe.errors?.required">
