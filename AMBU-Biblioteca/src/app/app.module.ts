@@ -16,6 +16,8 @@ import { SeccionDetallesComponent } from './components/seccion-detalles/seccion-
 import { ActivoMantenimientoComponent } from './components/activo-mantenimiento/activo-mantenimiento.component';
 import { ActivoListComponent } from './components/activo-list/activo-list.component';
 import { ActivoService, AlertasService, LoginService, SeccionService, UsuarioService } from './services/index';
+import { UsuarioListComponent } from './components/usuario-list/usuario-list.component';
+import { UsuarioMantenimientoComponent } from './components/usuario-mantenimiento/usuario-mantenimiento.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +29,9 @@ import { ActivoService, AlertasService, LoginService, SeccionService, UsuarioSer
     SeccionMantenimientoComponent,
     SeccionDetallesComponent,
     ActivoMantenimientoComponent,
-    ActivoListComponent
+    ActivoListComponent,
+    UsuarioListComponent,
+    UsuarioMantenimientoComponent
   ],
   imports: [
     BrowserModule,
