@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SeccionService } from '../../services/seccion.service';
+import { SeccionService } from '../../services/index';
 import { Seccion } from 'src/app/interfaces/seccion';
 import { faEdit, faBook, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';

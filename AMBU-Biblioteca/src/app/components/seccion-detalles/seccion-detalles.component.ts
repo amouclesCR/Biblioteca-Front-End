@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivoService } from 'src/app/services/activo.service';
-import { SeccionService } from 'src/app/services/seccion.service';
+import { ActivoService, SeccionService } from 'src/app/services/index';
 import { Activo } from '../../interfaces/activo';
 import { Seccion } from '../../interfaces/seccion';
 import { faEdit, faPlus } from '@fortawesome/free-solid-svg-icons';
