@@ -1,3 +1,25 @@
-<p>
-  usuario-list works!
-</p>
+<div class="container-fluid">
+  <div class="col-lg-4 col-md-4 col-sm-4">
+    <h1>Usuarios</h1>
+  </div>
+
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col" width="5%">#</th>
+        <th scope="col" width="42%">Nombre</th>
+        <th scope="col" width="5%">
+          <button type="button" class="btn btn-plus" (click)="Agregar()">
+            <fa-icon [icon]="faPlus"></fa-icon>
+          </button>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let usu of listaUsuarios; let i = index">
+        <td>{{i}}</td>
+        <td>{{usu.usu_identificacion}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

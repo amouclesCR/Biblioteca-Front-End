@@ -7,6 +7,7 @@ import { SeccionMantenimientoComponent } from './components/seccion-mantenimient
 import { SeccionDetallesComponent } from './components/seccion-detalles/seccion-detalles.component';
 import { ActivoListComponent } from './components/activo-list/activo-list.component';
 import { ActivoMantenimientoComponent } from './components/activo-mantenimiento/activo-mantenimiento.component';
+import { UsuarioListComponent } from './components/usuario-list/usuario-list.component';
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'dashboard', component: DashboardComponent, children: [
@@ -16,7 +17,8 @@ const routes: Routes = [
     {path: 'seccion-detalles/:id', component: SeccionDetallesComponent},
     {path: 'activo-list', component: ActivoListComponent},
     {path: 'activo-actualizar/:id', component: ActivoMantenimientoComponent}, 
-    {path: 'activo-crear', component: ActivoMantenimientoComponent}
+    {path: 'activo-crear', component: ActivoMantenimientoComponent},
+    {path: 'usuario-list', component: UsuarioListComponent}
   ]}
 ];
 
