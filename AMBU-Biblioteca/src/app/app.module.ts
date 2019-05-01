@@ -20,6 +20,7 @@ import { UsuarioListComponent } from './components/usuario-list/usuario-list.com
 import { UsuarioMantenimientoComponent } from './components/usuario-mantenimiento/usuario-mantenimiento.component';
 import { DataStorageService } from './services/dataStorage.service';
 import { SolicitudBajaComponent } from './components/solicitud-baja/solicitud-baja.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,8 @@ import { SolicitudBajaComponent } from './components/solicitud-baja/solicitud-ba
     ActivoListComponent,
     UsuarioListComponent,
     UsuarioMantenimientoComponent,
-    SolicitudBajaComponent
+    SolicitudBajaComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
