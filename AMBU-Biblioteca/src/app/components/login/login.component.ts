@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Login } from '../../interfaces/index';
-import { LoginService } from '../../services/index';
+import { LoginService, DataStorageService } from '../../services/index';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,7 +18,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilderLogin: FormBuilder,
     private router: Router,
-    private loginService: LoginService
+    private loginService: LoginService, 
+    private dataStorageService: DataStorageService
   ) { }
 
   // FUNCIONES
@@ -42,6 +43,7 @@ export class LoginComponent implements OnInit {
           if (res.body == 0) {
             this.usuarioNoEncontrado = true;
           } else {
+            this.dataStorageService.setObjectValue("USUARIO", res.body);
             this.router.navigate(['dashboard']);
           }
         },

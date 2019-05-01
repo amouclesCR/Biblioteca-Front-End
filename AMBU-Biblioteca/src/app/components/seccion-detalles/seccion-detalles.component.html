@@ -1,43 +1,46 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-4" *ngIf="seccion">
-          <h1>Sección: {{seccion.sec_nombre}}</h1>
-        </div>
-        <table class="table">
-          <thead class="thead-dark">
-            <tr>
-              <th scope="col" width="5%">#</th>
-              <th scope="col" width="10%">N° Activo</th>
-              <th scope="col" width="10%">Descripción</th>
-              <th scope="col" width="10%">Serie</th>
-              <th scope="col" width="10%">Modelo</th>
-              <th scope="col" width="10%">Marca</th>
-              <th scope="col" width="10%">A cargo de</th>
-              <th scope="col" width="10%">Estado</th>
-              <th scope="col" width="5%">
-                <button type="button" class="btn btn-plus" (click)="Agregar()">
-                  <fa-icon [icon]="faPlus"></fa-icon>
-                </button>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let act of listaActivo; let i = index">
-              <td>{{i}}</td>
-              <td>{{act.act_numero_activo}}</td>
-              <td>{{act.act_descripcion}}</td>
-              <td>{{act.act_serie}}</td>
-              <td>{{act.act_modelo}}</td>
-              <td>{{act.act_marca}}</td>
-              <td>{{act.act_usuario.usu_identificacion}}</td>
-              <td>{{act.act_estatus? 'N/I' : 'D'}}</td>
-              <td>
-                <button type="button" class="btn" (click)="Editar(act.id)">
-                  <fa-icon [icon]="faEdit"></fa-icon>
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+  <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-4" *ngIf="seccion">
+      <h1>Sección: {{seccion.sec_nombre}}</h1>
+    </div>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col" width="5%">#</th>
+          <th scope="col" width="10%">N° Activo</th>
+          <th scope="col" width="10%">Descripción</th>
+          <th scope="col" width="10%">Serie</th>
+          <th scope="col" width="10%">Modelo</th>
+          <th scope="col" width="10%">Marca</th>
+          <th scope="col" width="10%">A cargo de</th>
+          <th scope="col" width="10%">Estado</th>
+          <th scope="col" width="5%">
+            <button type="button" class="btn btn-plus" (click)="Agregar()">
+              <fa-icon [icon]="faPlus"></fa-icon>
+            </button>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let act of listaActivo; let i = index">
+          <td>{{i}}</td>
+          <td>{{act.act_numero_activo}}</td>
+          <td>{{act.act_descripcion}}</td>
+          <td>{{act.act_serie}}</td>
+          <td>{{act.act_modelo}}</td>
+          <td>{{act.act_marca}}</td>
+          <td>{{act.act_usuario.usu_identificacion}}</td>
+          <td>{{act.act_estatus? 'N/I' : 'D'}}</td>
+          <td>
+            <button type="button" class="btn" (click)="Editar(act.id)">
+              <fa-icon [icon]="faEdit"></fa-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div *ngIf="vacio" width="100%">
+      No hay activos asignados a esta sección
+    </div>
+  </div>
 </div>

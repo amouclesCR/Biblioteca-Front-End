@@ -8,7 +8,7 @@
         <tr>
           <th scope="col" width="5%">#</th>
           <th scope="col" width="42%">Nombre</th>
-          <th scope="col" width="42%">Sección</th>
+          <th scope="col" width="42%">Departamento</th>
           <th scope="col" width="5%"></th>
           <th scope="col" width="5%">
             <button type="button" class="btn btn-plus" (click)="Agregar()">
@@ -21,7 +21,7 @@
         <tr *ngFor="let sec of listaSeccion; let i = index">
           <td>{{i}}</td>
           <td>{{sec.sec_nombre}}</td>
-          <td>{{sec.sec_ubicacion}}</td>
+          <td>{{sec.sec_departamento}}</td>
           <td>
             <button type="button" class="btn" (click)="Detalle(sec.id)">
               <fa-icon [icon]="faBook"></fa-icon>

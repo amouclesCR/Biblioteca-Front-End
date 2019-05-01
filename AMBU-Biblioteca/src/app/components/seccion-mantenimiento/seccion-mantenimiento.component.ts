@@ -38,7 +38,7 @@ export class SeccionMantenimientoComponent implements OnInit {
 
   CargarValores() {
     this.FGControls['nombre'].setValue(this.seccion.sec_nombre);
-    this.FGControls['ubicacion'].setValue(this.seccion.sec_ubicacion);
+    this.FGControls['ubicacion'].setValue(this.seccion.sec_departamento);
   }
 
   ObtenerSeccion() {
@@ -90,7 +90,7 @@ export class SeccionMantenimientoComponent implements OnInit {
         this.seccion = {
           id: this.id,
           sec_nombre: this.FGControls['nombre'].value,
-          sec_ubicacion: this.FGControls['ubicacion'].value
+          sec_departamento: this.FGControls['ubicacion'].value
         }
         if (this.id > 0) {
           this.ActualizarSeccion();

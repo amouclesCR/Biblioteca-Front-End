@@ -16,6 +16,7 @@ export class SeccionDetallesComponent implements OnInit {
   private faEdit = faEdit;
   private faPlus = faPlus;
   private id: number;
+  private vacio: boolean;
 
   constructor(
     private activoServicio: ActivoService,
@@ -49,6 +50,7 @@ export class SeccionDetallesComponent implements OnInit {
     this.activoServicio.GetActivosBySeccion(this.id).subscribe(
       res => {
         this.listaActivo = res.body;
+        this.vacio = !(this.listaActivo.length > 0);
       }
     );
   }

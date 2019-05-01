@@ -18,6 +18,7 @@ import { ActivoListComponent } from './components/activo-list/activo-list.compon
 import { ActivoService, AlertasService, LoginService, SeccionService, UsuarioService } from './services/index';
 import { UsuarioListComponent } from './components/usuario-list/usuario-list.component';
 import { UsuarioMantenimientoComponent } from './components/usuario-mantenimiento/usuario-mantenimiento.component';
+import { DataStorageService } from './services/dataStorage.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +47,8 @@ import { UsuarioMantenimientoComponent } from './components/usuario-mantenimient
     SeccionService, 
     AlertasService,
     ActivoService,
-    UsuarioService
+    UsuarioService,
+    DataStorageService
   ],
   bootstrap: [AppComponent]
 })
