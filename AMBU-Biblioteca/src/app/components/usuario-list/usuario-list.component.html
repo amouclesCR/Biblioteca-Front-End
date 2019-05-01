@@ -7,7 +7,9 @@
     <thead class="thead-dark">
       <tr>
         <th scope="col" width="5%">#</th>
+        <th scope="col" width="42%">Identificación</th>
         <th scope="col" width="42%">Nombre</th>
+        <th scope="col" width="42%">Correo</th>
         <th scope="col" width="5%">
           <button type="button" class="btn btn-plus" (click)="Agregar()">
             <fa-icon [icon]="faPlus"></fa-icon>
@@ -19,6 +21,8 @@
       <tr *ngFor="let usu of listaUsuarios; let i = index">
         <td>{{i}}</td>
         <td>{{usu.usu_identificacion}}</td>
+        <td>{{usu.usu_nombre}}</td>
+        <td>{{usu.usu_correo}}</td>
       </tr>
     </tbody>
   </table>
