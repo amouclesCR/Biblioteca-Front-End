@@ -19,6 +19,7 @@ import { ActivoService, AlertasService, LoginService, SeccionService, UsuarioSer
 import { UsuarioListComponent } from './components/usuario-list/usuario-list.component';
 import { UsuarioMantenimientoComponent } from './components/usuario-mantenimiento/usuario-mantenimiento.component';
 import { DataStorageService } from './services/dataStorage.service';
+import { SolicitudBajaComponent } from './components/solicitud-baja/solicitud-baja.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,8 @@ import { DataStorageService } from './services/dataStorage.service';
     ActivoMantenimientoComponent,
     ActivoListComponent,
     UsuarioListComponent,
-    UsuarioMantenimientoComponent
+    UsuarioMantenimientoComponent,
+    SolicitudBajaComponent
   ],
   imports: [
     BrowserModule,
