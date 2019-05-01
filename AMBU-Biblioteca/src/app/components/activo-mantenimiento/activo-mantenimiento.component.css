@@ -6,3 +6,11 @@
 .text-area {
     max-height: 100px;
 }
+.form-container {
+    border: 1px #ececec solid;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    padding: 5px;
+}
