@@ -9,6 +9,8 @@ import { ActivoListComponent } from './components/activo-list/activo-list.compon
 import { ActivoMantenimientoComponent } from './components/activo-mantenimiento/activo-mantenimiento.component';
 import { UsuarioListComponent } from './components/usuario-list/usuario-list.component';
 import { SolicitudBajaComponent } from './components/solicitud-baja/solicitud-baja.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
+import { PerfilMantenimientoComponent } from './components/perfil-mantenimiento/perfil-mantenimiento.component';
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'dashboard', component: DashboardComponent, children: [
@@ -20,7 +22,9 @@ const routes: Routes = [
     {path: 'activo-actualizar/:id', component: ActivoMantenimientoComponent}, 
     {path: 'activo-crear', component: ActivoMantenimientoComponent},
     {path: 'usuario-list', component: UsuarioListComponent},
-    {path: 'solicitud-baja', component: SolicitudBajaComponent}
+    {path: 'solicitud-baja', component: SolicitudBajaComponent},
+    {path: 'perfil', component: PerfilComponent},
+    {path: 'perfil-editar', component: PerfilMantenimientoComponent}
   ]}
 ];
 

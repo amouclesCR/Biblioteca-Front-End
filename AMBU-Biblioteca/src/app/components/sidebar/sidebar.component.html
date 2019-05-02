@@ -1,14 +1,20 @@
  <!-- Sidebar -->
  <div class="border-right" id="sidebar-wrapper">
     <div class="sidebar-heading">Start Bootstrap </div>
-    <div class="list-group list-group-flush">
-      <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Shortcuts</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
-    </div>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" [routerLink]="['seccion-list']">Secciones</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" [routerLink]="['activo-list']">Activos</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" [routerLink]="['usuario-list']">Usuarios</a>
+      </li>
+      <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['perfil']">Perfil</a>
+        </li>
+    </ul>
     <button class="btn btn-primary" id="menu-toggle" (click)="btb()">Toggle Menu</button>
   </div>
   <!-- /#sidebar-wrapper -->

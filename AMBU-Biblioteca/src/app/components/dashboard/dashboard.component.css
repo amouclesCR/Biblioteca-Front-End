@@ -1,8 +1,12 @@
 .dashboard-container-all {
     height: 100vh;
+    display: flex;
 }
 .sidebar {
     height: 100%;
-    width: 15em;
+    width: 15rem;
     background-color: aquamarine;
+}
+.page-content {
+    width: 100%;
 }

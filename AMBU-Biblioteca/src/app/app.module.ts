@@ -21,6 +21,8 @@ import { UsuarioMantenimientoComponent } from './components/usuario-mantenimient
 import { DataStorageService } from './services/dataStorage.service';
 import { SolicitudBajaComponent } from './components/solicitud-baja/solicitud-baja.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
+import { PerfilMantenimientoComponent } from './components/perfil-mantenimiento/perfil-mantenimiento.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +38,9 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     UsuarioListComponent,
     UsuarioMantenimientoComponent,
     SolicitudBajaComponent,
-    SidebarComponent
+    SidebarComponent,
+    PerfilComponent,
+    PerfilMantenimientoComponent
   ],
   imports: [
     BrowserModule,
