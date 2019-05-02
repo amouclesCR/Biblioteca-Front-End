@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { UsuarioService, SeccionService, ActivoService, AlertasService } from 'src/app/services/index';
 import { Usuario, Activo, Seccion } from 'src/app/interfaces/index';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-activo-mantenimiento',
   templateUrl: './activo-mantenimiento.component.html',
@@ -25,7 +26,8 @@ export class ActivoMantenimientoComponent implements OnInit {
     private activetedRouter: ActivatedRoute,
     private seccionService: SeccionService,
     private usuarioService: UsuarioService,
-    private formBuilderActivo: FormBuilder
+    private formBuilderActivo: FormBuilder,
+    private location: Location
   ) { }
 
   // FUNCIONES
@@ -101,6 +103,7 @@ export class ActivoMantenimientoComponent implements OnInit {
     this.activoService.UpdateActivo(this.activo).subscribe(
       res => {
         this.alertas.successInfoAlert("Activo actualizada correctamente");
+        this.location.back();
       },
       err => {
         this.alertas.errorAlert("Ha ocurrido un problema durante la actualización del activo." +
@@ -113,6 +116,7 @@ export class ActivoMantenimientoComponent implements OnInit {
     this.activoService.PostActivo(this.activo).subscribe(
       res => {
         this.alertas.successInfoAlert("Activo creada correctamente");
+        this.location.back();
       },
       err => {
         this.alertas.errorAlert("Ha ocurrido un problema durante la creación del activo." +
