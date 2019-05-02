@@ -1,16 +1,21 @@
 .section-horizontal {
     display: flex;
-    flex-direction: row;
 }
 
 .text-area {
     max-height: 100px;
 }
 .form-container {
+    width: 75%;
     border: 1px #ececec solid;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     padding: 5px;
+}
+.container-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

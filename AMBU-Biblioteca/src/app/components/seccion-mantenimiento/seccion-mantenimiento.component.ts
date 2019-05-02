@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Seccion } from '../../interfaces/index';
 import {SeccionService, AlertasService} from '../../services/index';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-seccion-mantenimiento',
   templateUrl: './seccion-mantenimiento.component.html',
@@ -21,7 +22,8 @@ export class SeccionMantenimientoComponent implements OnInit {
     private formBuilderSeccion: FormBuilder,
     private seccionService: SeccionService,
     private activetedRouter: ActivatedRoute,
-    private alertas: AlertasService
+    private alertas: AlertasService, 
+    private location: Location
   ) { }
 
   // FUNCIONES
@@ -63,6 +65,7 @@ export class SeccionMantenimientoComponent implements OnInit {
     this.seccionService.UpdateSeccion(this.seccion).subscribe(
       res => {
         this.alertas.successInfoAlert("Sección actualizada correctamente");
+        this.location.back();
       },
       err => {
         this.alertas.errorAlert("Ha ocurrido un problema durante la actualización de la sección." +
@@ -75,6 +78,7 @@ export class SeccionMantenimientoComponent implements OnInit {
     this.seccionService.PostSeccion(this.seccion).subscribe(
       res => {
         this.alertas.successInfoAlert("Sección creada correctamente");
+        this.location.back();
       },
       err => {
         this.alertas.errorAlert("Ha ocurrido un problema durante la creación de la sección." +
