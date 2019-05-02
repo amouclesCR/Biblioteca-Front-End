@@ -1,0 +1,21 @@
+.solicitud-container {
+}
+.img-size {
+    width: 25%;
+}
+.form-container {
+    width: 100%;
+}
+.img-section {
+    margin-bottom: 2%;
+}
+.table-container {
+    max-height: 500px;
+    overflow-y: auto;
+}
+#estructura-pdf {
+    padding: 2%;
+}
+h2 {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}

@@ -11,4 +11,135 @@
   <section>
     cordialmente
   </section>
+  <div class="col-lg-8 col-md-8 col-sm-8">
+    <h1>Solicitudes</h1>
+  </div>
+
+  <div class="solicitud-container">
+    <section>
+      <div class="form-container">
+        <form action="" [formGroup]="formGroupSolicitud">
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="form-group">
+              <label for="numeroFormulario">Número de solicitud</label>
+              <input type="text" class="form-control form-control-sm" formControlName="numeroFormulario"
+                id="numeroFormulario" placeholder="Escriba el número de formulario"
+                [ngClass]="{'is-invalid': fGSolicitud.numeroFormulario.errors && fGSolicitud.numeroFormulario.touched}">
+              <div *ngIf="fGSolicitud.numeroFormulario.errors?.required" class="invalid-feedback">
+                <div class="form-control-feedback text-danger" *ngIf="fGSolicitud.numeroFormulario.errors?.required">
+                  * El número de activo es requerido
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="activos">
+            <h2>Activos</h2>
+            <div class="table-container">
+              <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col" width="5%">#</th>
+                    <th scope="col" width="10%">N° Activo</th>
+                    <th scope="col" width="10%">Descripción</th>
+                    <th scope="col" width="10%">Serie</th>
+                    <th scope="col" width="10%">Modelo</th>
+                    <th scope="col" width="10%">Marca</th>
+                    <th scope="col" width="10%">Observaciones</th>
+                    <th scope="col" width="5%">Estado</th>
+                    <th scope="col" width="5%">Costo</th>
+                    <th scope="col" width="10%">
+                      Dar de baja
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let act of listaActivos; let i = index">
+                    <td>{{i}}</td>
+                    <td>{{act.act_numero_activo}}</td>
+                    <td>{{act.act_descripcion}}</td>
+                    <td>{{act.act_serie}}</td>
+                    <td>{{act.act_modelo}}</td>
+                    <td>{{act.act_marca}}</td>
+                    <td>{{act.act_observacion}}</td>
+                    <td>{{act.act_estatus}}</td>
+                    <td>{{act.act_costo}}</td>
+                    <td align="center">
+                      <input type="checkbox" (change)="agregarActivoSolicitud(act.id)">
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+    <section>
+      <h2>PDF</h2>
+      <div id="estructura-pdf">
+        <section class="img-section">
+          <img src="../../../assets/imagenes/logo-una.png" alt="" class="img-size">
+        </section>
+        <section>
+          <div>
+            <p>Universidad Nacional <br>
+              Sede Regional Brunca<br>
+              Biblioteca, Campus Pérez Zeledón
+              {{date | date:'fullDate'}} <br>
+            </p>
+          </div>
+          <p>Solicitante<br>
+            {{usuario.usu_nombre}} <br>
+            Identificación: {{usuario.usu_identificacion}}
+          </p>
+        </section>
+        <section>
+          <div>
+            <h2>Solicitud de Activos para dar de baja</h2>
+          </div>
+        </section>
+        <section>
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col" width="5%">#</th>
+                <th scope="col" width="10%">N° Activo</th>
+                <th scope="col" width="10%">Descripción</th>
+                <th scope="col" width="10%">Serie</th>
+                <th scope="col" width="10%">Modelo</th>
+                <th scope="col" width="10%">Marca</th>
+                <th scope="col" width="10%">Observaciones</th>
+                <th scope="col" width="10%">Estado</th>
+                <th scope="col" width="10%">Costo</th>
+                <th scope="col" width="5%">
+                  <button type="button" class="btn btn-plus" (click)="Agregar()">
+                    <fa-icon [icon]="faPlus"></fa-icon>
+                  </button>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let act of listaActivosSolicitud; let i = index">
+                <td>{{i}}</td>
+                <td>{{act.act_numero_activo}}</td>
+                <td>{{act.act_descripcion}}</td>
+                <td>{{act.act_serie}}</td>
+                <td>{{act.act_modelo}}</td>
+                <td>{{act.act_marca}}</td>
+                <td>{{act.act_observacion}}</td>
+                <td>{{act.act_estatus}}</td>
+                <td>{{act.act_costo}}</td>
+                <td>
+                  <button type="button" class="btn" (click)="Editar(act.id)">
+                    <fa-icon [icon]="faEdit"></fa-icon>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </section>
+  </div>
+
 </div>
