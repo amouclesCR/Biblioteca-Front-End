@@ -21,9 +21,12 @@
     font-size: 1.1rem;
     padding-left: 10%;
   }
-.navbar-nav > li > a:focus {
-    background-color: #dd1111;
-}
+
+  .active, li:hover {
+    background-color: #666;
+    color: white;
+  }
+  
 .img-size {
     height: 15%;
     width: 90%;

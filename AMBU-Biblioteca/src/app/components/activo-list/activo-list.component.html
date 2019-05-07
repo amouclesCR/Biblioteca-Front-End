@@ -46,13 +46,13 @@
       <tbody>
         <tr *ngFor="let act of listaActivosTabla; let i = index">
           <td>{{i}}</td>
-          <td>{{act.act_numero_activo}}</td>
-          <td>{{act.act_descripcion}}</td>
-          <td>{{act.act_serie}}</td>
-          <td>{{act.act_modelo}}</td>
-          <td>{{act.act_marca}}</td>
-          <td>{{act.act_observacion}}</td>
-          <td>{{act.act_estatus}}</td>
+          <td width="10%">{{act.act_numero_activo}}</td>
+          <td width="10%">{{act.act_descripcion}}</td>
+          <td width="10%">{{act.act_serie}}</td>
+          <td width="10%">{{act.act_modelo}}</td>
+          <td width="10%">{{act.act_marca}}</td>
+          <td width="10%">{{act.act_observacion}}</td>
+          <td width="10%">{{act.act_estatus}}</td>
           <td>{{act.act_costo}}</td>
           <td>
             <button type="button" class="btn" (click)="Editar(act.id)">
