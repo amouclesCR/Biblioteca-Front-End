@@ -3,22 +3,17 @@
   <div class="col-lg-12 col-md-12 col-sm-12">
     <h1 class="">Perfil</h1>
   </div>
-  <div class="container-data">
-    <div class="col-lg-4 col-md-4 col-sm-4 border-container">
-      <div>
-        <label for="nombre">Nombre:</label>
-        <label id="nombre">{{usuario.usu_nombre}}</label>
-      </div>
-      <div>
-        <label for="dentificacion">Identificación:</label>
-        <label id="identificacion">{{usuario.usu_nombre}}</label>
-      </div>
-      <div>
-        <label for="correo">Correo:</label>
-        <label id="correo">{{usuario.usu_nombre}}</label>
-      </div>
-      <button (click)="editarPerfil()">modificar</button>
+  <div class="col-lg-4 col-md-4 col-sm-4">
+    <div>
+      <p id="nombre">Nombre: {{usuario.usu_nombre}}</p>
     </div>
+    <div>
+      <p id="identificacion">Identificación: {{usuario.usu_nombre}}</p>
+    </div>
+    <div>
+      <p id="correo">Correo: {{usuario.usu_nombre}}</p>
+    </div>
+    <button (click)="editarPerfil()" class="btn btn-primary">modificar</button>
   </div>
   <section class="table-seccion">
     <div class="col-lg-12 col-md-12 col-sm-12">

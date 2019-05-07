@@ -1,9 +1,9 @@
 .border-container {
     border: solid 1px gray;
+    border-radius: 2%;
     padding: 2%;
 }
 .container-data {
-    display: flex;
     margin-top: 5%;
 }
 
