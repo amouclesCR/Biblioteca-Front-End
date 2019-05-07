@@ -24,8 +24,10 @@ const routes: Routes = [
     {path: 'usuario-list', component: UsuarioListComponent},
     {path: 'solicitud-baja', component: SolicitudBajaComponent},
     {path: 'perfil', component: PerfilComponent},
-    {path: 'perfil-editar', component: PerfilMantenimientoComponent}
-  ]}
+    {path: 'perfil-editar', component: PerfilMantenimientoComponent},
+    {path: '**', pathMatch: 'full', redirectTo: 'seccion-list'}
+  ]},
+  {path: '**', pathMatch: 'full', redirectTo: 'dashboard/'}
 ];
 
 @NgModule({
