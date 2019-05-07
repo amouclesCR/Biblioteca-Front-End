@@ -24,7 +24,6 @@ export class PerfilComponent implements OnInit {
     this.activoServicio.GetActivosByUsuario(this.usuario.id).subscribe(
       res => {
         this.listaActivos = res.body;
-        console.log(res.body);
       }
     );
   }
@@ -36,7 +35,6 @@ export class PerfilComponent implements OnInit {
   ngOnInit() {
     this.usuario = this.dataSoterage.getObjectValue("USUARIO");
     this.getActivos();
-    console.log(this.dataSoterage.getObjectValue("USUARIO"));
   }
 
 }
