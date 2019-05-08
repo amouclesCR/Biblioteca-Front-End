@@ -20,8 +20,8 @@
               </div>
             </div>
           </div>
-          <div id="activos" class="sections">
-            <h2>Activos</h2>
+          <div id="activos">
+            <h2 class="sections">Activos</h2>
             <div class="table-container">
               <table class="table">
                 <thead class="thead-dark">
@@ -63,7 +63,7 @@
       </div>
     </section>
     <section>
-      <h2>PDF</h2>
+      <h2 class="sections">PDF</h2>
       <div id="estructura-pdf">
         <section class="img-section">
           <img src="../../../assets/imagenes/logo-una.png" alt="" class="img-size">
@@ -87,6 +87,7 @@
           </div>
         </section>
         <section>
+         <div *ngIf="listaActivosSolicitud.length > 0">
           <table class="table">
             <thead class="thead-dark">
               <tr>
@@ -99,11 +100,6 @@
                 <th scope="col" width="10%">Observaciones</th>
                 <th scope="col" width="10%">Estado</th>
                 <th scope="col" width="10%">Costo</th>
-                <th scope="col" width="5%">
-                  <button type="button" class="btn btn-plus" (click)="Agregar()">
-                    <fa-icon [icon]="faPlus"></fa-icon>
-                  </button>
-                </th>
               </tr>
             </thead>
             <tbody>
@@ -117,14 +113,15 @@
                 <td>{{act.act_observacion}}</td>
                 <td>{{act.act_estatus}}</td>
                 <td>{{act.act_costo}}</td>
-                <td>
-                  <button type="button" class="btn" (click)="Editar(act.id)">
-                    <fa-icon [icon]="faEdit"></fa-icon>
-                  </button>
-                </td>
               </tr>
             </tbody>
           </table>
+         </div>
+         <div *ngIf="!(listaActivosSolicitud.length > 0)" id="solicitud-mensaje-sinactivos">
+           <p>
+            <strong> No se han seleccionado activos</strong>
+           </p>
+         </div>
         </section>
       </div>
     </section>
