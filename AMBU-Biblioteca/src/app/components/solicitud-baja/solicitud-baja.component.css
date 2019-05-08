@@ -17,12 +17,11 @@
 #estructura-pdf {
     padding: 2%;
 }
-h2 {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
+
 .sections {
     margin-top: 10px;
     padding-top: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 #solicitud-mensaje-sinactivos {
     display: flex;
@@ -34,3 +33,22 @@ h2 {
     font-size: 2rem;
     font-family: 'Courier New', Courier, monospace;
 }
+.firma {
+    height: 50px;
+    width: 200px;
+    border-bottom: 2px solid black;
+}
+
+.firmas-secciones {
+    margin-top: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#firmas-container {
+    width: 50%;
+    display: inline-flex;
+    justify-content: space-between;
+}
+
