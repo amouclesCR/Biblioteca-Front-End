@@ -3,9 +3,10 @@
 }
 
 .table-container {
-    
-    width: 100%;
+    overflow-x: auto;    
+    max-height: 50%;
 }
+
 .filter-container div{
    margin-right: 5%;
 }
