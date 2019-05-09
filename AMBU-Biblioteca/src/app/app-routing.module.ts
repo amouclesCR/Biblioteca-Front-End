@@ -11,6 +11,8 @@ import { UsuarioListComponent } from './components/usuario-list/usuario-list.com
 import { SolicitudBajaComponent } from './components/solicitud-baja/solicitud-baja.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { PerfilMantenimientoComponent } from './components/perfil-mantenimiento/perfil-mantenimiento.component';
+import { DepartamentoComponent } from './components/departamento/departamento.component';
+import { DepartamentoMantenimientoComponent } from './components/departamento-mantenimiento/departamento-mantenimiento.component';
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'dashboard', component: DashboardComponent, children: [
@@ -25,6 +27,9 @@ const routes: Routes = [
     {path: 'solicitud-baja', component: SolicitudBajaComponent},
     {path: 'perfil', component: PerfilComponent},
     {path: 'perfil-editar', component: PerfilMantenimientoComponent},
+    {path: 'departamento-list', component: DepartamentoComponent},
+    {path: 'departamento-crear', component: DepartamentoMantenimientoComponent},
+    {path: 'departamento-mantenimiento/:id', component: DepartamentoMantenimientoComponent},
     {path: '**', pathMatch: 'full', redirectTo: 'seccion-list'}
   ]},
   {path: '**', pathMatch: 'full', redirectTo: 'dashboard/'}

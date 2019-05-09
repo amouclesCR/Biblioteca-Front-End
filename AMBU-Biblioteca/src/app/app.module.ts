@@ -15,7 +15,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SeccionDetallesComponent } from './components/seccion-detalles/seccion-detalles.component';
 import { ActivoMantenimientoComponent } from './components/activo-mantenimiento/activo-mantenimiento.component';
 import { ActivoListComponent } from './components/activo-list/activo-list.component';
-import { ActivoService, AlertasService, LoginService, SeccionService, UsuarioService } from './services/index';
+import { ActivoService, AlertasService, LoginService, SeccionService, UsuarioService, DepartamentoService } from './services/index';
 import { UsuarioListComponent } from './components/usuario-list/usuario-list.component';
 import { UsuarioMantenimientoComponent } from './components/usuario-mantenimiento/usuario-mantenimiento.component';
 import { DataStorageService } from './services/dataStorage.service';
@@ -23,6 +23,8 @@ import { SolicitudBajaComponent } from './components/solicitud-baja/solicitud-ba
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { PerfilMantenimientoComponent } from './components/perfil-mantenimiento/perfil-mantenimiento.component';
+import { DepartamentoComponent } from './components/departamento/departamento.component';
+import { DepartamentoMantenimientoComponent } from './components/departamento-mantenimiento/departamento-mantenimiento.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +42,9 @@ import { PerfilMantenimientoComponent } from './components/perfil-mantenimiento/
     SolicitudBajaComponent,
     SidebarComponent,
     PerfilComponent,
-    PerfilMantenimientoComponent
+    PerfilMantenimientoComponent,
+    DepartamentoComponent,
+    DepartamentoMantenimientoComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +60,8 @@ import { PerfilMantenimientoComponent } from './components/perfil-mantenimiento/
     AlertasService,
     ActivoService,
     UsuarioService,
-    DataStorageService
+    DataStorageService,
+    DepartamentoService
   ],
   bootstrap: [AppComponent]
 })
