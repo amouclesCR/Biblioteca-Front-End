@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Seccion } from '../../interfaces/index';
-import {SeccionService, AlertasService} from '../../services/index';
+import { Seccion, Departamento } from '../../interfaces/index';
+import {SeccionService, AlertasService, DepartamentoService} from '../../services/index';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 @Component({
@@ -17,13 +17,15 @@ export class SeccionMantenimientoComponent implements OnInit {
   private id: number;
   private btnMensaje: string;
   private isSubmit = false;
+  private listaDepartamento: Departamento[];
 
   constructor(
     private formBuilderSeccion: FormBuilder,
     private seccionService: SeccionService,
     private activetedRouter: ActivatedRoute,
     private alertas: AlertasService, 
-    private location: Location
+    private location: Location, 
+    private departamentoServicio: DepartamentoService
   ) { }
 
   // FUNCIONES
@@ -34,12 +36,13 @@ export class SeccionMantenimientoComponent implements OnInit {
   IniciarFormulario() {
     this.formGroupSeccion = this.formBuilderSeccion.group({
       nombre: ['', Validators.required],
-      ubicacion: ['', Validators.required]
+      departamento: ['', Validators.required]
     });
   }
 
   CargarValores() {
     this.FGControls['nombre'].setValue(this.seccion.sec_nombre);
+    this.FGControls['departamento'].setValue(this.seccion.sec_departamento);
   }
 
   ObtenerSeccion() {
@@ -51,10 +54,19 @@ export class SeccionMantenimientoComponent implements OnInit {
     );
   }
 
+  obtenerDepartamentos() {
+    this.departamentoServicio.Getdepartamentos().subscribe(
+      res => {
+        this.listaDepartamento = res.body;
+      }
+    );
+  }
+
   CargarComponente() {
     this.ObtenerId();
     this.btnMensaje = this.id > 0 ? "Actualizar" : "Agregar";
     this.IniciarFormulario();
+    this.obtenerDepartamentos();
     if (this.id > 0) {
       this.ObtenerSeccion();
     }
@@ -93,6 +105,8 @@ export class SeccionMantenimientoComponent implements OnInit {
         this.seccion = {
           id: this.id,
           sec_nombre: this.FGControls['nombre'].value,
+          sec_departamento: this.FGControls['departamento'].value,
+          sec_departamento_modelo: null
         }
         if (this.id > 0) {
           this.ActualizarSeccion();

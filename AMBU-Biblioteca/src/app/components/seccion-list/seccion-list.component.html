@@ -22,7 +22,7 @@
           <tr *ngFor="let sec of listaSeccion; let i = index">
             <td>{{i}}</td>
             <td>{{sec.sec_nombre}}</td>
-            <td>{{sec.sec_departamento}}</td>
+            <td>{{sec.sec_departamento_modelo.dep_nombre}}</td>
             <td>
               <button type="button" class="btn" (click)="Detalle(sec.id)">
                 <fa-icon [icon]="faBook"></fa-icon>
