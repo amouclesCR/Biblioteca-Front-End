@@ -10,7 +10,7 @@ export interface Activo {
     act_serie: string;
     act_modelo: string;
     act_marca: string;
-    act_estatus: string;
+    act_estatus: boolean;
     act_costo: string;
     act_usuario_responsabe: number;
     act_usuario: Usuario;

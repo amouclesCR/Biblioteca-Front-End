@@ -36,10 +36,11 @@ export class PerfilMantenimientoComponent implements OnInit {
     this.usuario.usu_identificacion = this.fGPerfil['identificacion'].value;
     this.usuarioServicio.UpdateUsuario(this.usuario).subscribe(
       res => {
+        this.dataStoreServicio.setObjectValue('USUARIO', this.usuario);
         this.alertas.successInfoAlert("Perfil actualizado correctamente");
         this.location.back();
       },
-      err => {
+      err => {debugger
         this.alertas.errorAlert("Ha ocurrido un problema durante la actualización del perfil." +
           " Por favor, contacte con el administrador. Status Code: " + err.status);
       }

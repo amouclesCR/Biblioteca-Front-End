@@ -19,6 +19,7 @@ export class ActivoListComponent implements OnInit {
   private term = '';
   private usuairoResponsable = '';
   private date: Date; 
+  private orden: number;
 
   constructor(
     private activoServicio: ActivoService,
@@ -65,13 +66,19 @@ export class ActivoListComponent implements OnInit {
       this.listaActivosTabla = listTemporal;
     }
 
-    if (!this.term && !this.usuairoResponsable){
+    if (!(+this.orden==0)) {
+        this.listaActivosTabla = this.listaActivosTabla.sort(item => (item.act_estatus == (+this.orden==1)?-1:1));
+    }
+
+    if (!this.term && !this.usuairoResponsable && +this.orden==0){
       this.listaActivosTabla = this.listaActivos;
     }
+
   }
 
 
-  ngOnInit() {console.log(this.usuairoResponsable);
+  ngOnInit() {
+    this.orden = 0;
     this.GetActivos();
     this.GetUsuarios();
   }

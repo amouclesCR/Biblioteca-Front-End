@@ -10,14 +10,18 @@
         </div>
         <div class="form-group">
           <label for="usuario">Usuario</label>
-          <select type="text" class="form-control" id="usuario" (change)="Filtrar()" [(ngModel)]="usuairoResponsable">
+          <select class="form-control" id="usuario" (change)="Filtrar()" [(ngModel)]="usuairoResponsable">
             <option value=''>Seleccione un usuario</option>
             <option [value]="usu.id" *ngFor="let usu of listUsuario">{{usu.usu_identificacion}}</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="numeroActivo" class="">Fecha</label>
-          <input type="text" class="form-control" id="numeroActivo">
+          <label for="orden">Orden</label>
+          <select class="form-control" id="orden" (change)="Filtrar()" [(ngModel)]="orden">
+            <option value="0">Todos</option>
+            <option value="1">N/A</option>
+            <option value="2">I</option>
+          </select>
         </div>
       </div>
     </div>
@@ -52,8 +56,10 @@
               <td width="5%">{{act.act_serie}}</td>
               <td width="5%">{{act.act_modelo}}</td>
               <td width="5%">{{act.act_marca}}</td>
-              <td width="5%"><p>{{act.act_observacion}}</p></td>
-              <td width="5%">{{act.act_estatus}}</td>
+              <td width="5%">
+                <p>{{act.act_observacion}}</p>
+              </td>
+              <td width="5%">{{act.act_estatus? "N/A" : "I"}}</td>
               <td width="5%">{{act.act_costo}}</td>
               <td>
                 <button type="button" class="btn" (click)="Editar(act.id)">
