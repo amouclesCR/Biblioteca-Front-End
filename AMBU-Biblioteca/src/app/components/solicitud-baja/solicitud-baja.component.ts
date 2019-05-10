@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { DataStorageService, ActivoService, UsuarioService } from '../../services/index';
-import { Usuario, Activo } from 'src/app/interfaces/index';
+import { DataStorageService, ActivoService, UsuarioService, SolicitudService, AlertasService } from '../../services/index';
+import { Usuario, Activo, Solicitud } from 'src/app/interfaces/index';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import * as jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
@@ -14,19 +14,24 @@ export class SolicitudBajaComponent implements OnInit {
   // ATRIBUTOS
   private date: Date = new Date();
   private usuario: Usuario;
+  private solicitud: Solicitud;
   private formGroupSolicitud: FormGroup;
   private listaActivos: Activo[];
   private listaActivosSolicitud: Activo[];
   private listaUsuario: Usuario[];
   private isTraspaso: boolean;
   private nuevoUsuario: string;
+  private isSubmit: boolean;
+  private listaActivosSubmit: number[];
 
 
   constructor(
     private dataStorageService: DataStorageService,
     private formBuilderSolicitud: FormBuilder,
     private activoServicio: ActivoService,
-    private usuarioService: UsuarioService
+    private usuarioService: UsuarioService,
+    private solicitudServicio: SolicitudService,
+    private alertas: AlertasService
   ) { }
 
   // FUNCIONES
@@ -83,14 +88,46 @@ export class SolicitudBajaComponent implements OnInit {
     }
   }
 
-  submit() {
-    this.captureScreen();
+  guardarSolicitud() {
+    this.solicitud = {
+      id: 0,
+      sbja_activos: this.obtenerActivosGuardar(),
+      sbja_estado_solicitud: false,
+      sbja_fecha_solicitud: null,
+      sbja_usuario: this.usuario.id,
+      sbja_usuario_nuevo: this.isTraspaso ? this.formGroupSolicitud.controls.usuario.value : null,
+      sbja_numero_formulario: this.formGroupSolicitud.controls.numeroFormulario.value
+    }
+    this.solicitudServicio.postsolicitud(this.solicitud).subscribe(
+      res => {
+        this.alertas.successInfoAlert("Solicitud registrada correctamente");
+      },
+      err => {
+        this.alertas.errorAlert("Ha ocurrido un problema durante el registro de la solicitud." +
+          " Por favor, contacte con el administrador. Status Code: " + err.status);
+      }
+    );
   }
 
-  usuarioSelecionado(id: number){
-    if (id) {
-     this.nuevoUsuario = this.listaUsuario.find(item => item.id == id).usu_identificacion;
+  submit() {
+    if (!this.isSubmit) {
+      this.isSubmit = true;
+      this.guardarSolicitud();
     }
+  }
+
+  usuarioSelecionado(id: number) {
+    if (id) {
+      this.nuevoUsuario = this.listaUsuario.find(item => item.id == id).usu_identificacion;
+    }
+  }
+
+  obtenerActivosGuardar() {
+    let listAct = [];
+    this.listaActivosSolicitud.forEach(item => {
+      listAct.push(item.id);
+    });
+    return listAct;
   }
 
   get isFormularioValido() {
@@ -118,11 +155,11 @@ export class SolicitudBajaComponent implements OnInit {
     });
   }
 
-ngOnInit() {
-  this.usuario = this.dataStorageService.getObjectValue("USUARIO");
-  this.IniciarFormulario();
-  this.getActivos();
-  this.getUsuarios();
-  this.listaActivosSolicitud = [];
-}
+  ngOnInit() {
+    this.usuario = this.dataStorageService.getObjectValue("USUARIO");
+    this.IniciarFormulario();
+    this.getActivos();
+    this.getUsuarios();
+    this.listaActivosSolicitud = [];
+  }
 }
