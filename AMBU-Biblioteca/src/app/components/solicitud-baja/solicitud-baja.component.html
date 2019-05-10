@@ -19,6 +19,28 @@
                 </div>
               </div>
             </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" formControlName="tipoSolicitud" id="tipoSolicitud"
+                placeholder="Escriba el número de formulario"
+                [ngClass]="{'is-invalid': fGSolicitud.tipoSolicitud.errors && fGSolicitud.tipoSolicitud.touched}" (change)="checkedChange()">
+                <label class="form-check-label" for="tipoSolicitud">
+                    ¿Solicitud de traspaso?
+                  </label>
+            </div>
+            <div class="form-group" *ngIf="isTraspaso">
+                <label for="usuario">Persona a asignar</label>
+                <select class="form-control form-control-sm" formControlName="usuario"
+                id="usuario" placeholder="Escriba el número de formulario"
+                [ngClass]="{'is-invalid': fGSolicitud.usuario.errors && fGSolicitud.usuario.touched}" (change)="usuarioSelecionado(s.value)" #s>
+                <option value="">Selecione un usuario</option>
+                <option [value]="usu.id" *ngFor="let usu of listaUsuario">{{usu.usu_identificacion}}</option>
+              </select>
+                <div *ngIf="fGSolicitud.usuario.errors?.required" class="invalid-feedback">
+                  <div class="form-control-feedback text-danger" *ngIf="fGSolicitud.usuario.errors?.required">
+                    * El nuevo responsable es requerido
+                  </div>
+                </div>
+              </div>
           </div>
           <div id="activos">
             <h2 class="sections">Activos</h2>
@@ -59,12 +81,15 @@
               </table>
             </div>
           </div>
+          <div class="form-group">
+            <button class="btn btn-primary" [disabled]="isFormularioValido">Guardar</button>
+          </div>
         </form>
       </div>
     </section>
     <section>
-      <h2 class="sections">PDF</h2> 
-      <button class="btn btn-primary" (click)="captureScreen()">click</button>
+      <h2 class="sections">PDF</h2>
+      <button class="btn btn-primary" (click)="captureScreen()" [disabled]="isFormularioValido">Descargar PDF</button>
       <div id="estructura-pdf">
         <section class="img-section">
           <img src="../../../assets/imagenes/logo-una.png" alt="" class="img-size">
@@ -88,53 +113,54 @@
           </div>
         </section>
         <section>
-         <div *ngIf="listaActivosSolicitud.length > 0">
-          <table class="table">
-            <thead class="thead-dark">
-              <tr>
-                <th scope="col" width="5%">#</th>
-                <th scope="col" width="10%">N° Activo</th>
-                <th scope="col" width="10%">Descripción</th>
-                <th scope="col" width="10%">Serie</th>
-                <th scope="col" width="10%">Modelo</th>
-                <th scope="col" width="10%">Marca</th>
-                <th scope="col" width="10%">Observaciones</th>
-                <th scope="col" width="10%">Estado</th>
-                <th scope="col" width="10%">Costo</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let act of listaActivosSolicitud; let i = index">
-                <td>{{i}}</td>
-                <td>{{act.act_numero_activo}}</td>
-                <td>{{act.act_descripcion}}</td>
-                <td>{{act.act_serie}}</td>
-                <td>{{act.act_modelo}}</td>
-                <td>{{act.act_marca}}</td>
-                <td>{{act.act_observacion}}</td>
-                <td>{{act.act_estatus}}</td>
-                <td>{{act.act_costo}}</td>
-              </tr>
-            </tbody>
-          </table>
-         </div>
-         <div *ngIf="!(listaActivosSolicitud.length > 0)" id="solicitud-mensaje-sinactivos">
-           <p>
-            <strong> No se han seleccionado activos</strong>
-           </p>
-         </div>
+          <div *ngIf="listaActivosSolicitud.length > 0">
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col" width="5%">#</th>
+                  <th scope="col" width="10%">N° Activo</th>
+                  <th scope="col" width="10%">Descripción</th>
+                  <th scope="col" width="10%">Serie</th>
+                  <th scope="col" width="10%">Modelo</th>
+                  <th scope="col" width="10%">Marca</th>
+                  <th scope="col" width="10%">Observaciones</th>
+                  <th scope="col" width="10%">Estado</th>
+                  <th scope="col" width="10%">Costo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let act of listaActivosSolicitud; let i = index">
+                  <td>{{i}}</td>
+                  <td>{{act.act_numero_activo}}</td>
+                  <td>{{act.act_descripcion}}</td>
+                  <td>{{act.act_serie}}</td>
+                  <td>{{act.act_modelo}}</td>
+                  <td>{{act.act_marca}}</td>
+                  <td>{{act.act_observacion}}</td>
+                  <td>{{act.act_estatus}}</td>
+                  <td>{{act.act_costo}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div *ngIf="!(listaActivosSolicitud.length > 0)" id="solicitud-mensaje-sinactivos">
+            <p>
+              <strong> No se han seleccionado activos</strong>
+            </p>
+          </div>
         </section>
         <section class="firmas-secciones">
           <div id="firmas-container">
             <div>
               <h4>Firma</h4>
               <p class="firma"></p>
-              <p>{{usuario.usu_nombre}}</p>
+              <p>{{usuario.usu_identificacion}}</p>
             </div>
-  
-            <div>
+
+            <div *ngIf="isTraspaso">
               <h4>Firma</h4>
               <p class="firma"></p>
+              <p>{{nuevoUsuario}}</p>
             </div>
           </div>
         </section>
