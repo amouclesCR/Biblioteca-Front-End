@@ -13,6 +13,8 @@ import { PerfilComponent } from './components/perfil/perfil.component';
 import { PerfilMantenimientoComponent } from './components/perfil-mantenimiento/perfil-mantenimiento.component';
 import { DepartamentoComponent } from './components/departamento/departamento.component';
 import { DepartamentoMantenimientoComponent } from './components/departamento-mantenimiento/departamento-mantenimiento.component';
+import { SolicitudBajaListaComponent } from './components/solicitud-baja-lista/solicitud-baja-lista.component';
+import { PdfGeneradorComponent } from './components/pdf-generador/pdf-generador.component';
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'dashboard', component: DashboardComponent, children: [
@@ -30,6 +32,7 @@ const routes: Routes = [
     {path: 'departamento-list', component: DepartamentoComponent},
     {path: 'departamento-crear', component: DepartamentoMantenimientoComponent},
     {path: 'departamento-mantenimiento/:id', component: DepartamentoMantenimientoComponent},
+    {path: 'visualizar-pdf/:id', component: PdfGeneradorComponent},
     {path: '**', pathMatch: 'full', redirectTo: 'seccion-list'}
   ]},
   {path: '**', pathMatch: 'full', redirectTo: 'dashboard/'}

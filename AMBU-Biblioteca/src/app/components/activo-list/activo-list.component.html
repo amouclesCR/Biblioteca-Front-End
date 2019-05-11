@@ -32,13 +32,13 @@
         <table class="table">
           <thead class="thead-dark">
             <tr>
-              <th scope="col" width="5%">#</th>
+              <th scope="col" width="2%">#</th>
               <th scope="col" width="5%">N° Activo</th>
               <th scope="col" width="5%">Descripción</th>
               <th scope="col" width="5%">Serie</th>
               <th scope="col" width="5%">Modelo</th>
               <th scope="col" width="5%">Marca</th>
-              <th scope="col" width="5%">Observaciones</th>
+              <th scope="col" width="5%">Ubicación</th>
               <th scope="col" width="5%">Estado</th>
               <th scope="col" width="5%">Costo</th>
               <th scope="col" width="5%">
@@ -56,10 +56,8 @@
               <td width="5%">{{act.act_serie}}</td>
               <td width="5%">{{act.act_modelo}}</td>
               <td width="5%">{{act.act_marca}}</td>
-              <td width="5%">
-                <p>{{act.act_observacion}}</p>
-              </td>
-              <td width="5%">{{act.act_estatus? "N/A" : "I"}}</td>
+              <td width="5%">{{act.act_seccion_modelo.sec_nombre}}</td>
+              <td width="5%">{{act.act_estatus? "N/A" : "D"}}</td>
               <td width="5%">{{act.act_costo}}</td>
               <td>
                 <button type="button" class="btn" (click)="Editar(act.id)">

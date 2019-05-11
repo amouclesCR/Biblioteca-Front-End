@@ -17,7 +17,7 @@
   </div>
   <section class="table-seccion">
     <div class="col-lg-12 col-md-12 col-sm-12">
-      <table class="table">
+      <table class="table table-bordered">
         <thead class="thead-dark">
           <tr>
             <th scope="col" width="5%">#</th>
@@ -47,4 +47,29 @@
       </table>
     </div>
   </section>
+
+  <section class="table-seccion">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <table class="table table-bordered">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col" width="5%">#</th>
+              <th scope="col" width="10%">N° Formulario</th>
+              <th scope="col" width="10%">Estado</th>
+              <th scope="col" width="10%">Tipo de Solicitud</th>
+              <th scope="col" width="10%">Ver</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let sol of listaSolicitudes; let i = index">
+              <td>{{i}}</td>
+              <td>{{sol.sbja_numero_formulario}}</td>
+              <td>{{sol.sbja_estado_solicitud? "Aprovada" : "No aprovada"}}</td>
+              <td>{{sol.sbja_solicitud_traspaso? "Traspaso" : "De baja"}}</td>
+              <td><Button class="btn btn-primary" (click)="verSolicitud(sol.id)">Ver Solicitud</Button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
 </div>

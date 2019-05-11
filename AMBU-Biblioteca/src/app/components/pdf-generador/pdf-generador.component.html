@@ -1,0 +1,82 @@
+<section>
+  <h2 class="sections">PDF</h2>
+  <div id="estructura-pdf">
+    <section class="img-section">
+      <img src="assets/imagenes/logo-una.png" alt="" class="img-size">
+    </section>
+    <section>
+      <div>
+        <p>Universidad Nacional <br>
+          Sede Regional Brunca<br>
+          Biblioteca, Campus Pérez Zeledón
+          {{date | date:'fullDate'}} <br>
+        </p>
+      </div>
+      <p>Solicitante:</p><br>
+      <p *ngIf="usuario">
+        {{usuario.usu_nombre}}
+      </p><br>
+      <p>Identificación:</p> <br>
+      <p *ngIf="usuario">
+        {{usuario.usu_identificacion}}
+      </p>
+    </section>
+    <section>
+      <div>
+        <h2>Solicitud de Activos para dar de baja</h2>
+      </div>
+    </section>
+    <section>
+      <div *ngIf="listaActivosSolicitud.length > 0">
+        <table class="table table-bordered">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col" width="5%">#</th>
+              <th scope="col" width="10%">N° Activo</th>
+              <th scope="col" width="10%">Descripción</th>
+              <th scope="col" width="10%">Serie</th>
+              <th scope="col" width="10%">Modelo</th>
+              <th scope="col" width="10%">Marca</th>
+              <th scope="col" width="10%">Observaciones</th>
+              <th scope="col" width="10%">Estado</th>
+              <th scope="col" width="10%">Costo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let act of listaActivosSolicitud; let i = index">
+              <td>{{i}}</td>
+              <td>{{act.act_numero_activo}}</td>
+              <td>{{act.act_descripcion}}</td>
+              <td>{{act.act_serie}}</td>
+              <td>{{act.act_modelo}}</td>
+              <td>{{act.act_marca}}</td>
+              <td>{{act.act_observacion}}</td>
+              <td>{{act.act_estatus}}</td>
+              <td>{{act.act_costo}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div *ngIf="!(listaActivosSolicitud.length > 0)" id="solicitud-mensaje-sinactivos">
+        <p>
+          <strong> No se han seleccionado activos</strong>
+        </p>
+      </div>
+    </section>
+    <section class="firmas-secciones">
+      <div id="firmas-container">
+        <div>
+          <h4>Firma</h4>
+          <p class="firma"></p>
+          <p *ngIf="usuario">{{usuario.usu_identificacion}}</p>
+        </div>
+
+        <div *ngIf="isTraspaso">
+          <h4>Firma</h4>
+          <p class="firma"></p>
+          <p>{{nuevoUsuario}}</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>

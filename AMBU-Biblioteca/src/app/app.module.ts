@@ -25,6 +25,8 @@ import { PerfilComponent } from './components/perfil/perfil.component';
 import { PerfilMantenimientoComponent } from './components/perfil-mantenimiento/perfil-mantenimiento.component';
 import { DepartamentoComponent } from './components/departamento/departamento.component';
 import { DepartamentoMantenimientoComponent } from './components/departamento-mantenimiento/departamento-mantenimiento.component';
+import { SolicitudBajaListaComponent } from './components/solicitud-baja-lista/solicitud-baja-lista.component';
+import { PdfGeneradorComponent } from './components/pdf-generador/pdf-generador.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +46,9 @@ import { DepartamentoMantenimientoComponent } from './components/departamento-ma
     PerfilComponent,
     PerfilMantenimientoComponent,
     DepartamentoComponent,
-    DepartamentoMantenimientoComponent
+    DepartamentoMantenimientoComponent,
+    SolicitudBajaListaComponent,
+    PdfGeneradorComponent
   ],
   imports: [
     BrowserModule,

@@ -96,9 +96,13 @@ export class SolicitudBajaComponent implements OnInit {
       sbja_fecha_solicitud: null,
       sbja_usuario: this.usuario.id,
       sbja_usuario_nuevo: this.isTraspaso ? this.formGroupSolicitud.controls.usuario.value : null,
-      sbja_numero_formulario: this.formGroupSolicitud.controls.numeroFormulario.value
+      sbja_numero_formulario: this.formGroupSolicitud.controls.numeroFormulario.value,
+      sbja_solicitud_traspaso: this.isTraspaso,
+      sbja_activos_modelos: null,
+      sbja_nuevoUsuario_modelo: null,
+      sbja_usuario_modelo: null
     }
-    this.solicitudServicio.postsolicitud(this.solicitud).subscribe(
+    this.solicitudServicio.postSolicitud(this.solicitud).subscribe(
       res => {
         this.alertas.successInfoAlert("Solicitud registrada correctamente");
       },
@@ -151,7 +155,7 @@ export class SolicitudBajaComponent implements OnInit {
       let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF
       var position = 0;
       pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
-      pdf.save('MYPdf.pdf'); // Generated PDF
+      pdf.save(this.formGroupSolicitud.controls.numeroFormulario.value + '.pdf'); // Generated PDF
     });
   }
 
