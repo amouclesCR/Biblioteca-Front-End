@@ -2,8 +2,7 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { DataStorageService, ActivoService, UsuarioService, SolicitudService, AlertasService } from '../../services/index';
 import { Usuario, Activo, Solicitud } from 'src/app/interfaces/index';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import * as jspdf from 'jspdf';
-import html2canvas from 'html2canvas';
+import { PdfGeneratorService } from 'src/app/services/index';
 @Component({
   selector: 'app-solicitud-baja',
   templateUrl: './solicitud-baja.component.html',
@@ -12,7 +11,6 @@ import html2canvas from 'html2canvas';
 export class SolicitudBajaComponent implements OnInit {
 
   // ATRIBUTOS
-  private date: Date = new Date();
   private usuario: Usuario;
   private solicitud: Solicitud;
   private formGroupSolicitud: FormGroup;
@@ -31,7 +29,8 @@ export class SolicitudBajaComponent implements OnInit {
     private activoServicio: ActivoService,
     private usuarioService: UsuarioService,
     private solicitudServicio: SolicitudService,
-    private alertas: AlertasService
+    private alertas: AlertasService, 
+    private generadorServicio: PdfGeneratorService
   ) { }
 
   // FUNCIONES
@@ -142,21 +141,12 @@ export class SolicitudBajaComponent implements OnInit {
     return this.formGroupSolicitud.controls;
   }
 
-  public captureScreen() {
-    var data = document.getElementById('estructura-pdf');
-    html2canvas(data).then(canvas => {
-      // Few necessary setting options
-      var imgWidth = 208;
-      var pageHeight = 295;
-      var imgHeight = canvas.height * imgWidth / canvas.width;
-      var heightLeft = imgHeight;
+  get numeroFormulario() {
+    return this.formGroupSolicitud.controls.numeroFormulario.value;
+  }
 
-      const contentDataURL = canvas.toDataURL('image/png')
-      let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF
-      var position = 0;
-      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
-      pdf.save(this.formGroupSolicitud.controls.numeroFormulario.value + '.pdf'); // Generated PDF
-    });
+  generarPdf() {
+    this.generadorServicio.capturaScreen(document.getElementById('estructura-pdf'), this.numeroFormulario);
   }
 
   ngOnInit() {

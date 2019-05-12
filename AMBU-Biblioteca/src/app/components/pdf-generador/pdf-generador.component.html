@@ -1,5 +1,7 @@
 <section>
   <h2 class="sections">PDF</h2>
+  <button class="btn btn-primary btn-submit" (click)="generarPdf()" [disabled]="isFormularioValido" *ngIf="isVisualizar"
+              type="button">Descargar PDF</button>
   <div id="estructura-pdf">
     <section class="img-section">
       <img src="assets/imagenes/logo-una.png" alt="" class="img-size">
@@ -7,16 +9,17 @@
     <section>
       <div>
         <p>Universidad Nacional <br>
-          Sede Regional Brunca<br>
-          Biblioteca, Campus Pérez Zeledón
+          Sede Regional Brunca <br>
+          Biblioteca, Campus Pérez Zeledón <br>
+          {{numeroFormulario}} <br>
           {{date | date:'fullDate'}} <br>
         </p>
       </div>
-      <p>Solicitante:</p><br>
+      <p>Solicitante:</p>
       <p *ngIf="usuario">
         {{usuario.usu_nombre}}
       </p><br>
-      <p>Identificación:</p> <br>
+      <p>Identificación:</p>
       <p *ngIf="usuario">
         {{usuario.usu_identificacion}}
       </p>

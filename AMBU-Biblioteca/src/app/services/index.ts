@@ -6,3 +6,4 @@ export {UsuarioService} from './usuario.service';
 export {DataStorageService} from './dataStorage.service';
 export {DepartamentoService} from './departamento.service';
 export {SolicitudService} from './solicitud.service';
+export {PdfGeneratorService} from './pdf-generator.service';

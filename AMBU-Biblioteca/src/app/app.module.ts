@@ -27,6 +27,7 @@ import { DepartamentoComponent } from './components/departamento/departamento.co
 import { DepartamentoMantenimientoComponent } from './components/departamento-mantenimiento/departamento-mantenimiento.component';
 import { SolicitudBajaListaComponent } from './components/solicitud-baja-lista/solicitud-baja-lista.component';
 import { PdfGeneradorComponent } from './components/pdf-generador/pdf-generador.component';
+import { PdfGeneratorService } from './services/pdf-generator.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,7 +67,8 @@ import { PdfGeneradorComponent } from './components/pdf-generador/pdf-generador.
     UsuarioService,
     DataStorageService,
     DepartamentoService,
-    SolicitudService
+    SolicitudService, 
+    PdfGeneratorService
   ],
   bootstrap: [AppComponent]
 })
