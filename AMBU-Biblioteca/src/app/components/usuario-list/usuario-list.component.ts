@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faEdit } from '@fortawesome/free-solid-svg-icons';
 import { UsuarioService } from '../../services/index';
 import { Usuario } from 'src/app/interfaces/index';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-usuario-list',
   templateUrl: './usuario-list.component.html',
@@ -11,10 +12,12 @@ export class UsuarioListComponent implements OnInit {
 
   // ATRIBUTOS
   private faPlus = faPlus;
+  private faEdit = faEdit;
   private listaUsuarios: Usuario[];
 
   constructor(
-    private usuarioServicio: UsuarioService
+    private usuarioServicio: UsuarioService,
+    private router: Router
   ) { }
 
   // FUNCIONES
@@ -25,6 +28,15 @@ export class UsuarioListComponent implements OnInit {
       }
     );
   }
+
+  agregarUsuario() {
+    this.router.navigate(['dashboard/usuario-mantenimiento']);
+  }
+
+  editarUsuario(id: number) {
+    this.router.navigate(['dashboard/usuario-mantenimiento', id]);
+  }
+  
   ngOnInit() {
     this.GetUsuarios();
   }

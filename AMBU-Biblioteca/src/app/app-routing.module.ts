@@ -15,6 +15,8 @@ import { DepartamentoComponent } from './components/departamento/departamento.co
 import { DepartamentoMantenimientoComponent } from './components/departamento-mantenimiento/departamento-mantenimiento.component';
 import { SolicitudBajaListaComponent } from './components/solicitud-baja-lista/solicitud-baja-lista.component';
 import { PdfGeneradorComponent } from './components/pdf-generador/pdf-generador.component';
+import { SolicitudesComponent } from './components/solicitudes/solicitudes.component';
+import { UsuarioMantenimientoComponent } from './components/usuario-mantenimiento/usuario-mantenimiento.component';
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'dashboard', component: DashboardComponent, children: [
@@ -26,7 +28,10 @@ const routes: Routes = [
     {path: 'activo-actualizar/:id', component: ActivoMantenimientoComponent}, 
     {path: 'activo-crear', component: ActivoMantenimientoComponent},
     {path: 'usuario-list', component: UsuarioListComponent},
+    {path: 'usuario-mantenimiento', component: UsuarioMantenimientoComponent},
+    {path: 'usuario-mantenimiento/:id', component: UsuarioMantenimientoComponent},
     {path: 'solicitud-baja', component: SolicitudBajaComponent},
+    {path: 'solicitudes', component: SolicitudesComponent},
     {path: 'perfil', component: PerfilComponent},
     {path: 'perfil-editar', component: PerfilMantenimientoComponent},
     {path: 'departamento-list', component: DepartamentoComponent},

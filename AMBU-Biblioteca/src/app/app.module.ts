@@ -28,6 +28,7 @@ import { DepartamentoMantenimientoComponent } from './components/departamento-ma
 import { SolicitudBajaListaComponent } from './components/solicitud-baja-lista/solicitud-baja-lista.component';
 import { PdfGeneradorComponent } from './components/pdf-generador/pdf-generador.component';
 import { PdfGeneratorService } from './services/pdf-generator.service';
+import { SolicitudesComponent } from './components/solicitudes/solicitudes.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +50,8 @@ import { PdfGeneratorService } from './services/pdf-generator.service';
     DepartamentoComponent,
     DepartamentoMantenimientoComponent,
     SolicitudBajaListaComponent,
-    PdfGeneradorComponent
+    PdfGeneradorComponent,
+    SolicitudesComponent
   ],
   imports: [
     BrowserModule,

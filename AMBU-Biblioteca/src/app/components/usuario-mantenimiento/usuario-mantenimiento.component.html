@@ -1,3 +1,51 @@
-<p>
-  usuario-mantenimiento works!
-</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-4">
+      <h1>Usuarios</h1>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <form [formGroup]="formGroupUsuario" (ngSubmit)="submit()">
+        <div class="form-group">
+          <label for="identificacion">Identificación</label>
+          <input type="text" class="form-control form-control-sm" formControlName="identificacion" id="identificacion"
+            placeholder="Escriba la identificacion"
+            [ngClass]="{'is-invalid': fGControls.identificacion.errors && fGControls.identificacion.touched}" readonly>
+          <div *ngIf="fGControls.identificacion.errors?.required" class="invalid-feedback">
+            <div class="form-control-feedback text-danger" *ngIf="fGControls.identificacion.errors?.required">
+              * La identificación es requerida
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="correo">Correo</label>
+          <input type="text" class="form-control form-control-sm" formControlName="correo" id="correo"
+            placeholder="Escriba el correo"
+            [ngClass]="{'is-invalid': fGControls.correo.errors && fGControls.correo.touched}" readonly>
+          <div *ngIf="fGControls.correo.errors?.required" class="invalid-feedback">
+            <div class="form-control-feedback text-danger" *ngIf="fGControls.correo.errors?.required">
+              * El correo es requerido
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="roles">Rol</label>
+          <select class="form-control form-control-sm" formControlName="roles" id="roles"
+            [ngClass]="{'is-invalid': fGControls.roles.errors && fGControls.roles.touched}">
+            <option value="">Seleccione un rol</option>
+            <option [value]="rol.id" *ngFor="let rol of listaRol">{{rol.rol_rol}}</option>
+          </select>
+          <div *ngIf="fGControls.roles.errors?.required" class="invalid-feedback">
+            <div class="form-control-feedback text-danger" *ngIf="fGControls.roles.errors?.required">
+              * El rol es requerido
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit" [disabled]="formGroupUsuario.invalid">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

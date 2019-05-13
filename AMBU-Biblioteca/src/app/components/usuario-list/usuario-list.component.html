@@ -9,9 +9,8 @@
         <th scope="col" width="5%">#</th>
         <th scope="col" width="42%">Identificación</th>
         <th scope="col" width="42%">Nombre</th>
-        <th scope="col" width="42%">Correo</th>
         <th scope="col" width="5%">
-          <button type="button" class="btn btn-plus" (click)="Agregar()">
+          <button type="button" class="btn btn-plus" (click)="agregarUsuario()">
             <fa-icon [icon]="faPlus"></fa-icon>
           </button>
         </th>
@@ -22,7 +21,10 @@
         <td>{{i}}</td>
         <td>{{usu.usu_identificacion}}</td>
         <td>{{usu.usu_nombre}}</td>
-        <td>{{usu.usu_correo}}</td>
+        <td> <button type="button" class="btn btn-plus" (click)="editarUsuario(usu.id)">
+            <fa-icon [icon]="faEdit"></fa-icon>
+          </button>
+        </td>
       </tr>
     </tbody>
   </table>

@@ -12,6 +12,8 @@ export class SolicitudService {
   private readonly url = "http://localhost:8000/api/"
   private readonly SUBURL = "solicitud/"
   private readonly SUBURLBYUSUARIO = "solicitudbyusuario/"
+  private readonly SUBURLNOAPROBADAS = "solicitudnoaprobar/"
+  private readonly SUBURLAPROBAR = "solicitudaprobar/"
   constructor(
     private httpsolicitud: HttpClient
   ) { }
@@ -26,6 +28,14 @@ export class SolicitudService {
 
   getSolicitud(id: number): Observable<HttpResponse<Solicitud>>{
     return this.httpsolicitud.get<Solicitud>(this.url+this.SUBURL+id, {observe: 'response'});
+  }
+
+  getSolicitudesNoAprodadas(): Observable<HttpResponse<Solicitud[]>>{
+    return this.httpsolicitud.get<Solicitud[]>(this.url+this.SUBURLNOAPROBADAS, {observe: 'response'});
+  }
+
+  aprobarSolicitud(id: number) {
+    return this.httpsolicitud.put<Solicitud>(this.url+this.SUBURLAPROBAR+id, {observe: 'response'});
   }
 
 }
