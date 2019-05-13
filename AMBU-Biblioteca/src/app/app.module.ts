@@ -29,6 +29,9 @@ import { SolicitudBajaListaComponent } from './components/solicitud-baja-lista/s
 import { PdfGeneradorComponent } from './components/pdf-generador/pdf-generador.component';
 import { PdfGeneratorService } from './services/pdf-generator.service';
 import { SolicitudesComponent } from './components/solicitudes/solicitudes.component';
+import { AccountComponent } from './components/account/account.component';
+import { RegistroComponent } from './components/registro/registro.component';
+import { RecoveryComponent } from './components/recovery/recovery.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +54,10 @@ import { SolicitudesComponent } from './components/solicitudes/solicitudes.compo
     DepartamentoMantenimientoComponent,
     SolicitudBajaListaComponent,
     PdfGeneradorComponent,
-    SolicitudesComponent
+    SolicitudesComponent,
+    AccountComponent,
+    RegistroComponent,
+    RecoveryComponent
   ],
   imports: [
     BrowserModule,

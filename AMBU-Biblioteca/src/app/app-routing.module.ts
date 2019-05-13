@@ -17,8 +17,15 @@ import { SolicitudBajaListaComponent } from './components/solicitud-baja-lista/s
 import { PdfGeneradorComponent } from './components/pdf-generador/pdf-generador.component';
 import { SolicitudesComponent } from './components/solicitudes/solicitudes.component';
 import { UsuarioMantenimientoComponent } from './components/usuario-mantenimiento/usuario-mantenimiento.component';
+import { AccountComponent } from './components/account/account.component';
+import { RegistroComponent } from './components/registro/registro.component';
+import { RecoveryComponent } from './components/recovery/recovery.component';
 const routes: Routes = [
-  {path: 'login', component: LoginComponent},
+  {path: 'account', component: AccountComponent, children: [
+    {path: 'login', component: LoginComponent},
+    {path: 'registro', component: RegistroComponent},
+    {path: 'recovery', component: RecoveryComponent},
+  ]},
   {path: 'dashboard', component: DashboardComponent, children: [
     {path: 'seccion-list', component: SeccionListComponent},
     {path: 'seccion-actualizar/:id', component: SeccionMantenimientoComponent},

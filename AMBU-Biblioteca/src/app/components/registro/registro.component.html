@@ -1,0 +1,74 @@
+<div>
+
+  <div class="form-registro">
+    <div class="col-4">
+      <h1>Registro</h1>
+      <form [formGroup]="formGroupRegistro" (ngSubmit)="submit()" class="form-registro-border">
+        <div class="form-group">
+          <label for="identificacion">Identificación</label>
+          <input type="text" class="form-control form-control-sm" formControlName="identificacion" id="identificacion"
+            autocomplete="username" placeholder="Escriba su identificación"
+            [ngClass]="{'is-invalid': fGRegistro.identificacion.errors && fGRegistro.identificacion.touched}">
+          <div *ngIf="fGRegistro.identificacion.errors?.required" class="invalid-feedback">
+            <div class="form-control-feedback text-danger" *ngIf="fGRegistro.identificacion.errors?.required">
+              * La identificación es requerida
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="correo">Correo</label>
+          <input type="text" class="form-control form-control-sm" formControlName="correo" id="correo"
+            placeholder="Escriba el correo"
+            [ngClass]="{'is-invalid': fGRegistro.correo.errors && fGRegistro.correo.touched}">
+          <div *ngIf="fGRegistro.correo.errors?.required" class="invalid-feedback">
+            <div class="form-control-feedback text-danger" *ngIf="fGRegistro.correo.errors?.required">
+              * El correo es requerido
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" class="form-control form-control-sm" formControlName="nombre" id="nombre"
+            placeholder="Escriba su nombre"
+            [ngClass]="{'is-invalid': fGRegistro.nombre.errors && fGRegistro.nombre.touched}">
+          <div *ngIf="fGRegistro.nombre.errors?.required" class="invalid-feedback">
+            <div class="form-control-feedback text-danger" *ngIf="fGRegistro.nombre.errors?.required">
+              * El nombre es requerido
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="clave">Clave</label>
+          <input type="password" class="form-control form-control-sm" formControlName="clave" id="clave"
+            autocomplete="new-password" placeholder="Escriba la clave"
+            [ngClass]="{'is-invalid': fGRegistro.clave.errors && fGRegistro.clave.touched}">
+          <div *ngIf="fGRegistro.clave.errors?.required" class="invalid-feedback">
+            <div class="form-control-feedback text-danger" *ngIf="fGRegistro.clave.errors?.required">
+              * La contraseña es requerida
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="confirmacion">Confirmacion</label>
+          <input type="password" class="form-control form-control-sm" formControlName="confirmacion" id="confirmacion"
+            placeholder="Escriba la confirmación"
+            [ngClass]="{'is-invalid': fGRegistro.confirmacion.errors && fGRegistro.confirmacion.touched}">
+          <div *ngIf="fGRegistro.confirmacion.errors?.required" class="invalid-feedback">
+            <div class="form-control-feedback text-danger" *ngIf="fGRegistro.confirmacion.errors?.required">
+              * La confirmación es requerida
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+            <div *ngIf="!(confirmacionClave)"  class="form-control-feedback text-danger">
+                * La clave y la confirmación no coinciden
+              </div>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-lg btn-block btn-primary" type="submit"
+            [disabled]="!(fGRegistroValidado)">Registrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

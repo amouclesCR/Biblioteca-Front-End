@@ -1,9 +1,9 @@
-.form-login {
+.form-registro {
     display: flex;
     justify-content: center;
 }
 
-.form-login-border {
+.form-registro-border {
     border: 1px #ececec solid;
     border-top-left-radius: 5%;
     border-top-right-radius: 5%;

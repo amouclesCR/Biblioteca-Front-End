@@ -1,0 +1,25 @@
+.account-container {
+    display: flex;
+    height: 100vh;
+}
+
+.account-side {
+    height: 100%;
+    width: 25%;
+    background-color: #666;
+}
+
+.account-child-side {
+    height: 100%;
+    width: 100%;
+    padding: 2%;
+}
+.img-size {
+    height: 15%;
+    width: 100%;
+    max-width: 100%;
+}
+
+.account-imag-container {
+    padding: 0.875rem 1.25rem;
+}
