@@ -20,13 +20,15 @@ import { UsuarioMantenimientoComponent } from './components/usuario-mantenimient
 import { AccountComponent } from './components/account/account.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { RecoveryComponent } from './components/recovery/recovery.component';
+import { AutenticacionGuard } from './guards/autenticacion.guard';
+import { AutorizadoGuard } from './guards/autorizado.guard';
 const routes: Routes = [
   {path: 'account', component: AccountComponent, children: [
     {path: 'login', component: LoginComponent},
     {path: 'registro', component: RegistroComponent},
     {path: 'recovery', component: RecoveryComponent},
   ]},
-  {path: 'dashboard', component: DashboardComponent, children: [
+  {path: 'dashboard', component: DashboardComponent,children: [
     {path: 'seccion-list', component: SeccionListComponent},
     {path: 'seccion-actualizar/:id', component: SeccionMantenimientoComponent},
     {path: 'seccion-crear', component: SeccionMantenimientoComponent},
@@ -38,7 +40,7 @@ const routes: Routes = [
     {path: 'usuario-mantenimiento', component: UsuarioMantenimientoComponent},
     {path: 'usuario-mantenimiento/:id', component: UsuarioMantenimientoComponent},
     {path: 'solicitud-baja', component: SolicitudBajaComponent},
-    {path: 'solicitudes', component: SolicitudesComponent},
+    {path: 'solicitudes', component: SolicitudesComponent, canActivate: [AutorizadoGuard], data: {role: ['admin']}},
     {path: 'perfil', component: PerfilComponent},
     {path: 'perfil-editar', component: PerfilMantenimientoComponent},
     {path: 'departamento-list', component: DepartamentoComponent},
@@ -46,7 +48,7 @@ const routes: Routes = [
     {path: 'departamento-mantenimiento/:id', component: DepartamentoMantenimientoComponent},
     {path: 'visualizar-pdf/:id', component: PdfGeneradorComponent},
     {path: '**', pathMatch: 'full', redirectTo: 'seccion-list'}
-  ]},
+  ], canActivate: [AutenticacionGuard], data: {role: ['normal','admin']}},
   {path: '**', pathMatch: 'full', redirectTo: 'dashboard/'}
 ];
 

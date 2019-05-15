@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Login } from '../interfaces/index';
+import { Login, Rol, Usuario } from '../interfaces/index';
 import { DataStorageService } from './dataStorage.service';
 import { Router } from '@angular/router';
 @Injectable()
@@ -24,5 +24,20 @@ export class LoginService {
     logout() {
       this.dataStorage.setObjectValue("USUARIO", null);
       this.router.navigate(["login"]);
+    }
+
+    usuarioLogeado() {
+      let usuario = this.dataStorage.getObjectValue("USUARIO");
+      return usuario==null? false : true;
+    }
+
+    tieneRol(roles: string[]) {
+      let usuario = this.dataStorage.getObjectValue("USUARIO") as Usuario;
+      roles.forEach(item => {
+        if (usuario.usu_rol_modelo.rol_rol == item) {
+          return true;
+        }  
+      });
+      return false;
     }
 }
