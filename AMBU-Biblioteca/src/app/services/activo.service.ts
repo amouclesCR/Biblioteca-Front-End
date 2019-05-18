@@ -23,6 +23,10 @@ export class ActivoService {
     return this.httpactivo.get<Activo[]>(this.url + 'activobyusuario/' + id, { observe: 'response' });
   }
 
+  getActivosByNumeroActivo(numeroActivo: string): Observable<HttpResponse<Activo>> {
+    return this.httpactivo.get<Activo>(this.url + 'activobynumeroactivo/' + numeroActivo, { observe: 'response' });
+  }
+
   GetActivos() {
     return this.httpactivo.get<Activo[]>(this.url + this.ACTIVO, { observe: 'response' });
   }

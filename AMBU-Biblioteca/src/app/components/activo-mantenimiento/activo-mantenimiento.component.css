@@ -5,17 +5,23 @@
 .text-area {
     max-height: 100px;
 }
-.form-container {
+.section-form-container {
     width: 75%;
-    border: 1px #ececec solid;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
+    border: 1px #b4b4b4 solid;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
     padding: 5px;
 }
 .container-form {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.linea-divisora {
+    border-right: 1px solid #ececec;
+}
+.form-button {
+    margin-top: 2%;
 }

@@ -1,23 +1,20 @@
 <div class="container-fluid">
 
-  <div class="col-lg-12 col-md-12 col-sm-12">
-    <h1 class="">Perfil</h1>
-  </div>
-  <div class="col-lg-4 col-md-4 col-sm-4">
-    <div>
-      <p id="nombre">Nombre: {{usuario.usu_nombre}}</p>
-    </div>
-    <div>
-      <p id="identificacion">Identificación: {{usuario.usu_identificacion}}</p>
-    </div>
-    <div>
-      <p id="correo">Correo: {{usuario.usu_nombre}}</p>
-    </div>
-    <button (click)="editarPerfil()" class="btn btn-primary">modificar</button>
-  </div>
+ <div >
+    <div class="col-lg-6 col-md-6 col-sm-6">
+        <h1 class="">Perfil</h1>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4">
+        <div>
+          <p id="identificacion">Identificación: {{usuario.usu_identificacion}}</p>
+        </div>
+        <button (click)="editarPerfil()" class="btn btn-primary">modificar</button>
+      </div>
+ </div>
   <section class="table-seccion">
     <div class="col-lg-12 col-md-12 col-sm-12">
-      <table class="table table-bordered">
+      <h2>Mis activos</h2>
+      <table class="table table-bordered" *ngIf="activos">
         <thead class="thead-dark">
           <tr>
             <th scope="col" width="5%">#</th>
@@ -45,12 +42,18 @@
           </tr>
         </tbody>
       </table>
+      <div *ngIf="!activos">
+        <p>
+          No tienes activos asignados
+        </p>
+      </div>
     </div>
   </section>
 
   <section class="table-seccion">
       <div class="col-lg-12 col-md-12 col-sm-12">
-        <table class="table table-bordered">
+        <h2>Mis solicitudes</h2>
+        <table class="table table-bordered" *ngIf="solicitudes">
           <thead class="thead-dark">
             <tr>
               <th scope="col" width="5%">#</th>
@@ -70,6 +73,11 @@
             </tr>
           </tbody>
         </table>
+        <div *ngIf="!solicitudes">
+          <p>
+            No has realizado solicitudes
+          </p>
+        </div>
       </div>
     </section>
 </div>

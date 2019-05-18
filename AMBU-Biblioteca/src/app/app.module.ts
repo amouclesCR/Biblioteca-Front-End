@@ -32,6 +32,11 @@ import { SolicitudesComponent } from './components/solicitudes/solicitudes.compo
 import { AccountComponent } from './components/account/account.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { RecoveryComponent } from './components/recovery/recovery.component';
+import { ScannerComponent } from './components/scanner/scanner.component';
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +62,8 @@ import { RecoveryComponent } from './components/recovery/recovery.component';
     SolicitudesComponent,
     AccountComponent,
     RegistroComponent,
-    RecoveryComponent
+    RecoveryComponent,
+    ScannerComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +71,8 @@ import { RecoveryComponent } from './components/recovery/recovery.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ZXingScannerModule.forRoot()
   ],
   providers: [
     LoginService,

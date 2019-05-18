@@ -46,6 +46,14 @@ export class PerfilComponent implements OnInit {
     this.router.navigate(['dashboard/visualizar-pdf', id]);
   }
 
+  get solicitudes() {
+    return this.listaSolicitudes.length > 0;
+  }
+
+  get activos() {
+    return this.listaActivos.length > 0;
+  }
+
   ngOnInit() {
     this.usuario = this.dataSoterage.getObjectValue("USUARIO");
     this.obtenerSolicitudes();

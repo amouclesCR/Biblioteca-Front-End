@@ -10,3 +10,7 @@
 .table-seccion {
     margin-top: 5%;
 }
+.contenedor-top{
+    display: flex;
+    flex-wrap: wrap;
+}

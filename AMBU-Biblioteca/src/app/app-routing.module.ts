@@ -22,6 +22,7 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { RecoveryComponent } from './components/recovery/recovery.component';
 import { AutenticacionGuard } from './guards/autenticacion.guard';
 import { AutorizadoGuard } from './guards/autorizado.guard';
+import { ScannerComponent } from './components/scanner/scanner.component';
 const routes: Routes = [
   {path: 'account', component: AccountComponent, children: [
     {path: 'login', component: LoginComponent},
@@ -47,6 +48,7 @@ const routes: Routes = [
     {path: 'departamento-crear', component: DepartamentoMantenimientoComponent},
     {path: 'departamento-mantenimiento/:id', component: DepartamentoMantenimientoComponent},
     {path: 'visualizar-pdf/:id', component: PdfGeneradorComponent},
+    {path: 'scanner', component: ScannerComponent},
     {path: '**', pathMatch: 'full', redirectTo: 'seccion-list'}
   ], canActivate: [AutenticacionGuard], data: {role: ['normal','admin']}},
   {path: '**', pathMatch: 'full', redirectTo: 'dashboard/'}
