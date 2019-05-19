@@ -55,6 +55,8 @@ export class PerfilComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.listaActivos = [];
+    this.listaSolicitudes = [];
     this.usuario = this.dataSoterage.getObjectValue("USUARIO");
     this.obtenerSolicitudes();
     this.getActivos();

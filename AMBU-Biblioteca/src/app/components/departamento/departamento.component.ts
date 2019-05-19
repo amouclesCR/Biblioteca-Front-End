@@ -22,7 +22,7 @@ export class DepartamentoComponent implements OnInit {
 
   //  FUNCIONES
   getDepartamentos() {
-    this.departementoServicio.Getdepartamentos().subscribe(
+    this.departementoServicio.getdepartamentos().subscribe(
       res => {
         this.listaDepartamento = res.body;
       }

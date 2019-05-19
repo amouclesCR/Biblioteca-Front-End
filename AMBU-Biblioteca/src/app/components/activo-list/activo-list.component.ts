@@ -37,7 +37,7 @@ export class ActivoListComponent implements OnInit {
   }
 
   getActivos() {
-    this.activoServicio.GetActivos().subscribe(
+    this.activoServicio.getActivos().subscribe(
       res => {
         this.listaActivos = res.body;
         this.listaActivosTabla = res.body;

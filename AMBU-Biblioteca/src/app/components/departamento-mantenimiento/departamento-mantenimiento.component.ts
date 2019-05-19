@@ -45,7 +45,7 @@ export class DepartamentoMantenimientoComponent implements OnInit {
         id: 0,
         dep_nombre: this.fgControls.nombre.value
       }
-      this.departamentoServicio.Postdepartamento(this.departemento).subscribe(
+      this.departamentoServicio.postdepartamento(this.departemento).subscribe(
         res => {
           this.location.back();
           this.isSubmit = false;
@@ -69,7 +69,7 @@ export class DepartamentoMantenimientoComponent implements OnInit {
   }
 
   getDepartamento() {
-    this.departamentoServicio.Getdepartamento(this.id).subscribe(
+    this.departamentoServicio.getdepartamento(this.id).subscribe(
       res => {
         this.departemento = res.body;
         this.cargarFormulario();

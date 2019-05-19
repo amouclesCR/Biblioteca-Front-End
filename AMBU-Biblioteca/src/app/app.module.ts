@@ -8,7 +8,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { ActivosComponent } from './components/activos/activos.component';
 import { SeccionListComponent } from './components/seccion-list/seccion-list.component';
 import { SeccionMantenimientoComponent } from './components/seccion-mantenimiento/seccion-mantenimiento.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -43,7 +42,6 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
     LoginComponent,
     DashboardComponent,
     NavbarComponent,
-    ActivosComponent,
     SeccionListComponent,
     SeccionMantenimientoComponent,
     SeccionDetallesComponent,
