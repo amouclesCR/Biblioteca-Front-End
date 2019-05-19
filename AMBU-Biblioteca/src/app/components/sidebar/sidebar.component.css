@@ -22,8 +22,13 @@
     padding-left: 10%;
   }
 
-  .active, li:hover {
+  li:hover {
     background-color: #666;
+    color: white;
+  }
+
+  .active {
+    background-color: rgb(36, 36, 36);
     color: white;
   }
   
