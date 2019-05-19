@@ -23,7 +23,7 @@ export class PerfilComponent implements OnInit {
 
   // FUNCIONES
   getActivos(){
-    this.activoServicio.GetActivosByUsuario(this.usuario.id).subscribe(
+    this.activoServicio.getActivosByUsuario(this.usuario.id).subscribe(
       res => {
         this.listaActivos = res.body;
       }

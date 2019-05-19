@@ -61,7 +61,7 @@ export class SolicitudBajaComponent implements OnInit {
   }
 
   getActivos() {
-    this.activoServicio.GetActivosByUsuario(this.usuario.id).subscribe(
+    this.activoServicio.getActivosByUsuario(this.usuario.id).subscribe(
       res => {
         this.listaActivos = res.body;
       }
@@ -69,7 +69,7 @@ export class SolicitudBajaComponent implements OnInit {
   }
 
   getUsuarios() {
-    this.usuarioService.GetUsuarios().subscribe(
+    this.usuarioService.getUsuarios().subscribe(
       res => {
         let index = res.body.findIndex(item => item.id == this.usuario.id);
         this.listaUsuario = res.body;

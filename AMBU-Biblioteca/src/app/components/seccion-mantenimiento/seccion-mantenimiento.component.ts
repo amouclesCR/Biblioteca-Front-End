@@ -29,51 +29,51 @@ export class SeccionMantenimientoComponent implements OnInit {
   ) { }
 
   // FUNCIONES
-  ObtenerId() {
+  obtenerId() {
     this.id = +this.activetedRouter.snapshot.params['id'];
   }
 
-  IniciarFormulario() {
+  iniciarFormulario() {
     this.formGroupSeccion = this.formBuilderSeccion.group({
       nombre: ['', Validators.required],
       departamento: ['', Validators.required]
     });
   }
 
-  CargarValores() {
-    this.FGControls['nombre'].setValue(this.seccion.sec_nombre);
-    this.FGControls['departamento'].setValue(this.seccion.sec_departamento);
+  cargarValores() {
+    this.fGControls['nombre'].setValue(this.seccion.sec_nombre);
+    this.fGControls['departamento'].setValue(this.seccion.sec_departamento);
   }
 
-  ObtenerSeccion() {
-    this.seccionService.GetSeccion(this.id).subscribe(
+  obtenerSeccion() {
+    this.seccionService.getSeccion(this.id).subscribe(
       res => {
         this.seccion = res.body;
-        this.CargarValores();
+        this.cargarValores();
       }
     );
   }
 
   obtenerDepartamentos() {
-    this.departamentoServicio.Getdepartamentos().subscribe(
+    this.departamentoServicio.getdepartamentos().subscribe(
       res => {
         this.listaDepartamento = res.body;
       }
     );
   }
 
-  CargarComponente() {
-    this.ObtenerId();
+  cargarComponente() {
+    this.obtenerId();
     this.btnMensaje = this.id > 0 ? "Actualizar" : "Agregar";
-    this.IniciarFormulario();
+    this.iniciarFormulario();
     this.obtenerDepartamentos();
     if (this.id > 0) {
-      this.ObtenerSeccion();
+      this.obtenerSeccion();
     }
   }
 
-  ActualizarSeccion() {
-    this.seccionService.UpdateSeccion(this.seccion).subscribe(
+  actualizarSeccion() {
+    this.seccionService.updateSeccion(this.seccion).subscribe(
       res => {
         this.alertas.successInfoAlert("Sección actualizada correctamente");
         this.location.back();
@@ -85,8 +85,8 @@ export class SeccionMantenimientoComponent implements OnInit {
     );
   }
 
-  CrearSeccion() {
-    this.seccionService.PostSeccion(this.seccion).subscribe(
+  crearSeccion() {
+    this.seccionService.postSeccion(this.seccion).subscribe(
       res => {
         this.alertas.successInfoAlert("Sección creada correctamente");
         this.location.back();
@@ -98,31 +98,31 @@ export class SeccionMantenimientoComponent implements OnInit {
     );
   }
 
-  Submit() {
+  submit() {
     if (this.formGroupSeccion.valid) {
       if (!this.isSubmit) {
         this.isSubmit = true;
         this.seccion = {
           id: this.id,
-          sec_nombre: this.FGControls['nombre'].value,
-          sec_departamento: this.FGControls['departamento'].value,
+          sec_nombre: this.fGControls['nombre'].value,
+          sec_departamento: this.fGControls['departamento'].value,
           sec_departamento_modelo: null
         }
         if (this.id > 0) {
-          this.ActualizarSeccion();
+          this.actualizarSeccion();
         } else {
-          this.CrearSeccion();
+          this.crearSeccion();
         }
       }
     }
   }
 
-  get FGControls() {
+  get fGControls() {
     return this.formGroupSeccion.controls;
   }
 
   ngOnInit() {
-    this.CargarComponente();
+    this.cargarComponente();
   }
 
 }

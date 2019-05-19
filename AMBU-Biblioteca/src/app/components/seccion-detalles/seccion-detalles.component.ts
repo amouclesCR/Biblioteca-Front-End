@@ -26,28 +26,28 @@ export class SeccionDetallesComponent implements OnInit {
   ) { }
 
   // FUNCIONES
-  ObtenerId() {
+  obtenerId() {
     this.id = +this.activatedRoute.snapshot.params['id'];
   }
 
-  GetSeccion() {
-    this.seccionServicio.GetSeccion(this.id).subscribe(
+  getSeccion() {
+    this.seccionServicio.getSeccion(this.id).subscribe(
       res => {
         this.seccion = res.body;
       }
     );
   }
 
-  Agregar(id: number) {
+  agregar(id: number) {
     this.router.navigate(['dashboard/activo-crear']);
   }
 
-  Editar(id: number) {
+  editar(id: number) {
     this.router.navigate(['dashboard/activo-actualizar', id]);
   }
 
-  GetActivosBySeccion() {
-    this.activoServicio.GetActivosBySeccion(this.id).subscribe(
+  getActivosBySeccion() {
+    this.activoServicio.getActivosBySeccion(this.id).subscribe(
       res => {
         this.listaActivo = res.body;
         this.vacio = !(this.listaActivo.length > 0);
@@ -56,9 +56,9 @@ export class SeccionDetallesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.ObtenerId();
-    this.GetSeccion();
-    this.GetActivosBySeccion();
+    this.obtenerId();
+    this.getSeccion();
+    this.getActivosBySeccion();
   }
 
 }

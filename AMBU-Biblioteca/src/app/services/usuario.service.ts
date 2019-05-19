@@ -17,19 +17,19 @@ import { Observable } from 'rxjs';
     ) { }
   
     // FUNCIONES
-    GetUsuarios(): Observable<HttpResponse<Usuario[]>>{
+    getUsuarios(): Observable<HttpResponse<Usuario[]>>{
       return this.httpUsuario.get<Usuario[]>(this.url, {observe: 'response'});
     }
   
-    GetUsuario(id: number): Observable<HttpResponse<Usuario>>{
+    getUsuario(id: number): Observable<HttpResponse<Usuario>>{
       return this.httpUsuario.get<Usuario>(this.url+id, {observe: 'response'});
     }
   
-    UpdateUsuario(usuario: Usuario): Observable<HttpResponse<Usuario>>{
+    updateUsuario(usuario: Usuario): Observable<HttpResponse<Usuario>>{
       return this.httpUsuario.put<Usuario>(this.url+usuario.id, usuario, {observe: 'response'});
     }
   
-    PostUsuario(usuario: Usuario): Observable<HttpResponse<Usuario>>{
+    postUsuario(usuario: Usuario): Observable<HttpResponse<Usuario>>{
       return this.httpUsuario.post<Usuario>(this.url, usuario, {observe: 'response'});
     }
   }

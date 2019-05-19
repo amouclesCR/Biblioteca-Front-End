@@ -23,22 +23,22 @@ export class LoginComponent implements OnInit {
   ) { }
 
   // FUNCIONES
-  IniciarFormulario() {
+  iniciarFormulario() {
     this.formGroupLogin = this.formBuilderLogin.group({
       identificacion: ['', Validators.required],
       clave: ['', Validators.required]
     });
   }
 
-  Submit() {
+  submit() {
     if (this.formGroupLogin.valid) {
       
       this.login = {
-        usu_identificacion: this.FGLogin['identificacion'].value,
-        usu_clave: this.FGLogin['clave'].value
+        usu_identificacion: this.fGLogin['identificacion'].value,
+        usu_clave: this.fGLogin['clave'].value
       }
       
-      this.loginService.Login(this.login).subscribe(
+      this.loginService.login(this.login).subscribe(
         res => {
           if (res.body == 0) {
             this.usuarioNoEncontrado = true;
@@ -54,13 +54,13 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  get FGLogin() {
+  get fGLogin() {
     return this.formGroupLogin.controls;
   }
 
   ngOnInit() {
     this.usuarioNoEncontrado = false;
-    this.IniciarFormulario();
+    this.iniciarFormulario();
   }
 
 }

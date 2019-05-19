@@ -18,19 +18,19 @@ export class DepartamentoService {
 
   // FUNCIONES
 
-  Getdepartamentos() {
+  getdepartamentos() {
     return this.httpdepartamento.get<Departamento[]>(this.url + this.DEPARTAMENTO, { observe: 'response' });
   }
 
-  Getdepartamento(id: number) {
+  getdepartamento(id: number) {
     return this.httpdepartamento.get<Departamento>(this.url + this.DEPARTAMENTO + id, { observe: 'response' });
   }
 
-  Updatedepartamento(departamento: Departamento): Observable<HttpResponse<Departamento>> {
+  updatedepartamento(departamento: Departamento): Observable<HttpResponse<Departamento>> {
     return this.httpdepartamento.put<Departamento>(this.url + this.DEPARTAMENTO + departamento.id, departamento, { observe: 'response' });
   }
 
-  Postdepartamento(departamento: Departamento): Observable<HttpResponse<Departamento>> {
+  postdepartamento(departamento: Departamento): Observable<HttpResponse<Departamento>> {
     return this.httpdepartamento.post<Departamento>(this.url + this.DEPARTAMENTO, departamento, { observe: 'response' });
   }
 }

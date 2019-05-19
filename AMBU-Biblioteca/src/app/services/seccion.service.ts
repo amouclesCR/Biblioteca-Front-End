@@ -15,19 +15,19 @@ export class SeccionService {
   ) { }
 
   // FUNCIONES
-  GetSecciones(): Observable<HttpResponse<Seccion[]>>{
+  getSecciones(): Observable<HttpResponse<Seccion[]>>{
     return this.httpSeccion.get<Seccion[]>(this.url, {observe: 'response'});
   }
 
-  GetSeccion(id: number): Observable<HttpResponse<Seccion>>{
+  getSeccion(id: number): Observable<HttpResponse<Seccion>>{
     return this.httpSeccion.get<Seccion>(this.url+id, {observe: 'response'});
   }
 
-  UpdateSeccion(seccion: Seccion): Observable<HttpResponse<Seccion>>{
+  updateSeccion(seccion: Seccion): Observable<HttpResponse<Seccion>>{
     return this.httpSeccion.put<Seccion>(this.url+seccion.id, seccion, {observe: 'response'});
   }
 
-  PostSeccion(seccion: Seccion): Observable<HttpResponse<Seccion>>{
+  postSeccion(seccion: Seccion): Observable<HttpResponse<Seccion>>{
     return this.httpSeccion.post<Seccion>(this.url, seccion, {observe: 'response'});
   }
 }

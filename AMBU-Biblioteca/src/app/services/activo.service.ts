@@ -15,11 +15,11 @@ export class ActivoService {
   ) { }
 
   // FUNCIONES
-  GetActivosBySeccion(id: number): Observable<HttpResponse<Activo[]>> {
+  getActivosBySeccion(id: number): Observable<HttpResponse<Activo[]>> {
     return this.httpactivo.get<Activo[]>(this.url + 'activobyseccion/' + id, { observe: 'response' });
   }
 
-  GetActivosByUsuario(id: number): Observable<HttpResponse<Activo[]>> {
+  getActivosByUsuario(id: number): Observable<HttpResponse<Activo[]>> {
     return this.httpactivo.get<Activo[]>(this.url + 'activobyusuario/' + id, { observe: 'response' });
   }
 
@@ -27,19 +27,19 @@ export class ActivoService {
     return this.httpactivo.get<Activo>(this.url + 'activobynumeroactivo/' + numeroActivo, { observe: 'response' });
   }
 
-  GetActivos() {
+  getActivos() {
     return this.httpactivo.get<Activo[]>(this.url + this.ACTIVO, { observe: 'response' });
   }
 
-  GetActivo(id: number) {
+  getActivo(id: number) {
     return this.httpactivo.get<Activo>(this.url + this.ACTIVO + id, { observe: 'response' });
   }
 
-  UpdateActivo(activo: Activo): Observable<HttpResponse<Activo>> {
+  updateActivo(activo: Activo): Observable<HttpResponse<Activo>> {
     return this.httpactivo.put<Activo>(this.url + this.ACTIVO + activo.id, activo, { observe: 'response' });
   }
 
-  PostActivo(activo: Activo): Observable<HttpResponse<Activo>> {
+  postActivo(activo: Activo): Observable<HttpResponse<Activo>> {
     return this.httpactivo.post<Activo>(this.url + this.ACTIVO, activo, { observe: 'response' });
   }
 }

@@ -34,7 +34,7 @@ export class PerfilMantenimientoComponent implements OnInit {
     this.usuario.usu_nombre = this.fGPerfil['nombre'].value;
     this.usuario.usu_correo = this.fGPerfil['correo'].value;
     this.usuario.usu_identificacion = this.fGPerfil['identificacion'].value;
-    this.usuarioServicio.UpdateUsuario(this.usuario).subscribe(
+    this.usuarioServicio.updateUsuario(this.usuario).subscribe(
       res => {
         this.dataStoreServicio.setObjectValue('USUARIO', this.usuario);
         this.alertas.successInfoAlert("Perfil actualizado correctamente");

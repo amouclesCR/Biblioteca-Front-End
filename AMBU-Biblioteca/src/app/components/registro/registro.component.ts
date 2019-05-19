@@ -24,7 +24,7 @@ export class RegistroComponent implements OnInit {
     ) { }
 
   // FUNCIONES
-  IniciarFormulario() {
+  iniciarFormulario() {
     this.formGroupRegistro = this.formBuilderRegistro.group({
       identificacion: ['', Validators.required],
       correo: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
@@ -46,7 +46,7 @@ export class RegistroComponent implements OnInit {
         usu_rol: null,
         usu_rol_modelo: null
       }
-      this.usuarioServicio.PostUsuario(usuario).subscribe(
+      this.usuarioServicio.postUsuario(usuario).subscribe(
         res => {
           this.alertas.successInfoAlert("Usuario creado exitosamente");
           this.location.back();
@@ -61,7 +61,6 @@ export class RegistroComponent implements OnInit {
   get confirmacionClave() {
     let clave = this.fGRegistro.clave.value;
     let confirm = this.fGRegistro.confirmacion.value;
-    console.log(clave == confirm)
     return clave == confirm;
   }
 
@@ -74,7 +73,7 @@ export class RegistroComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.IniciarFormulario();
+    this.iniciarFormulario();
   }
 
 }

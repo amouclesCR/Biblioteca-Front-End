@@ -31,11 +31,11 @@ export class ActivoMantenimientoComponent implements OnInit {
   ) { }
 
   // FUNCIONES
-  ObtenerId() {
+  obtenerId() {
     this.id = +this.activetedRouter.snapshot.params['id'];
   }
 
-  IniciarFormulario() {
+  iniciarFormulario() {
     this.formGroupActivo = this.formBuilderActivo.group({
       descripcion: ['', Validators.required],
       observacion: ['', Validators.required],
@@ -51,56 +51,56 @@ export class ActivoMantenimientoComponent implements OnInit {
     });
   }
 
-  CargarValores() {
-    this.FGControls['color'].setValue(this.activo.act_color);
-    this.FGControls['costo'].setValue(this.activo.act_costo);
-    this.FGControls['descripcion'].setValue(this.activo.act_descripcion);
-    this.FGControls['estatus'].setValue(this.activo.act_estatus);
-    this.FGControls['marca'].setValue(this.activo.act_marca);
-    this.FGControls['modelo'].setValue(this.activo.act_modelo);
-    this.FGControls['numero_activo'].setValue(this.activo.act_numero_activo);
-    this.FGControls['observacion'].setValue(this.activo.act_observacion);
-    this.FGControls['seccion'].setValue(this.activo.act_seccion);
-    this.FGControls['serie'].setValue(this.activo.act_serie);
-    this.FGControls['usuario_responsabe'].setValue(this.activo.act_usuario_responsabe);
+  cargarValores() {
+    this.fGControls['color'].setValue(this.activo.act_color);
+    this.fGControls['costo'].setValue(this.activo.act_costo);
+    this.fGControls['descripcion'].setValue(this.activo.act_descripcion);
+    this.fGControls['estatus'].setValue(this.activo.act_estatus);
+    this.fGControls['marca'].setValue(this.activo.act_marca);
+    this.fGControls['modelo'].setValue(this.activo.act_modelo);
+    this.fGControls['numero_activo'].setValue(this.activo.act_numero_activo);
+    this.fGControls['observacion'].setValue(this.activo.act_observacion);
+    this.fGControls['seccion'].setValue(this.activo.act_seccion);
+    this.fGControls['serie'].setValue(this.activo.act_serie);
+    this.fGControls['usuario_responsabe'].setValue(this.activo.act_usuario_responsabe);
   }
 
-  ObtenerActivo() {
-    this.activoService.GetActivo(this.id).subscribe(
+  obtenerActivo() {
+    this.activoService.getActivo(this.id).subscribe(
       res => {
         this.activo = res.body;
-        this.CargarValores();
+        this.cargarValores();
       }
     );
   }
 
-  GetSecciones() {
-    this.seccionService.GetSecciones().subscribe(
+  getSecciones() {
+    this.seccionService.getSecciones().subscribe(
       res => {
         this.listaSeccion = res.body;
       });
   }
 
-  GetUsuarios() {
-    this.usuarioService.GetUsuarios().subscribe(
+  getUsuarios() {
+    this.usuarioService.getUsuarios().subscribe(
       res => {
         this.listaUsuario = res.body;
       });
   }
 
-  CargarComponente() {
-    this.ObtenerId();
+  cargarComponente() {
+    this.obtenerId();
     this.btnMensaje = this.id > 0 ? "Actualizar" : "Agregar";
-    this.GetSecciones();
-    this.GetUsuarios();
-    this.IniciarFormulario();
+    this.getSecciones();
+    this.getUsuarios();
+    this.iniciarFormulario();
     if (this.id > 0) {
-      this.ObtenerActivo();
+      this.obtenerActivo();
     }
   }
 
-  ActualizarActivo() {
-    this.activoService.UpdateActivo(this.activo).subscribe(
+  actualizarActivo() {
+    this.activoService.updateActivo(this.activo).subscribe(
       res => {
         this.alertas.successInfoAlert("Activo actualizada correctamente");
         this.location.back();
@@ -112,8 +112,8 @@ export class ActivoMantenimientoComponent implements OnInit {
     );
   }
 
-  CrearActivo() {
-    this.activoService.PostActivo(this.activo).subscribe(
+  crearActivo() {
+    this.activoService.postActivo(this.activo).subscribe(
       res => {
         this.alertas.successInfoAlert("Activo creada correctamente");
         this.location.back();
@@ -125,40 +125,40 @@ export class ActivoMantenimientoComponent implements OnInit {
     );
   }
 
-  Submit() {
+  submit() {
     if (this.formGroupActivo.valid) {
       if (!this.isSubmit) {
         this.isSubmit = true;
         this.activo = {
           id: this.id,
-          act_color: this.FGControls['color'].value,
-          act_descripcion: this.FGControls['descripcion'].value,
-          act_costo : this.FGControls['costo'].value,
-          act_estatus: this.FGControls['estatus'].value,
-          act_marca: this.FGControls['marca'].value,
-          act_modelo: this.FGControls['modelo'].value,
-          act_numero_activo: this.FGControls['numero_activo'].value,
-          act_observacion: this.FGControls['observacion'].value,
-          act_seccion: this.FGControls['seccion'].value,
-          act_serie: this.FGControls['serie'].value,
-          act_usuario_responsabe: this.FGControls['usuario_responsabe'].value,
+          act_color: this.fGControls['color'].value,
+          act_descripcion: this.fGControls['descripcion'].value,
+          act_costo : this.fGControls['costo'].value,
+          act_estatus: this.fGControls['estatus'].value,
+          act_marca: this.fGControls['marca'].value,
+          act_modelo: this.fGControls['modelo'].value,
+          act_numero_activo: this.fGControls['numero_activo'].value,
+          act_observacion: this.fGControls['observacion'].value,
+          act_seccion: this.fGControls['seccion'].value,
+          act_serie: this.fGControls['serie'].value,
+          act_usuario_responsabe: this.fGControls['usuario_responsabe'].value,
           act_seccion_modelo: null,
           act_usuario: null
         }
         if (this.id > 0) {
-          this.ActualizarActivo();
+          this.actualizarActivo();
         } else {
-          this.CrearActivo();
+          this.crearActivo();
         }
       }
     }
   }
 
-  get FGControls() {
+  get fGControls() {
     return this.formGroupActivo.controls;
   }
   ngOnInit() {
-    this.CargarComponente();
+    this.cargarComponente();
   }
 
 }

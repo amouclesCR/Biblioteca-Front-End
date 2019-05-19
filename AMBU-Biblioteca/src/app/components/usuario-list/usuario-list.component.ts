@@ -21,8 +21,8 @@ export class UsuarioListComponent implements OnInit {
   ) { }
 
   // FUNCIONES
-  GetUsuarios() {
-    this.usuarioServicio.GetUsuarios().subscribe(
+  getUsuarios() {
+    this.usuarioServicio.getUsuarios().subscribe(
       res => {
         this.listaUsuarios = res.body;
       }
@@ -38,7 +38,7 @@ export class UsuarioListComponent implements OnInit {
   }
   
   ngOnInit() {
-    this.GetUsuarios();
+    this.getUsuarios();
   }
 
 }

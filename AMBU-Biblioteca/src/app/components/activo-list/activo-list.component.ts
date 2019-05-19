@@ -28,15 +28,15 @@ export class ActivoListComponent implements OnInit {
   ) { }
 
   // FUNCIONES
-  Agregar() {
+  agregar() {
     this.router.navigate(['dashboard/activo-crear']);
   }
 
-  Editar(id: number) {
+  editar(id: number) {
     this.router.navigate(['dashboard/activo-actualizar', id]);
   }
 
-  GetActivos() {
+  getActivos() {
     this.activoServicio.GetActivos().subscribe(
       res => {
         this.listaActivos = res.body;
@@ -45,15 +45,15 @@ export class ActivoListComponent implements OnInit {
     );
   }
 
-  GetUsuarios() {
-    this.usuarioServicio.GetUsuarios().subscribe(
+  getUsuarios() {
+    this.usuarioServicio.getUsuarios().subscribe(
       res => {
         this.listUsuario = res.body;
       }
     );
   }
 
-  Filtrar() {
+  filtrar() {
     this.listaActivosTabla = this.listaActivos;
     if (this.term) {
       let listTemporal = this.listaActivos.filter(item => 
@@ -79,7 +79,7 @@ export class ActivoListComponent implements OnInit {
 
   ngOnInit() {
     this.orden = 0;
-    this.GetActivos();
-    this.GetUsuarios();
+    this.getActivos();
+    this.getUsuarios();
   }
 }

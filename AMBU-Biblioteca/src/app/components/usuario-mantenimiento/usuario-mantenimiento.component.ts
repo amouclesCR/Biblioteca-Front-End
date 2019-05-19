@@ -41,7 +41,7 @@ export class UsuarioMantenimientoComponent implements OnInit {
 
   obtenerUsuario() {
     if (this.id) {
-      this.usuarioServicio.GetUsuario(this.id).subscribe(
+      this.usuarioServicio.getUsuario(this.id).subscribe(
         res => {
           this.usuario = res.body;
           this.cargarFormulario();
@@ -68,7 +68,7 @@ export class UsuarioMantenimientoComponent implements OnInit {
 
   submit() {
     this.usuario.usu_rol = this.fGControls.roles.value;
-    this.usuarioServicio.UpdateUsuario(this.usuario).subscribe(
+    this.usuarioServicio.updateUsuario(this.usuario).subscribe(
       res => {
         this.location.back();
       }

@@ -6,9 +6,9 @@
             <label for="identificacion">Identificación</label>
             <input type="text" class="form-control form-control-sm" formControlName="identificacion" id="identificacion"
               autocomplete="username" placeholder="Escriba su usuario"
-              [ngClass]="{'is-invalid': FGLogin.identificacion.errors && FGLogin.identificacion.touched}">
-            <div *ngIf="FGLogin.identificacion.errors?.required" class="invalid-feedback">
-              <div class="form-control-feedback text-danger" *ngIf="FGLogin.identificacion.errors?.required">
+              [ngClass]="{'is-invalid': fGLogin.identificacion.errors && fGLogin.identificacion.touched}">
+            <div *ngIf="fGLogin.identificacion.errors?.required" class="invalid-feedback">
+              <div class="form-control-feedback text-danger" *ngIf="fGLogin.identificacion.errors?.required">
                 * El usuario es requerido
               </div>
             </div>
@@ -17,9 +17,9 @@
             <label for="clave">Clave</label>
             <input type="password" class="form-control form-control-sm" formControlName="clave" id="clave"
               autocomplete="new-password" placeholder="Escriba la clave"
-              [ngClass]="{'is-invalid': FGLogin.clave.errors && FGLogin.clave.touched}">
-            <div *ngIf="FGLogin.clave.errors?.required" class="invalid-feedback">
-              <div class="form-control-feedback text-danger" *ngIf="FGLogin.clave.errors?.required">
+              [ngClass]="{'is-invalid': fGLogin.clave.errors && fGLogin.clave.touched}">
+            <div *ngIf="fGLogin.clave.errors?.required" class="invalid-feedback">
+              <div class="form-control-feedback text-danger" *ngIf="fGLogin.clave.errors?.required">
                 * La clave es requerida
               </div>
             </div>

@@ -22,25 +22,26 @@ export class SeccionListComponent implements OnInit {
   ) { }
 
   // FUNCIONES
-  GetSecciones() {
-    this.seccionService.GetSecciones().subscribe(
+  getSecciones() {
+    this.seccionService.getSecciones().subscribe(
       res => {
         this.listaSeccion = res.body;
       });
   }
 
-  Detalle(id: number) {
+  detalle(id: number) {
     this.router.navigate(['dashboard/seccion-detalles', id]);
   }
-  Agregar(id: number) {
+
+  agregar(id: number) {
     this.router.navigate(['dashboard/seccion-crear']);
   }
 
-  Editar(id: number) {
+  editar(id: number) {
     this.router.navigate(['dashboard/seccion-actualizar', id]);
   }
   ngOnInit() {
-    this.GetSecciones();
+    this.getSecciones();
   }
 
 }

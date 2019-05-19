@@ -17,7 +17,7 @@ export class LoginService {
       ) { }
   
     // FUNCIONES
-    Login(login: Login): Observable<HttpResponse<any>> {
+    login(login: Login): Observable<HttpResponse<any>> {
       return this.httpLogin.post(this.url, login, {observe: 'response'});
     }
 

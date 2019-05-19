@@ -10,9 +10,9 @@
             <label for="nombre">Nombre</label>
             <input type="text" class="form-control form-control-sm" formControlName="nombre" id="nombre"
               placeholder="Escriba el nombre"
-              [ngClass]="{'is-invalid': FGControls.nombre.errors && FGControls.nombre.touched}">
-            <div *ngIf="FGControls.nombre.errors?.required" class="invalid-feedback">
-              <div class="form-control-feedback text-danger" *ngIf="FGControls.nombre.errors?.required">
+              [ngClass]="{'is-invalid': fGControls.nombre.errors && fGControls.nombre.touched}">
+            <div *ngIf="fGControls.nombre.errors?.required" class="invalid-feedback">
+              <div class="form-control-feedback text-danger" *ngIf="fGControls.nombre.errors?.required">
                 * El nombre es requerido
               </div>
             </div>
@@ -22,12 +22,12 @@
             <label for="departamento">Departamento</label>
             <select class="form-control form-control-sm" formControlName="departamento" id="departamento"
               placeholder="Elija un departamento"
-              [ngClass]="{'is-invalid': FGControls.departamento.errors && FGControls.departamento.touched}">
+              [ngClass]="{'is-invalid': fGControls.departamento.errors && fGControls.departamento.touched}">
               <option value="">Seleccione un valor</option>
               <option [value]="dep.id" *ngFor="let dep of listaDepartamento">{{dep.dep_nombre}}</option>
             </select>
-            <div *ngIf="FGControls.departamento.errors?.required" class="invalid-feedback">
-              <div class="form-control-feedback text-danger" *ngIf="FGControls.departamento.errors?.required">
+            <div *ngIf="fGControls.departamento.errors?.required" class="invalid-feedback">
+              <div class="form-control-feedback text-danger" *ngIf="fGControls.departamento.errors?.required">
                 * La ubicación es requerida
               </div>
             </div>
