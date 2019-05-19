@@ -60,7 +60,7 @@
                     <th scope="col" width="5%">Estado</th>
                     <th scope="col" width="5%">Costo</th>
                     <th scope="col" width="10%">
-                      Dar de baja
+                      {{isTraspaso? "Transferir" : "Dar de baja"}}
                     </th>
                   </tr>
                 </thead>
@@ -86,8 +86,10 @@
           <div class="form-group">
             <button class="btn btn-primary btn-submit" [disabled]="isFormularioValido || isSubmit"
               type="submit">Guardar</button>
-            <button class="btn btn-primary btn-submit" (click)="generarPdf()" [disabled]="isFormularioValido"
-              type="button">Descargar PDF</button>
+            <span placement="top" ngbTooltip="Completa el formulario correctamente para realizar esta acción">
+              <button class="btn btn-primary btn-submit" (click)="generarPdf()" [disabled]="isFormularioValido"
+                type="button">Descargar PDF</button>
+            </span>
           </div>
         </form>
       </div>

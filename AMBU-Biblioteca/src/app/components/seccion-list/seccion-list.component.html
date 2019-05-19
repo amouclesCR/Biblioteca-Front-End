@@ -12,7 +12,7 @@
             <th scope="col" width="42%">Departamento</th>
             <th scope="col" width="5%"></th>
             <th scope="col" width="5%">
-              <button type="button" class="btn btn-plus" (click)="Agregar()">
+              <button type="button" class="btn btn-plus" (click)="agregar()" placement="left" ngbTooltip="Agregar una nueva sección">
                 <fa-icon [icon]="faPlus"></fa-icon>
               </button>
             </th>
@@ -24,12 +24,12 @@
             <td>{{sec.sec_nombre}}</td>
             <td>{{sec.sec_departamento_modelo.dep_nombre}}</td>
             <td>
-              <button type="button" class="btn" (click)="Detalle(sec.id)">
+              <button type="button" class="btn" (click)="detalle(sec.id)" placement="left" ngbTooltip="Activos asignados a esta sección">
                 <fa-icon [icon]="faBook"></fa-icon>
               </button>
             </td>
             <td>
-              <button type="button" class="btn" (click)="Editar(sec.id)">
+              <button type="button" class="btn" (click)="editar(sec.id)" placement="left" ngbTooltip="Modificar esta sección">
                 <fa-icon [icon]="faEdit"></fa-icon>
               </button>
             </td>

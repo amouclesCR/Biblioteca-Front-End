@@ -3,8 +3,7 @@
 }
 
 .table-container {
-    overflow-x: auto;    
-    max-height: 50%;
+    overflow-x: scroll;    
 }
 
 .filter-container div{
