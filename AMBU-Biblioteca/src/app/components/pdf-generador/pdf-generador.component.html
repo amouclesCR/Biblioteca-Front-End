@@ -23,6 +23,11 @@
       <p *ngIf="usuario">
         {{usuario.usu_identificacion}}
       </p>
+
+      <div *ngIf="isTraspaso">
+        <p>Recibido por:</p>
+        <p>{{nuevoUsuario}}</p>
+      </div>
     </section>
     <section>
       <div>

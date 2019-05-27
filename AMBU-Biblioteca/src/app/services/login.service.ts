@@ -32,12 +32,13 @@ export class LoginService {
     }
 
     tieneRol(roles: string[]) {
+      let isRol = false;
       let usuario = this.dataStorage.getObjectValue("USUARIO") as Usuario;
       roles.forEach(item => {
         if (usuario.usu_rol_modelo.rol_rol == item) {
-          return true;
+          isRol = true;
         }  
       });
-      return false;
+      return isRol;
     }
 }

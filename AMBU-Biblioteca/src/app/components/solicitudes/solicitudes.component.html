@@ -26,7 +26,7 @@
             {{sol.sbja_numero_formulario}}
           </td>
           <td>
-            {{sol.sbja_fecha_solicitud}}
+            {{sol.sbja_fecha_solicitud | date: 'dd/MM/yyyy'}}
           </td>
           <td>
             <button class="btn btn-primary" (click)="aprobarSolicitud(sol.id)">Aprobar</button>
