@@ -5,20 +5,11 @@
 .text-area {
     max-height: 100px;
 }
-.section-form-container {
-    width: 75%;
-    border: 1px #b4b4b4 solid;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    padding: 5px;
-}
-.container-form {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+
+.nopadding {
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+ }
 .linea-divisora {
     border-right: 1px solid #ececec;
 }

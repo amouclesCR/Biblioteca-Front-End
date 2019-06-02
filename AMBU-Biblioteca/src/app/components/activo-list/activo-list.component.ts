@@ -20,6 +20,8 @@ export class ActivoListComponent implements OnInit {
   private usuairoResponsable = '';
   private date: Date; 
   private orden: number;
+  page = 1;
+  pageSize = 5;
 
   constructor(
     private activoServicio: ActivoService,
@@ -53,6 +55,10 @@ export class ActivoListComponent implements OnInit {
     );
   }
 
+  cargarListaPaginator(page: number) {
+    this.listaActivosTabla = this.listaActivos.slice(0,page);
+  }
+
   filtrar() {
     this.listaActivosTabla = this.listaActivos;
     if (this.term) {
@@ -76,7 +82,10 @@ export class ActivoListComponent implements OnInit {
 
   }
 
+  loadPage(page: number) {
 
+    console.log(page);
+  }
   ngOnInit() {
     this.orden = 0;
     this.getActivos();
