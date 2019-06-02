@@ -81,11 +81,6 @@ export class ActivoListComponent implements OnInit {
     }
 
   }
-
-  loadPage(page: number) {
-
-    console.log(page);
-  }
   ngOnInit() {
     this.orden = 0;
     this.getActivos();

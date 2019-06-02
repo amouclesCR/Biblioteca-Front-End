@@ -6,6 +6,7 @@
   </div>
   <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12">
+     <div class="table-container">
       <table class="table">
         <thead class="thead-dark">
           <tr>
@@ -18,14 +19,15 @@
             <th scope="col" width="10%">A cargo de</th>
             <th scope="col" width="10%">Estado</th>
             <th scope="col" width="5%">
-              <button type="button" class="btn btn-plus" (click)="Agregar()">
+              <button type="button" class="btn btn-plus" (click)="Agregar()" placement="left"
+              ngbTooltip="Agregar un nuevo activo">
                 <fa-icon [icon]="faPlus"></fa-icon>
               </button>
             </th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let act of listaActivo; let i = index">
+          <tr *ngFor="let act of listaActivo | slice: (pag-1) * pageSize : (pag-1) * pageSize + pageSize; let i = index">
             <td>{{i}}</td>
             <td>{{act.act_numero_activo}}</td>
             <td>{{act.act_descripcion}}</td>
@@ -35,13 +37,17 @@
             <td>{{act.act_usuario.usu_identificacion}}</td>
             <td>{{act.act_estatus? 'N/I' : 'D'}}</td>
             <td>
-              <button type="button" class="btn" (click)="Editar(act.id)">
+              <button type="button" class="btn" (click)="Editar(act.id)" placement="left"
+              ngbTooltip="Editar activo">
                 <fa-icon [icon]="faEdit"></fa-icon>
               </button>
             </td>
           </tr>
         </tbody>
       </table>
+     </div>
+      <ngb-pagination [collectionSize]="listaActivo.length" [(page)]="pag" [pageSize]="pageSize"
+          aria-label="Default pagination"></ngb-pagination>
     </div>
     <div *ngIf="vacio" width="100%">
       No hay activos asignados a esta sección

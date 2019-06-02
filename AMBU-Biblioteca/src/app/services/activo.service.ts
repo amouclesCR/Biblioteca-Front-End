@@ -9,9 +9,9 @@ import { environment } from '../../environments/environment';
 export class ActivoService {
   // ATRIBUTOS
   private readonly ACTIVO = "activo/";
-  private readonly ACTIVOBYUSUARIO: "activobyusuario/";
-  private readonly ACTIVOBYNUMEROACTIVO: "activobynumeroactivo/";
-  private readonly  ACTIVOBYSECCION: "activobyseccion/";
+  private readonly ACTIVOBYUSUARIO = "activobyusuario/";
+  private readonly ACTIVOBYNUMEROACTIVO = "activobynumeroactivo/";
+  private readonly  ACTIVOBYSECCION = "activobyseccion/";
 
   constructor(
     private httpactivo: HttpClient

@@ -17,6 +17,8 @@ export class SeccionDetallesComponent implements OnInit {
   private faPlus = faPlus;
   private id: number;
   private vacio: boolean;
+  private pag = 1;
+  private pageSize = 5;
 
   constructor(
     private activoServicio: ActivoService,
