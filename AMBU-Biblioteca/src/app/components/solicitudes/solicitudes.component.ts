@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Solicitud } from '../../interfaces/index';
 import { SolicitudService, AlertasService } from '../../services/index';
+import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
 @Component({
   selector: 'app-solicitudes',
   templateUrl: './solicitudes.component.html',
@@ -10,10 +11,13 @@ export class SolicitudesComponent implements OnInit {
 
   //  ATRIBUTOS
   private listaSolicitudes: Solicitud[];
+  private page = 1;
+  private pageSize = 10;
 
   constructor(
     private solicitudServicio: SolicitudService,
-    private alertas: AlertasService
+    private alertas: AlertasService,
+    private ngxService: NgxUiLoaderService
   ) { }
 
   //  FUNCIONES
@@ -21,9 +25,11 @@ export class SolicitudesComponent implements OnInit {
     this.solicitudServicio.getSolicitudesNoAprodadas().subscribe(
       res => {
         this.listaSolicitudes = res.body;
+        this.ngxService.stopLoader('load');
       },
       err => {
-        this.alertas.errorInfoAlert("Ha ocurrido un error a la hora de cargar listas de solicitudes");
+        this.ngxService.stopLoader('load');
+        this.alertas.errorAlert("Ha ocurrido un error a la hora de cargar listas de solicitudes");
       }
     );
   }
@@ -35,7 +41,7 @@ export class SolicitudesComponent implements OnInit {
         this.alertas.successInfoAlert("Solicitud aprobada exitosamente");
       },
       err => {
-        this.alertas.errorInfoAlert("Ha ocurrido un error a la hora de aprobar la sulicitud");
+        this.alertas.errorAlert("Ha ocurrido un error a la hora de aprobar la sulicitud" + "\n" + err.error);
       }
     );
   }
@@ -46,6 +52,7 @@ export class SolicitudesComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.ngxService.startLoader('load');
     this.obtenerSolicitudes();
   }
 

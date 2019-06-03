@@ -1,3 +1,4 @@
+<ngx-ui-loader [loaderId]="'load'" [text]="'Cargando datos'"></ngx-ui-loader>
 <div class="container-fluid">
   <div class="row">
       <div class="col-lg-4 col-md-4 col-sm-4">
@@ -21,7 +22,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let sol of listaSolicitudes">
+        <tr *ngFor="let sol of listaSolicitudes | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
           <td>
             {{sol.sbja_numero_formulario}}
           </td>
@@ -34,6 +35,8 @@
         </tr>
       </tbody>
     </table>
+    <ngb-pagination [collectionSize]="listaSolicitudes.length" [(page)]="page" [pageSize]="pageSize"
+    aria-label="Default pagination"></ngb-pagination>
   </div>
 </div>
 </div>
