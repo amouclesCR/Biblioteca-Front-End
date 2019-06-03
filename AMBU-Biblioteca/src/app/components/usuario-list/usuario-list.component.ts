@@ -3,6 +3,7 @@ import { faPlus, faEdit } from '@fortawesome/free-solid-svg-icons';
 import { UsuarioService } from '../../services/index';
 import { Usuario } from 'src/app/interfaces/index';
 import { Router } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
 @Component({
   selector: 'app-usuario-list',
   templateUrl: './usuario-list.component.html',
@@ -14,10 +15,13 @@ export class UsuarioListComponent implements OnInit {
   private faPlus = faPlus;
   private faEdit = faEdit;
   private listaUsuarios: Usuario[];
+  private page = 1;
+  private pageSize = 10;
 
   constructor(
     private usuarioServicio: UsuarioService,
-    private router: Router
+    private router: Router,
+    private ngxService: NgxUiLoaderService
   ) { }
 
   // FUNCIONES
@@ -25,6 +29,10 @@ export class UsuarioListComponent implements OnInit {
     this.usuarioServicio.getUsuarios().subscribe(
       res => {
         this.listaUsuarios = res.body;
+        this.ngxService.stopLoader('load');
+      },
+      err => {
+        this.ngxService.stopLoader('load');
       }
     );
   }
@@ -38,6 +46,7 @@ export class UsuarioListComponent implements OnInit {
   }
   
   ngOnInit() {
+    this.ngxService.startLoader('load');
     this.getUsuarios();
   }
 

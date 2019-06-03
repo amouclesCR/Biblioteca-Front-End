@@ -1,3 +1,4 @@
+<ngx-ui-loader [loaderId]="'load'" [text]="'Cargando datos'"></ngx-ui-loader>
 <div class="container-fluid">
   <div class="col-lg-4 col-md-4 col-sm-4">
     <h1>Usuarios</h1>
@@ -17,7 +18,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let usu of listaUsuarios; let i = index">
+      <tr *ngFor="let usu of listaUsuarios | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; let i = index">
         <td>{{i}}</td>
         <td>{{usu.usu_identificacion}}</td>
         <td>{{usu.usu_nombre}}</td>
@@ -28,4 +29,6 @@
       </tr>
     </tbody>
   </table>
+  <ngb-pagination [collectionSize]="listaUsuarios.length" [(page)]="page" [pageSize]="pageSize"
+                aria-label="Default pagination"></ngb-pagination>
 </div>
