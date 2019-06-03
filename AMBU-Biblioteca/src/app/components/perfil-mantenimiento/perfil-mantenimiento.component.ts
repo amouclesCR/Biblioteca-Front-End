@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsuarioService, DataStorageService, AlertasService } from 'src/app/services/index';
 import { Usuario } from 'src/app/interfaces/index';
 import { Location } from '@angular/common';
+import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
 @Component({
   selector: 'app-perfil-mantenimiento',
   templateUrl: './perfil-mantenimiento.component.html',
@@ -18,7 +19,8 @@ export class PerfilMantenimientoComponent implements OnInit {
     private usuarioServicio: UsuarioService, 
     private dataStoreServicio: DataStorageService,
     private location: Location, 
-    private alertas: AlertasService
+    private alertas: AlertasService,
+    private ngxService: NgxUiLoaderService
   ) { }
 
   // FUNCIONES
@@ -28,6 +30,7 @@ export class PerfilMantenimientoComponent implements OnInit {
       nombre: [this.usuario.usu_nombre, Validators.required], 
       correo: [this.usuario.usu_correo, Validators.required]
     });
+    this.ngxService.stopLoader('load');
   }
 
   submit() {
@@ -40,7 +43,7 @@ export class PerfilMantenimientoComponent implements OnInit {
         this.alertas.successInfoAlert("Perfil actualizado correctamente");
         this.location.back();
       },
-      err => {debugger
+      err => {
         this.alertas.errorAlert("Ha ocurrido un problema durante la actualización del perfil." +
           " Por favor, contacte con el administrador. Status Code: " + err.status);
       }
@@ -56,6 +59,7 @@ export class PerfilMantenimientoComponent implements OnInit {
   }
   
   ngOnInit() {
+    this.ngxService.startLoader('load');
     this.getUsuario();
     this.IniciarFormulario();
   }

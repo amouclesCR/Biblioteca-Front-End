@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataStorageService, ActivoService, SolicitudService } from 'src/app/services/index';
 import { Usuario, Activo, Solicitud } from 'src/app/interfaces/index';
 import { Router } from '@angular/router';
-
+import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.component.html',
@@ -18,7 +18,8 @@ export class PerfilComponent implements OnInit {
     private dataSoterage: DataStorageService,
     private activoServicio: ActivoService, 
     private solicitudServicio: SolicitudService,
-    private router: Router
+    private router: Router,
+    private ngxService: NgxUiLoaderService
   ) { }
 
   // FUNCIONES
@@ -26,6 +27,10 @@ export class PerfilComponent implements OnInit {
     this.activoServicio.getActivosByUsuario(this.usuario.id).subscribe(
       res => {
         this.listaActivos = res.body;
+        this.ngxService.stopLoader('load');
+      },
+      err => {
+        this.ngxService.stopLoader('load');
       }
     );
   }
@@ -38,6 +43,10 @@ export class PerfilComponent implements OnInit {
     this.solicitudServicio.getSolicitudByUsuario(this.usuario.id).subscribe(
       res => {
         this.listaSolicitudes = res.body;
+        this.getActivos();
+      },
+      err => {
+        this.ngxService.stopLoader('load');
       }
     );
   }
@@ -57,9 +66,9 @@ export class PerfilComponent implements OnInit {
   ngOnInit() {
     this.listaActivos = [];
     this.listaSolicitudes = [];
+    this.ngxService.startLoader('load');
     this.usuario = this.dataSoterage.getObjectValue("USUARIO");
     this.obtenerSolicitudes();
-    this.getActivos();
   }
 
 }
