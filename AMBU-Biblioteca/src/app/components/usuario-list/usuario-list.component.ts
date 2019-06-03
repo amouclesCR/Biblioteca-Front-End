@@ -37,9 +37,9 @@ export class UsuarioListComponent implements OnInit {
     );
   }
 
-  agregarUsuario() {
-    this.router.navigate(['dashboard/usuario-mantenimiento']);
-  }
+  // agregarUsuario() {
+  //   this.router.navigate(['dashboard/usuario-mantenimiento']);
+  // }
 
   editarUsuario(id: number) {
     this.router.navigate(['dashboard/usuario-mantenimiento', id]);

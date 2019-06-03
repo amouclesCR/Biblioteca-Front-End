@@ -1,47 +1,52 @@
 <ngx-ui-loader [loaderId]="'load'" [text]="'Cargando datos'"></ngx-ui-loader>
 <div class="container-fluid">
- <div >
+  <div>
     <div class="col-lg-6 col-md-6 col-sm-6">
-        <h1 class="">Perfil</h1>
+      <h1 class="">Perfil</h1>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4">
+      <div>
+        <p id="identificacion">Identificación: {{usuario.usu_identificacion}}</p>
       </div>
-      <div class="col-lg-4 col-md-4 col-sm-4">
-        <div>
-          <p id="identificacion">Identificación: {{usuario.usu_identificacion}}</p>
-        </div>
-        <button (click)="editarPerfil()" class="btn btn-primary">modificar</button>
-      </div>
- </div>
+      <button (click)="editarPerfil()" class="btn btn-primary">modificar</button>
+    </div>
+  </div>
   <section class="table-seccion">
     <div class="col-lg-12 col-md-12 col-sm-12">
       <h2>Mis activos</h2>
-      <table class="table table-bordered" *ngIf="activos">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col" width="5%">#</th>
-            <th scope="col" width="10%">N° Activo</th>
-            <th scope="col" width="10%">Descripción</th>
-            <th scope="col" width="10%">Serie</th>
-            <th scope="col" width="10%">Modelo</th>
-            <th scope="col" width="10%">Marca</th>
-            <th scope="col" width="10%">Observaciones</th>
-            <th scope="col" width="10%">Estado</th>
-            <th scope="col" width="10%">Costo</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let act of listaActivos; let i = index">
-            <td>{{i}}</td>
-            <td>{{act.act_numero_activo}}</td>
-            <td>{{act.act_descripcion}}</td>
-            <td>{{act.act_serie}}</td>
-            <td>{{act.act_modelo}}</td>
-            <td>{{act.act_marca}}</td>
-            <td>{{act.act_observacion}}</td>
-            <td>{{act.act_estatus}}</td>
-            <td>{{act.act_costo}}</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-scroll">
+        <table class="table table-bordered" *ngIf="activos">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col" width="5%">#</th>
+              <th scope="col" width="10%">N° Activo</th>
+              <th scope="col" width="10%">Descripción</th>
+              <th scope="col" width="10%">Serie</th>
+              <th scope="col" width="10%">Modelo</th>
+              <th scope="col" width="10%">Marca</th>
+              <th scope="col" width="10%">Observaciones</th>
+              <th scope="col" width="10%">Estado</th>
+              <th scope="col" width="10%">Costo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let act of listaActivos | slice: (pageActivos-1) * pageSize : (pageActivos-1) * pageSize + pageSize; let i = index">
+              <td>{{i}}</td>
+              <td>{{act.act_numero_activo}}</td>
+              <td>{{act.act_descripcion}}</td>
+              <td>{{act.act_serie}}</td>
+              <td>{{act.act_modelo}}</td>
+              <td>{{act.act_marca}}</td>
+              <td>{{act.act_observacion}}</td>
+              <td>{{act.act_estatus}}</td>
+              <td>{{act.act_costo}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <ngb-pagination [collectionSize]="listaActivos.length" [(page)]="pageActivos" [pageSize]="pageSize"
+          aria-label="Default pagination"></ngb-pagination>
+      </div>
       <div *ngIf="!activos">
         <p>
           No tienes activos asignados
@@ -51,8 +56,9 @@
   </section>
 
   <section class="table-seccion">
-      <div class="col-lg-12 col-md-12 col-sm-12">
-        <h2>Mis solicitudes</h2>
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <h2>Mis solicitudes</h2>
+      <div class="table-scroll">
         <table class="table table-bordered" *ngIf="solicitudes">
           <thead class="thead-dark">
             <tr>
@@ -64,7 +70,8 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let sol of listaSolicitudes; let i = index">
+            <tr
+              *ngFor="let sol of listaSolicitudes | slice: (pageSolicitudes-1) * pageSize : (pageSolicitudes-1) * pageSize + pageSize; let i = index">
               <td>{{i}}</td>
               <td>{{sol.sbja_numero_formulario}}</td>
               <td>{{sol.sbja_estado_solicitud? "Aprovada" : "No aprovada"}}</td>
@@ -73,11 +80,14 @@
             </tr>
           </tbody>
         </table>
-        <div *ngIf="!solicitudes">
-          <p>
-            No has realizado solicitudes
-          </p>
-        </div>
+        <ngb-pagination [collectionSize]="listaSolicitudes.length" [(page)]="pageSolicitudes" [pageSize]="pageSize"
+          aria-label="Default pagination"></ngb-pagination>
       </div>
-    </section>
+      <div *ngIf="!solicitudes">
+        <p>
+          No has realizado solicitudes
+        </p>
+      </div>
+    </div>
+  </section>
 </div>

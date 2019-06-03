@@ -5,6 +5,7 @@ import { UsuarioService } from 'src/app/services/index';
 import { RolService } from 'src/app/services/rol.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
+import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
 @Component({
   selector: 'app-usuario-mantenimiento',
   templateUrl: './usuario-mantenimiento.component.html',
@@ -23,7 +24,8 @@ export class UsuarioMantenimientoComponent implements OnInit {
     private location: Location, 
     private usuarioServicio: UsuarioService,
     private rolServicio: RolService, 
-    private formBuilderUsuario: FormBuilder
+    private formBuilderUsuario: FormBuilder,
+    private ngxService: NgxUiLoaderService
   ) { }
 
   //  FUNCIONES
@@ -35,6 +37,10 @@ export class UsuarioMantenimientoComponent implements OnInit {
     this.rolServicio.getRol().subscribe(
       res => {
         this.listaRol = res.body;
+        this.ngxService.stopLoader('load');
+      },  
+      err => {
+        this.ngxService.stopLoader('load');
       }
     );
   }
@@ -45,6 +51,10 @@ export class UsuarioMantenimientoComponent implements OnInit {
         res => {
           this.usuario = res.body;
           this.cargarFormulario();
+          this.ngxService.stopLoader('load');
+        },  
+        err => {
+          this.ngxService.stopLoader('load');
         }
       );
     }
@@ -80,6 +90,7 @@ export class UsuarioMantenimientoComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.ngxService.startLoader('load');
     this.obtenerId();
     this.inicializarFormulario();
     this.obtenerRoles();

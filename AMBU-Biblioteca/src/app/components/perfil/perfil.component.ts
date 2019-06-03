@@ -14,6 +14,9 @@ export class PerfilComponent implements OnInit {
   private usuario: Usuario
   private listaActivos: Activo[];
   private listaSolicitudes: Solicitud[];
+  private pageActivos = 1;
+  private pageSolicitudes = 1;
+  private pageSize = 10;
   constructor(
     private dataSoterage: DataStorageService,
     private activoServicio: ActivoService, 
