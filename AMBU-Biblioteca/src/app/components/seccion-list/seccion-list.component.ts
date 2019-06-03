@@ -3,6 +3,7 @@ import { SeccionService } from '../../services/index';
 import { Seccion } from 'src/app/interfaces/index';
 import { faEdit, faBook, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
 @Component({
   selector: 'app-seccion-list',
   templateUrl: './seccion-list.component.html',
@@ -15,10 +16,13 @@ export class SeccionListComponent implements OnInit {
   private faEdit = faEdit;
   private faBook= faBook;
   private faPlus = faPlus;
+  private pageSize = 10;
+  private page = 1;
 
   constructor(
     private seccionService: SeccionService,
-    private router: Router
+    private router: Router,
+    private ngxService: NgxUiLoaderService
   ) { }
 
   // FUNCIONES
@@ -26,6 +30,10 @@ export class SeccionListComponent implements OnInit {
     this.seccionService.getSecciones().subscribe(
       res => {
         this.listaSeccion = res.body;
+        this.ngxService.stopLoader('load');
+      },  
+      err => {
+        this.ngxService.stopLoader('load');
       });
   }
 
@@ -41,6 +49,7 @@ export class SeccionListComponent implements OnInit {
     this.router.navigate(['dashboard/seccion-actualizar', id]);
   }
   ngOnInit() {
+    this.ngxService.startLoader('load');
     this.getSecciones();
   }
 

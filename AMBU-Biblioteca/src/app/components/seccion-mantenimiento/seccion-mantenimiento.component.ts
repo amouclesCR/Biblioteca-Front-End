@@ -4,6 +4,7 @@ import { Seccion, Departamento } from '../../interfaces/index';
 import {SeccionService, AlertasService, DepartamentoService} from '../../services/index';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
 @Component({
   selector: 'app-seccion-mantenimiento',
   templateUrl: './seccion-mantenimiento.component.html',
@@ -25,6 +26,7 @@ export class SeccionMantenimientoComponent implements OnInit {
     private activetedRouter: ActivatedRoute,
     private alertas: AlertasService, 
     private location: Location, 
+    private ngxService: NgxUiLoaderService,
     private departamentoServicio: DepartamentoService
   ) { }
 
@@ -50,6 +52,10 @@ export class SeccionMantenimientoComponent implements OnInit {
       res => {
         this.seccion = res.body;
         this.cargarValores();
+        this.ngxService.stopLoader('load');
+      },  
+      err => {
+        this.ngxService.stopLoader('load');
       }
     );
   }
@@ -58,6 +64,9 @@ export class SeccionMantenimientoComponent implements OnInit {
     this.departamentoServicio.getdepartamentos().subscribe(
       res => {
         this.listaDepartamento = res.body;
+      },  
+      err => {
+        this.ngxService.stopLoader('load');
       }
     );
   }
@@ -122,6 +131,7 @@ export class SeccionMantenimientoComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.ngxService.startLoader('load');
     this.cargarComponente();
   }
 

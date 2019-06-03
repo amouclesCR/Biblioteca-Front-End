@@ -3,6 +3,7 @@ import { ActivoService, SeccionService } from 'src/app/services/index';
 import { Activo, Seccion } from '../../interfaces/index';
 import { faEdit, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
 @Component({
   selector: 'app-seccion-detalles',
   templateUrl: './seccion-detalles.component.html',
@@ -24,7 +25,8 @@ export class SeccionDetallesComponent implements OnInit {
     private activoServicio: ActivoService,
     private seccionServicio: SeccionService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private ngxService: NgxUiLoaderService
   ) { }
 
   // FUNCIONES
@@ -36,6 +38,10 @@ export class SeccionDetallesComponent implements OnInit {
     this.seccionServicio.getSeccion(this.id).subscribe(
       res => {
         this.seccion = res.body;
+        this.getActivosBySeccion();
+      }, 
+      err => {
+        this.ngxService.stopLoader('load');
       }
     );
   }
@@ -53,14 +59,18 @@ export class SeccionDetallesComponent implements OnInit {
       res => {
         this.listaActivo = res.body;
         this.vacio = !(this.listaActivo.length > 0);
+        this.ngxService.stopLoader('load');
+      },
+      err => {
+        this.ngxService.stopLoader('load');
       }
     );
   }
 
   ngOnInit() {
+    this.ngxService.startLoader('load');
     this.obtenerId();
     this.getSeccion();
-    this.getActivosBySeccion();
   }
 
 }

@@ -1,3 +1,4 @@
+<ngx-ui-loader [loaderId]="'load'" [text]="'Cargando datos'"></ngx-ui-loader>
 <div class="container-fluid container-all">
   <div class="row">
     <div class="col-lg-4 col-md-4 col-sm-4">
@@ -19,7 +20,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let sec of listaSeccion; let i = index">
+          <tr *ngFor="let sec of listaSeccion | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; let i = index">
             <td>{{i}}</td>
             <td>{{sec.sec_nombre}}</td>
             <td>{{sec.sec_departamento_modelo.dep_nombre}}</td>
@@ -36,6 +37,8 @@
           </tr>
         </tbody>
       </table>
+      <ngb-pagination [collectionSize]="listaSeccion.length" [(page)]="page" [pageSize]="pageSize"
+                aria-label="Default pagination"></ngb-pagination>
     </div>
   </div>
 </div>
