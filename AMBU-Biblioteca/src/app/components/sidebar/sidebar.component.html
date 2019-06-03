@@ -26,10 +26,9 @@
       <a class="nav-link" [routerLink]="['solicitudes']" routerLinkActive="active">Solicitudes</a>
     </li>
     <li class="nav-item">
-      <button class="btn btn-link" data-toggle="modal" data-target="#exampleModal">Logout</button>
+      <button class="btn btn-link nav-link" data-toggle="modal" (click)="logout()">Logout</button>
     </li>
   </ul>
-  <button class="btn btn-primary" id="menu-toggle" (click)="btb()">Toggle Menu</button>
 
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
