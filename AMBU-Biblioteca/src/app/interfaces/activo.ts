@@ -16,4 +16,5 @@ export interface Activo {
     act_usuario: Usuario;
     act_seccion: number;
     act_seccion_modelo: Seccion;
+    act_Fecha_Creacion?: Date;
 }

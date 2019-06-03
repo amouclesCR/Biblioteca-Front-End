@@ -50,6 +50,7 @@ export class SeccionListComponent implements OnInit {
   }
   ngOnInit() {
     this.ngxService.startLoader('load');
+    this.listaSeccion = [];
     this.getSecciones();
   }
 

@@ -23,7 +23,7 @@ export class LoginService {
 
     logout() {
       this.dataStorage.setObjectValue("USUARIO", null);
-      this.router.navigate(["login"]);
+      this.router.navigate(["account/login"]);
     }
 
     usuarioLogeado() {

@@ -53,6 +53,7 @@ export class SolicitudesComponent implements OnInit {
 
   ngOnInit() {
     this.ngxService.startLoader('load');
+    this.listaSolicitudes = [];
     this.obtenerSolicitudes();
   }
 

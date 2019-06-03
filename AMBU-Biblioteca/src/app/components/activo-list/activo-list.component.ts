@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivoService, UsuarioService } from '../../services/index';
 import { Activo, Usuario } from '../../interfaces/index';
-import { faEdit, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faPlus, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
 
@@ -18,6 +18,7 @@ export class ActivoListComponent implements OnInit {
   private listUsuario: Usuario[];
   private faEdit = faEdit;
   private faPlus = faPlus;
+  private faCalendarAlt = faCalendarAlt;
   private term = '';
   private usuairoResponsable = '';
   private date: Date; 

@@ -68,6 +68,7 @@ export class SeccionDetallesComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.listaActivo = [];
     this.ngxService.startLoader('load');
     this.obtenerId();
     this.getSeccion();
