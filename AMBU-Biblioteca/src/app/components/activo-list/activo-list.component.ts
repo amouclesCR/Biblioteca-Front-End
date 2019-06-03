@@ -3,6 +3,8 @@ import { ActivoService, UsuarioService } from '../../services/index';
 import { Activo, Usuario } from '../../interfaces/index';
 import { faEdit, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
+
 @Component({
   selector: 'app-activo-list',
   templateUrl: './activo-list.component.html',
@@ -26,7 +28,8 @@ export class ActivoListComponent implements OnInit {
   constructor(
     private activoServicio: ActivoService,
     private usuarioServicio: UsuarioService,
-    private router: Router
+    private router: Router,
+    private ngxService: NgxUiLoaderService
   ) { }
 
   // FUNCIONES
@@ -43,6 +46,10 @@ export class ActivoListComponent implements OnInit {
       res => {
         this.listaActivos = res.body;
         this.listaActivosTabla = res.body;
+        this.ngxService.stopLoader('load');
+      },
+      err => {
+        this.ngxService.stopLoader('load');
       }
     );
   }
@@ -51,6 +58,9 @@ export class ActivoListComponent implements OnInit {
     this.usuarioServicio.getUsuarios().subscribe(
       res => {
         this.listUsuario = res.body;
+        this.getActivos();
+      },  err => {
+        this.ngxService.stopLoader('load');
       }
     );
   }
@@ -82,8 +92,9 @@ export class ActivoListComponent implements OnInit {
 
   }
   ngOnInit() {
+    this.ngxService.startLoader('load');
     this.orden = 0;
-    this.getActivos();
+    this.listaActivosTabla = [];
     this.getUsuarios();
   }
 }

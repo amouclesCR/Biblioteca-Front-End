@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { UsuarioService, SeccionService, ActivoService, AlertasService } from 'src/app/services/index';
 import { Usuario, Activo, Seccion } from 'src/app/interfaces/index';
 import { Location } from '@angular/common';
+import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
 @Component({
   selector: 'app-activo-mantenimiento',
   templateUrl: './activo-mantenimiento.component.html',
@@ -27,7 +28,8 @@ export class ActivoMantenimientoComponent implements OnInit {
     private seccionService: SeccionService,
     private usuarioService: UsuarioService,
     private formBuilderActivo: FormBuilder,
-    private location: Location
+    private location: Location,
+    private ngxService: NgxUiLoaderService
   ) { }
 
   // FUNCIONES
@@ -70,6 +72,10 @@ export class ActivoMantenimientoComponent implements OnInit {
       res => {
         this.activo = res.body;
         this.cargarValores();
+        this.ngxService.stopLoader('load');
+      },
+      err => {
+        this.ngxService.stopLoader('load');
       }
     );
   }
@@ -78,6 +84,10 @@ export class ActivoMantenimientoComponent implements OnInit {
     this.seccionService.getSecciones().subscribe(
       res => {
         this.listaSeccion = res.body;
+        this.getUsuarios();
+      },
+      err => {
+        this.ngxService.stopLoader('load');
       });
   }
 
@@ -85,6 +95,10 @@ export class ActivoMantenimientoComponent implements OnInit {
     this.usuarioService.getUsuarios().subscribe(
       res => {
         this.listaUsuario = res.body;
+        this.ngxService.stopLoader('load');
+      },
+      err => {
+        this.ngxService.stopLoader('load');
       });
   }
 
@@ -92,7 +106,6 @@ export class ActivoMantenimientoComponent implements OnInit {
     this.obtenerId();
     this.btnMensaje = this.id > 0 ? "Actualizar" : "Agregar";
     this.getSecciones();
-    this.getUsuarios();
     this.iniciarFormulario();
     if (this.id > 0) {
       this.obtenerActivo();
@@ -158,6 +171,7 @@ export class ActivoMantenimientoComponent implements OnInit {
     return this.formGroupActivo.controls;
   }
   ngOnInit() {
+    this.ngxService.startLoader('load');
     this.cargarComponente();
   }
 

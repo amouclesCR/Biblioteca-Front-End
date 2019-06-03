@@ -34,7 +34,7 @@ import { RecoveryComponent } from './components/recovery/recovery.component';
 import { ScannerComponent } from './components/scanner/scanner.component';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-
+import { NgxUiLoaderModule } from  'ngx-ui-loader';
 
 @NgModule({
   declarations: [
@@ -71,6 +71,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     FontAwesomeModule,
     NgbModule,
+    NgxUiLoaderModule,
     ZXingScannerModule.forRoot()
   ],
   providers: [
