@@ -15,9 +15,12 @@ export class AutorizadoGuard implements CanActivate{
     ) {}
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
 
-    return this.loginService.tieneRol(route.data.role)
-    this.router.navigate(['account/login']);
-    return false;
+    let tieneAcceso = this.loginService.tieneRol(route.data.role);
+    if (!tieneAcceso) {
+      this.router.navigate(['account/login']);
+      return tieneAcceso;
+    }
+    return tieneAcceso;
   } 
   
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SeccionService } from '../../services/index';
+import { SeccionService, PermisosService } from '../../services/index';
 import { Seccion } from 'src/app/interfaces/index';
 import { faEdit, faBook, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
@@ -22,7 +22,8 @@ export class SeccionListComponent implements OnInit {
   constructor(
     private seccionService: SeccionService,
     private router: Router,
-    private ngxService: NgxUiLoaderService
+    private ngxService: NgxUiLoaderService,
+    private permisos: PermisosService
   ) { }
 
   // FUNCIONES

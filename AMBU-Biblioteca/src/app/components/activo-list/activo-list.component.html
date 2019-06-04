@@ -53,7 +53,7 @@
                 <th scope="col">Ubicación</th>
                 <th scope="col">Estado</th>
                 <th scope="col">Costo</th>
-                <th scope="col">
+                <th scope="col" *ngIf="permisos.isActivo">
                   <button type="button" class="btn btn-plus" (click)="agregar()" placement="left"
                     ngbTooltip="Agregar un nuevo activo">
                     <fa-icon [icon]="faPlus"></fa-icon>
@@ -73,7 +73,7 @@
                 <td>{{act.act_seccion_modelo.sec_nombre}}</td>
                 <td>{{act.act_estatus? "N/A" : "D"}}</td>
                 <td>{{act.act_costo}}</td>
-                <td>
+                <td *ngIf="permisos.isActivo">
                   <button type="button" class="btn" (click)="editar(act.id)" placement="left"
                     ngbTooltip="Modificar este activor">
                     <fa-icon [icon]="faEdit"></fa-icon>

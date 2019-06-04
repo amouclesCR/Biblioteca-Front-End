@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faPlus, faEdit } from '@fortawesome/free-solid-svg-icons';
-import { UsuarioService } from '../../services/index';
+import { UsuarioService, PermisosService } from '../../services/index';
 import { Usuario } from 'src/app/interfaces/index';
 import { Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
@@ -21,7 +21,8 @@ export class UsuarioListComponent implements OnInit {
   constructor(
     private usuarioServicio: UsuarioService,
     private router: Router,
-    private ngxService: NgxUiLoaderService
+    private ngxService: NgxUiLoaderService,
+    private permisos: PermisosService
   ) { }
 
   // FUNCIONES
