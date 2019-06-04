@@ -29,7 +29,7 @@ export class RegistroComponent implements OnInit {
       identificacion: ['', Validators.required],
       correo: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
       clave: ['', Validators.required],
-      nombre: ['', Validators.required],
+      username: ['', Validators.required],
       confirmacion: ['', Validators.required]
     });
   }
@@ -39,12 +39,12 @@ export class RegistroComponent implements OnInit {
       let usuario: Usuario;
       usuario = {
         id: 0,
-        usu_clave: this.fGRegistro.clave.value,
-        usu_correo: this.fGRegistro.correo.value,
-        usu_identificacion: this.fGRegistro.identificacion.value,
-        usu_nombre: this.fGRegistro.nombre.value,
-        usu_rol: null,
-        usu_rol_modelo: null
+        password: this.fGRegistro.clave.value,
+        email: this.fGRegistro.correo.value,
+        cus_identificacion: this.fGRegistro.identificacion.value,
+        username: this.fGRegistro.username.value,
+        cus_rol: null,
+        cus_rol_modelo: null
       }
       this.usuarioServicio.postUsuario(usuario).subscribe(
         res => {
@@ -52,7 +52,7 @@ export class RegistroComponent implements OnInit {
           this.location.back();
         },
         err => {
-          this.alertas.errorInfoAlert("Error a la hora de registrar al usuario");
+          this.alertas.errorInfoAlert("Error a la hora de registrar al usuario"+"<br/>"+err.error.username);
         }
       );
     }

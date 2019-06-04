@@ -121,7 +121,7 @@ export class SolicitudBajaComponent implements OnInit {
 
   usuarioSelecionado(id: number) {
     if (id) {
-      this.nuevoUsuario = this.listaUsuario.find(item => item.id == id).usu_identificacion;
+      this.nuevoUsuario = this.listaUsuario.find(item => item.id == id).cus_identificacion;
     }
   }
 

@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   // FUNCIONES
   iniciarFormulario() {
     this.formGroupLogin = this.formBuilderLogin.group({
-      identificacion: ['', Validators.required],
+      username: ['', Validators.required],
       clave: ['', Validators.required]
     });
   }
@@ -34,8 +34,8 @@ export class LoginComponent implements OnInit {
     if (this.formGroupLogin.valid) {
       
       this.login = {
-        usu_identificacion: this.fGLogin['identificacion'].value,
-        usu_clave: this.fGLogin['clave'].value
+        username: this.fGLogin['username'].value,
+        password: this.fGLogin['clave'].value
       }
       
       this.loginService.login(this.login).subscribe(

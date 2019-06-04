@@ -15,13 +15,9 @@
           {{date | date:'fullDate'}} <br>
         </p>
       </div>
-      <p>Solicitante:</p>
-      <p *ngIf="usuario">
-        {{usuario.usu_nombre}}
-      </p><br>
       <p>Identificación:</p>
       <p *ngIf="usuario">
-        {{usuario.usu_identificacion}}
+        {{usuario.cus_identificacion}}
       </p>
 
       <div *ngIf="isTraspaso">
@@ -76,7 +72,7 @@
         <div>
           <h4>Firma</h4>
           <p class="firma"></p>
-          <p *ngIf="usuario">{{usuario.usu_identificacion}}</p>
+          <p *ngIf="usuario">{{usuario.cus_identificacion}}</p>
         </div>
 
         <div *ngIf="isTraspaso">

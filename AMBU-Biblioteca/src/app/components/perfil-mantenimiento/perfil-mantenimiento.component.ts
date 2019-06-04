@@ -26,17 +26,17 @@ export class PerfilMantenimientoComponent implements OnInit {
   // FUNCIONES
   IniciarFormulario() {
     this.formGroupPerfil = this.formBuilderPerfil.group({
-      identificacion: [this.usuario.usu_identificacion, Validators.required],
-      nombre: [this.usuario.usu_nombre, Validators.required], 
-      correo: [this.usuario.usu_correo, Validators.required]
+      identificacion: [this.usuario.cus_identificacion, Validators.required],
+      nombre: [this.usuario.username, Validators.required], 
+      correo: [this.usuario.email, Validators.required]
     });
     this.ngxService.stopLoader('load');
   }
 
   submit() {
-    this.usuario.usu_nombre = this.fGPerfil['nombre'].value;
-    this.usuario.usu_correo = this.fGPerfil['correo'].value;
-    this.usuario.usu_identificacion = this.fGPerfil['identificacion'].value;
+    this.usuario.username = this.fGPerfil['nombre'].value;
+    this.usuario.email = this.fGPerfil['correo'].value;
+    this.usuario.cus_identificacion = this.fGPerfil['identificacion'].value;
     this.usuarioServicio.updateUsuario(this.usuario).subscribe(
       res => {
         this.dataStoreServicio.setObjectValue('USUARIO', this.usuario);

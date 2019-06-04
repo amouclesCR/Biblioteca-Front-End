@@ -3,12 +3,12 @@
         <h1>Login</h1>
         <form [formGroup]="formGroupLogin" class="form-login-border" (ngSubmit)="submit()">
           <div class="form-group">
-            <label for="identificacion">Identificación</label>
-            <input type="text" class="form-control form-control-sm" formControlName="identificacion" id="identificacion"
+            <label for="username">Nombre de usuario</label>
+            <input type="text" class="form-control form-control-sm" formControlName="username" id="username"
               autocomplete="username" placeholder="Escriba su usuario"
-              [ngClass]="{'is-invalid': fGLogin.identificacion.errors && fGLogin.identificacion.touched}">
-            <div *ngIf="fGLogin.identificacion.errors?.required" class="invalid-feedback">
-              <div class="form-control-feedback text-danger" *ngIf="fGLogin.identificacion.errors?.required">
+              [ngClass]="{'is-invalid': fGLogin.username.errors && fGLogin.username.touched}">
+            <div *ngIf="fGLogin.username.errors?.required" class="invalid-feedback">
+              <div class="form-control-feedback text-danger" *ngIf="fGLogin.username.errors?.required">
                 * El usuario es requerido
               </div>
             </div>

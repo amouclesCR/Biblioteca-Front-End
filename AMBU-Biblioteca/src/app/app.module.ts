@@ -14,7 +14,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SeccionDetallesComponent } from './components/seccion-detalles/seccion-detalles.component';
 import { ActivoMantenimientoComponent } from './components/activo-mantenimiento/activo-mantenimiento.component';
 import { ActivoListComponent } from './components/activo-list/activo-list.component';
-import { ActivoService, AlertasService, LoginService, SeccionService, UsuarioService, DepartamentoService, SolicitudService } from './services/index';
+import { ActivoService, AlertasService, LoginService, SeccionService, UsuarioService, DepartamentoService, SolicitudService, PermisosService } from './services/index';
 import { UsuarioListComponent } from './components/usuario-list/usuario-list.component';
 import { UsuarioMantenimientoComponent } from './components/usuario-mantenimiento/usuario-mantenimiento.component';
 import { DataStorageService } from './services/dataStorage.service';
@@ -83,7 +83,8 @@ import { NgxUiLoaderModule } from  'ngx-ui-loader';
     DataStorageService,
     DepartamentoService,
     SolicitudService, 
-    PdfGeneratorService
+    PdfGeneratorService,
+    PermisosService
   ],
   bootstrap: [AppComponent]
 })

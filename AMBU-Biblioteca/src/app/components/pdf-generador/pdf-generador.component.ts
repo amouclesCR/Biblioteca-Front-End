@@ -44,7 +44,7 @@ export class PdfGeneradorComponent implements OnInit {
           this.solicitud = res.body;
           this.listaActivosSolicitud = this.solicitud.sbja_activos_modelos;
           this.usuario = this.solicitud.sbja_usuario_modelo;
-          this.nuevoUsuario = this.solicitud.sbja_nuevoUsuario_modelo.usu_identificacion;
+          this.nuevoUsuario = this.solicitud.sbja_nuevoUsuario_modelo.cus_identificacion;
           this.isTraspaso = this.solicitud.sbja_solicitud_traspaso;
           this.isVisualizar = true;
           this.numeroFormulario = this.solicitud.sbja_numero_formulario;

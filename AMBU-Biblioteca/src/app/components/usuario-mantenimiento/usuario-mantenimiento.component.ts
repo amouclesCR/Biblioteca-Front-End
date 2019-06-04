@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario, Rol } from 'src/app/interfaces/index';
-import { UsuarioService } from 'src/app/services/index';
+import { UsuarioService, AlertasService } from 'src/app/services/index';
 import { RolService } from 'src/app/services/rol.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
@@ -25,7 +25,8 @@ export class UsuarioMantenimientoComponent implements OnInit {
     private usuarioServicio: UsuarioService,
     private rolServicio: RolService, 
     private formBuilderUsuario: FormBuilder,
-    private ngxService: NgxUiLoaderService
+    private ngxService: NgxUiLoaderService,
+    private alertas: AlertasService,
   ) { }
 
   //  FUNCIONES
@@ -62,9 +63,9 @@ export class UsuarioMantenimientoComponent implements OnInit {
 
   cargarFormulario() {
     this.formGroupUsuario.patchValue({
-      identificacion: this.usuario.usu_identificacion,
-      correo: this.usuario.usu_correo,
-      roles: this.usuario.usu_rol
+      identificacion: this.usuario.cus_identificacion,
+      correo: this.usuario.email,
+      roles: this.usuario.cus_rol
     });
   }
 
@@ -77,10 +78,15 @@ export class UsuarioMantenimientoComponent implements OnInit {
   }
 
   submit() {
-    this.usuario.usu_rol = this.fGControls.roles.value;
+    this.usuario.cus_rol = this.fGControls.roles.value;
     this.usuarioServicio.updateUsuario(this.usuario).subscribe(
       res => {
+        this.alertas.successInfoAlert("Activo actualizada correctamente");
         this.location.back();
+      },
+      err => {
+        this.alertas.errorAlert("Ha ocurrido un problema durante la actualización del activo." +
+        " Por favor, contacte con el administrador. Status Code: " + err.status);
       }
     );
   }

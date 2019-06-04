@@ -27,13 +27,13 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="nombre">Nombre</label>
-          <input type="text" class="form-control form-control-sm" formControlName="nombre" id="nombre"
-            placeholder="Escriba su nombre"
-            [ngClass]="{'is-invalid': fGRegistro.nombre.errors && fGRegistro.nombre.touched}">
-          <div *ngIf="fGRegistro.nombre.errors?.required" class="invalid-feedback">
-            <div class="form-control-feedback text-danger" *ngIf="fGRegistro.nombre.errors?.required">
-              * El nombre es requerido
+          <label for="username">Nombre de Usuario</label>
+          <input type="text" class="form-control form-control-sm" formControlName="username" id="username"
+            placeholder="Escriba su username"
+            [ngClass]="{'is-invalid': fGRegistro.username.errors && fGRegistro.username.touched}">
+          <div *ngIf="fGRegistro.username.errors?.required" class="invalid-feedback">
+            <div class="form-control-feedback text-danger" *ngIf="fGRegistro.username.errors?.required">
+              * El nombre de usuario es requerido
             </div>
           </div>
         </div>

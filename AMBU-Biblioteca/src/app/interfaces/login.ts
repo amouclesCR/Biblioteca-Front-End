@@ -1,4 +1,4 @@
 export interface Login {
-    usu_identificacion: string;
-    usu_clave: string;
+    username: string;
+    password: string;
 }

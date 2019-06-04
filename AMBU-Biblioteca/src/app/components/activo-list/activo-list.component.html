@@ -15,7 +15,7 @@
             <label for="usuario">Usuario</label>
             <select class="form-control" id="usuario" (change)="filtrar()" [(ngModel)]="usuairoResponsable">
               <option value=''>Seleccione un usuario</option>
-              <option [value]="usu.id" *ngFor="let usu of listUsuario">{{usu.usu_identificacion}}</option>
+              <option [value]="usu.id" *ngFor="let usu of listUsuario">{{usu.cus_identificacion}}</option>
             </select>
           </div>
           <div class="form-group">

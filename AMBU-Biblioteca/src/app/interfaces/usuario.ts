@@ -2,10 +2,10 @@ import { Rol } from './rol';
 
 export interface Usuario {
     id: number;
-    usu_clave: string;
-    usu_identificacion: string;
-    usu_nombre: string;
-    usu_correo: string;
-    usu_rol: number;
-    usu_rol_modelo: Rol;
+    password: string;
+    cus_identificacion: string;
+    username?: string;
+    email: string;
+    cus_rol: number;
+    cus_rol_modelo: Rol;
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from 'src/app/services/index';
+import { LoginService, PermisosService } from 'src/app/services/index';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,7 +9,8 @@ import { LoginService } from 'src/app/services/index';
 export class SidebarComponent implements OnInit {
 
   constructor(
-    private login: LoginService
+    private login: LoginService,
+    private permisos: PermisosService
   ) { }
 
   // FUNCIONES

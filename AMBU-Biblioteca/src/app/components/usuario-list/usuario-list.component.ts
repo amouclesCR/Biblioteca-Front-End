@@ -46,6 +46,7 @@ export class UsuarioListComponent implements OnInit {
   }
   
   ngOnInit() {
+    this.listaUsuarios = [];
     this.ngxService.startLoader('load');
     this.getUsuarios();
   }
