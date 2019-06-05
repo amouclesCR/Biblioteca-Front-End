@@ -58,22 +58,11 @@ export class SeccionMantenimientoComponent implements OnInit {
     );
   }
 
-  obtenerDepartamentos() {
-    this.departamentoServicio.getdepartamentos().subscribe(
-      res => {
-        this.listaDepartamento = res.body;
-      },  
-      err => {
-        this.ngxService.stopLoader('load');
-      }
-    );
-  }
-
   cargarComponente() {
     this.obtenerId();
     this.btnMensaje = this.id > 0 ? "Actualizar" : "Agregar";
     this.iniciarFormulario();
-    this.obtenerDepartamentos();
+    //this.obtenerDepartamentos();
     if (this.id > 0) {
       this.obtenerSeccion();
     } else {

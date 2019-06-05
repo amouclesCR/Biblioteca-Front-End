@@ -44,8 +44,6 @@ const routes: Routes = [
     {path: 'solicitudes', component: SolicitudesComponent, canActivate: [AutorizadoGuard], data: {role: ['admin']}},
     {path: 'perfil', component: PerfilComponent},
     {path: 'perfil-editar', component: PerfilMantenimientoComponent},
-    {path: 'departamento-list', component: DepartamentoComponent},
-    {path: 'departamento-crear', component: DepartamentoMantenimientoComponent},
     {path: 'departamento-mantenimiento/:id', component: DepartamentoMantenimientoComponent},
     {path: 'visualizar-pdf/:id', component: PdfGeneradorComponent},
     {path: 'scanner', component: ScannerComponent},

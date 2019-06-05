@@ -35,7 +35,7 @@
                 [ngClass]="{'is-invalid': fGSolicitud.usuario.errors && fGSolicitud.usuario.touched}"
                 (change)="usuarioSelecionado(s.value)" #s>
                 <option value="">Selecione un usuario</option>
-                <option [value]="usu.id" *ngFor="let usu of listaUsuario">{{usu.usu_identificacion}}</option>
+                <option [value]="usu.id" *ngFor="let usu of listaUsuario">{{usu.cus_identificacion}}</option>
               </select>
               <div *ngIf="fGSolicitud.usuario.errors?.required" class="invalid-feedback">
                 <div class="form-control-feedback text-danger" *ngIf="fGSolicitud.usuario.errors?.required">
