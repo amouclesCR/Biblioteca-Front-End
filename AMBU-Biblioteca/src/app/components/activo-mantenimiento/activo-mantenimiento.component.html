@@ -1,146 +1,151 @@
 <ngx-ui-loader [loaderId]="'load'" [text]="'Cargando datos'"></ngx-ui-loader>
 <div class="container-fluid">
-<div class="activos-container">
-  <div class="col-lg-12 col-md-12 col-sm-12">
-    <div>
-      <h1>Activos</h1>
-    </div>
-    <div class="">
-      <form [formGroup]="formGroupActivo" (ngSubmit)="Submit()">
-        <section>
-          <div class="section-horizontal">
-            <div class="col-lg-4 col-md-4 col-sm-4 nopadding linea-divisora">
-              <div class="form-group">
-                <label for="numero_activo">N° Activo</label>
-                <input type="text" class="form-control form-control-sm" formControlName="numero_activo" id="numero_activo"
-                  placeholder="Escriba el numero activo"
-                  [ngClass]="{'is-invalid': fGControls.numero_activo.errors && fGControls.numero_activo.touched}">
-                <div *ngIf="fGControls.numero_activo.errors?.required" class="invalid-feedback">
-                  <div class="form-control-feedback text-danger" *ngIf="fGControls.numero_activo.errors?.required">
-                    * El número de activo es requerido
+  <div class="activos-container">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div>
+        <h1>Activos</h1>
+      </div>
+      <div class="">
+        <form [formGroup]="formGroupActivo" (ngSubmit)="submit()">
+          <section>
+            <div class="section-horizontal">
+              <div class="col-lg-4 col-md-4 col-sm-4 nopadding linea-divisora">
+                <div class="form-group">
+                  <label for="numero_activo">N° Activo</label>
+                  <input type="text" class="form-control form-control-sm" formControlName="numero_activo"
+                    id="numero_activo" placeholder="Escriba el numero activo"
+                    [ngClass]="{'is-invalid': fGControls.numero_activo.errors && fGControls.numero_activo.touched}">
+                  <div *ngIf="fGControls.numero_activo.errors?.required" class="invalid-feedback">
+                    <div class="form-control-feedback text-danger" *ngIf="fGControls.numero_activo.errors?.required">
+                      * El número de activo es requerido
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="modelo">Modelo</label>
+                  <input type="text" class="form-control form-control-sm" formControlName="modelo" id="modelo"
+                    placeholder="Escriba el modelo"
+                    [ngClass]="{'is-invalid': fGControls.modelo.errors && fGControls.modelo.touched}">
+                  <div *ngIf="fGControls.modelo.errors?.required" class="invalid-feedback">
+                    <div class="form-control-feedback text-danger" *ngIf="fGControls.modelo.errors?.required">
+                      * El modelo es requerido
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="seccion">Seccion</label>
+                  <select type="text" class="form-control form-control-sm" formControlName="seccion" id="seccion"
+                    placeholder="Escriba el seccion"
+                    [ngClass]="{'is-invalid': fGControls.seccion.errors && fGControls.seccion.touched}">
+                    <option value="">Seleccione un valor</option>
+                    <option [value]="sec.id" *ngFor="let sec of listaSeccion">{{sec.sec_nombre}}</option>
+                  </select>
+                  <div *ngIf="fGControls.seccion.errors?.required" class="invalid-feedback">
+                    <div class="form-control-feedback text-danger" *ngIf="fGControls.seccion.errors?.required">
+                      * La seccion es requerida
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group form-check">
+                  <input type="checkbox" class="form-check-input" id="estatus" formControlName="estatus">
+                  <label class="form-check-label" for="estatus">N/I</label>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-4 linea-divisora">
+                <div class="form-group">
+                  <label for="descripcion">Descripción</label>
+                  <input type="text" class="form-control form-control-sm" formControlName="descripcion" id="descripcion"
+                    placeholder="Escriba el descripcion" rows="5"
+                    [ngClass]="{'is-invalid': fGControls.descripcion.errors && fGControls.descripcion.touched}">
+                  <div *ngIf="fGControls.descripcion.errors?.required" class="invalid-feedback">
+                    <div class="form-control-feedback text-danger" *ngIf="fGControls.descripcion.errors?.required">
+                      * La descripcion es requeriao
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="serie">Serie</label>
+                  <input type="text" class="form-control form-control-sm" formControlName="serie" id="serie"
+                    placeholder="Escriba la serie"
+                    [ngClass]="{'is-invalid': fGControls.serie.errors && fGControls.serie.touched}">
+                  <div *ngIf="fGControls.serie.errors?.required" class="invalid-feedback">
+                    <div class="form-control-feedback text-danger" *ngIf="fGControls.serie.errors?.required">
+                      * La serie es requerida
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="usuario_responsabe">Usuario Responsabe</label>
+                  <select class="form-control form-control-sm" formControlName="usuario_responsabe"
+                    id="usuario_responsabe" placeholder="Escriba el usuario_responsabe"
+                    [ngClass]="{'is-invalid': fGControls.usuario_responsabe.errors && fGControls.usuario_responsabe.touched}">
+                    <option value="">Seleccione un valor</option>
+                    <option [value]="usu.id" *ngFor="let usu of listaUsuario">{{usu.cus_identificacion}}</option>
+                  </select>
+                  <div *ngIf="fGControls.usuario_responsabe.errors?.required" class="invalid-feedback">
+                    <div class="form-control-feedback text-danger"
+                      *ngIf="fGControls.usuario_responsabe.errors?.required">
+                      * El usuario responsabe es requerido
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="form-group">
-                <label for="modelo">Modelo</label>
-                <input type="text" class="form-control form-control-sm" formControlName="modelo" id="modelo"
-                  placeholder="Escriba el modelo"
-                  [ngClass]="{'is-invalid': fGControls.modelo.errors && fGControls.modelo.touched}">
-                <div *ngIf="fGControls.modelo.errors?.required" class="invalid-feedback">
-                  <div class="form-control-feedback text-danger" *ngIf="fGControls.modelo.errors?.required">
-                    * El modelo es requerido
+              <div class="col-lg-4 col-md-4 col-sm-4">
+                <div class="form-group">
+                  <label for="marca">Marca</label>
+                  <input type="text" class="form-control form-control-sm" formControlName="marca" id="marca"
+                    placeholder="Escriba la marca"
+                    [ngClass]="{'is-invalid': fGControls.marca.errors && fGControls.marca.touched}">
+                  <div *ngIf="fGControls.marca.errors?.required" class="invalid-feedback">
+                    <div class="form-control-feedback text-danger" *ngIf="fGControls.marca.errors?.required">
+                      * La marca es requeria
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="form-group">
-                <label for="seccion">Seccion</label>
-                <select type="text" class="form-control form-control-sm" formControlName="seccion" id="seccion"
-                  placeholder="Escriba el seccion"
-                  [ngClass]="{'is-invalid': fGControls.seccion.errors && fGControls.seccion.touched}">
-                  <option value="">Seleccione un valor</option>
-                  <option [value]="sec.id" *ngFor="let sec of listaSeccion">{{sec.sec_nombre}}</option>
-                </select>
-                <div *ngIf="fGControls.seccion.errors?.required" class="invalid-feedback">
-                  <div class="form-control-feedback text-danger" *ngIf="fGControls.seccion.errors?.required">
-                    * La seccion es requerida
+                <div class="form-group">
+                  <label for="color">Color</label>
+                  <input type="text" class="form-control form-control-sm" formControlName="color" id="color"
+                    placeholder="Escriba el color"
+                    [ngClass]="{'is-invalid': fGControls.color.errors && fGControls.color.touched}">
+                  <div *ngIf="fGControls.color.errors?.required" class="invalid-feedback">
+                    <div class="form-control-feedback text-danger" *ngIf="fGControls.color.errors?.required">
+                      * El color es requerido
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="costo">Costo</label>
+                  <input type="text" class="form-control form-control-sm text-area" formControlName="costo" id="costo"
+                    placeholder="Escriba el costo"
+                    [ngClass]="{'is-invalid': fGControls.costo.errors && fGControls.costo.touched}">
+                  <div *ngIf="fGControls.costo.errors?.required" class="invalid-feedback">
+                    <div class="form-control-feedback text-danger" *ngIf="fGControls.costo.errors?.required">
+                      * El costo es requeriao
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 linea-divisora">
+            <div class="col-lg-12 col-md-12 col-sm-12 nopadding">
               <div class="form-group">
-                <label for="descripcion">Descripción</label>
-                <input type="text" class="form-control form-control-sm" formControlName="descripcion" id="descripcion"
-                  placeholder="Escriba el descripcion" rows="5"
-                  [ngClass]="{'is-invalid': fGControls.descripcion.errors && fGControls.descripcion.touched}">
-                <div *ngIf="fGControls.descripcion.errors?.required" class="invalid-feedback">
-                  <div class="form-control-feedback text-danger" *ngIf="fGControls.descripcion.errors?.required">
-                    * La descripcion es requeriao
-                  </div>
-                </div>
-              </div>
-  
-              <div class="form-group">
-                <label for="serie">Serie</label>
-                <input type="text" class="form-control form-control-sm" formControlName="serie" id="serie"
-                  placeholder="Escriba la serie"
-                  [ngClass]="{'is-invalid': fGControls.serie.errors && fGControls.serie.touched}">
-                <div *ngIf="fGControls.serie.errors?.required" class="invalid-feedback">
-                  <div class="form-control-feedback text-danger" *ngIf="fGControls.serie.errors?.required">
-                    * La serie es requerida
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="usuario_responsabe">Usuario Responsabe</label>
-                <select class="form-control form-control-sm" formControlName="usuario_responsabe" id="usuario_responsabe"
-                  placeholder="Escriba el usuario_responsabe"
-                  [ngClass]="{'is-invalid': fGControls.usuario_responsabe.errors && fGControls.usuario_responsabe.touched}">
-                  <option value="">Seleccione un valor</option>
-                  <option [value]="usu.id" *ngFor="let usu of listaUsuario">{{usu.usu_identificacion}}</option>
-                </select>
-                <div *ngIf="fGControls.usuario_responsabe.errors?.required" class="invalid-feedback">
-                  <div class="form-control-feedback text-danger" *ngIf="fGControls.usuario_responsabe.errors?.required">
-                    * El usuario responsabe es requerido
+                <label for="observacion">Observación</label>
+                <textarea type="text" class="form-control form-control-sm" formControlName="observacion"
+                  id="observacion" placeholder="Escriba el observacion" rows="5"
+                  [ngClass]="{'is-invalid': fGControls.observacion.errors && fGControls.observacion.touched}"></textarea>
+                <div *ngIf="fGControls.observacion.errors?.required" class="invalid-feedback">
+                  <div class="form-control-feedback text-danger" *ngIf="fGControls.observacion.errors?.required">
+                    * La observacion es requeriao
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-4">
-              <div class="form-group">
-                <label for="marca">Marca</label>
-                <input type="text" class="form-control form-control-sm" formControlName="marca" id="marca"
-                  placeholder="Escriba la marca"
-                  [ngClass]="{'is-invalid': fGControls.marca.errors && fGControls.marca.touched}">
-                <div *ngIf="fGControls.marca.errors?.required" class="invalid-feedback">
-                  <div class="form-control-feedback text-danger" *ngIf="fGControls.marca.errors?.required">
-                    * La marca es requeria
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="color">Color</label>
-                <input type="text" class="form-control form-control-sm" formControlName="color" id="color"
-                  placeholder="Escriba el color"
-                  [ngClass]="{'is-invalid': fGControls.color.errors && fGControls.color.touched}">
-                <div *ngIf="fGControls.color.errors?.required" class="invalid-feedback">
-                  <div class="form-control-feedback text-danger" *ngIf="fGControls.color.errors?.required">
-                    * El color es requerido
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="costo">Costo</label>
-                <input type="text" class="form-control form-control-sm text-area" formControlName="costo" id="costo"
-                  placeholder="Escriba el costo"
-                  [ngClass]="{'is-invalid': fGControls.costo.errors && fGControls.costo.touched}">
-                <div *ngIf="fGControls.costo.errors?.required" class="invalid-feedback">
-                  <div class="form-control-feedback text-danger" *ngIf="fGControls.costo.errors?.required">
-                    * El costo es requeriao
-                  </div>
-                </div>
-              </div>
-            </div>
+          </section>
+          <div class="form-group form-button">
+            <button class="btn btn-primary" type="submit" [disabled]="formGroupActivo.invalid">{{btnMensaje}}</button>
           </div>
-          <div class="col-lg-12 col-md-12 col-sm-12 nopadding">
-            <div class="form-group">
-              <label for="observacion">Observación</label>
-              <textarea type="text" class="form-control form-control-sm" formControlName="observacion" id="observacion"
-                placeholder="Escriba el observacion" rows="5"
-                [ngClass]="{'is-invalid': fGControls.observacion.errors && fGControls.observacion.touched}"></textarea>
-              <div *ngIf="fGControls.observacion.errors?.required" class="invalid-feedback">
-                <div class="form-control-feedback text-danger" *ngIf="fGControls.observacion.errors?.required">
-                  * La observacion es requeriao
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <div class="form-group form-button">
-          <button class="btn btn-primary" type="submit" [disabled]="formGroupActivo.invalid">{{btnMensaje}}</button>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </div>
-</div>
 </div>

@@ -40,7 +40,7 @@ export class PdfGeneradorComponent implements OnInit {
     let id = +this.activeRoute.snapshot.params['id']; 
     if (id > 0) {
       this.solicitudServicio.getSolicitud(id).subscribe(
-        res => {
+        res => {debugger
           this.solicitud = res.body;
           this.listaActivosSolicitud = this.solicitud.sbja_activos_modelos;
           this.usuario = this.solicitud.sbja_usuario_modelo;

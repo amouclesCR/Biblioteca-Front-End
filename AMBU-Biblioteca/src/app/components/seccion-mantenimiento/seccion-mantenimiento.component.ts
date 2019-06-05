@@ -37,14 +37,12 @@ export class SeccionMantenimientoComponent implements OnInit {
 
   iniciarFormulario() {
     this.formGroupSeccion = this.formBuilderSeccion.group({
-      nombre: ['', Validators.required],
-      departamento: ['', Validators.required]
+      nombre: ['', Validators.required]
     });
   }
 
   cargarValores() {
     this.fGControls['nombre'].setValue(this.seccion.sec_nombre);
-    this.fGControls['departamento'].setValue(this.seccion.sec_departamento);
   }
 
   obtenerSeccion() {
@@ -78,6 +76,8 @@ export class SeccionMantenimientoComponent implements OnInit {
     this.obtenerDepartamentos();
     if (this.id > 0) {
       this.obtenerSeccion();
+    } else {
+      this.ngxService.stopLoader('load');
     }
   }
 
@@ -114,7 +114,7 @@ export class SeccionMantenimientoComponent implements OnInit {
         this.seccion = {
           id: this.id,
           sec_nombre: this.fGControls['nombre'].value,
-          sec_departamento: this.fGControls['departamento'].value,
+          sec_departamento: 1,
           sec_departamento_modelo: null
         }
         if (this.id > 0) {

@@ -40,7 +40,7 @@ export class ActivoMantenimientoComponent implements OnInit {
   iniciarFormulario() {
     this.formGroupActivo = this.formBuilderActivo.group({
       descripcion: ['', Validators.required],
-      observacion: ['', Validators.required],
+      observacion: [''],
       numero_activo: ['', Validators.required],
       color: ['', Validators.required],
       serie: ['', Validators.required],
