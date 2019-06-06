@@ -30,7 +30,8 @@ export class RegistroComponent implements OnInit {
       correo: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
       clave: ['', Validators.required],
       username: ['', Validators.required],
-      confirmacion: ['', Validators.required]
+      confirmacion: ['', Validators.required],
+      nombrecompleto: ['', Validators.required]
     });
   }
 
@@ -45,7 +46,7 @@ export class RegistroComponent implements OnInit {
         username: this.fGRegistro.username.value,
         cus_rol: null,
         cus_rol_modelo: null,
-        first_name: ""
+        first_name: this.fGRegistro.nombrecompleto.value
       }
       this.usuarioServicio.postUsuario(usuario).subscribe(
         res => {

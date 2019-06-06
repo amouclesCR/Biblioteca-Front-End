@@ -16,6 +16,17 @@
           </div>
         </div>
         <div class="form-group">
+            <label for="nombrecompleto">Nombre completo</label>
+            <input type="text" class="form-control form-control-sm" formControlName="nombrecompleto" id="nombrecompleto"
+              autocomplete="username" placeholder="Escriba su identificación"
+              [ngClass]="{'is-invalid': fGRegistro.nombrecompleto.errors && fGRegistro.nombrecompleto.touched}">
+            <div *ngIf="fGRegistro.nombrecompleto.errors?.required" class="invalid-feedback">
+              <div class="form-control-feedback text-danger" *ngIf="fGRegistro.nombrecompleto.errors?.required">
+                * El nombre completo es requerido
+              </div>
+            </div>
+          </div>
+        <div class="form-group">
           <label for="correo">Correo</label>
           <input type="text" class="form-control form-control-sm" formControlName="correo" id="correo"
             placeholder="Escriba el correo"
