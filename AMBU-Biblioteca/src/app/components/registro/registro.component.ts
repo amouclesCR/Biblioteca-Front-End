@@ -44,7 +44,8 @@ export class RegistroComponent implements OnInit {
         cus_identificacion: this.fGRegistro.identificacion.value,
         username: this.fGRegistro.username.value,
         cus_rol: null,
-        cus_rol_modelo: null
+        cus_rol_modelo: null,
+        first_name: ""
       }
       this.usuarioServicio.postUsuario(usuario).subscribe(
         res => {

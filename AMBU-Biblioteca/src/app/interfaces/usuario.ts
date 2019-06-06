@@ -8,4 +8,5 @@ export interface Usuario {
     email: string;
     cus_rol: number;
     cus_rol_modelo: Rol;
+    first_name: string;
 }

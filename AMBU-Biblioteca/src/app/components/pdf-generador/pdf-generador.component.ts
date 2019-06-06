@@ -14,7 +14,7 @@ export class PdfGeneradorComponent implements OnInit {
   @Input() usuario: Usuario;
   @Input() listaActivosSolicitud: Activo[];
   @Input() isTraspaso: boolean;
-  @Input() nuevoUsuario: string;
+  @Input() nuevoUsuario: Usuario;
   @Input() isVisualizar: boolean;
   @Input() numeroFormulario: string;
   private date: Date;
@@ -28,7 +28,7 @@ export class PdfGeneradorComponent implements OnInit {
     this.usuario = null;
     this.listaActivosSolicitud = [];
     this.isTraspaso = false;
-    this.nuevoUsuario = "";
+    this.nuevoUsuario = null;
     this.isVisualizar = false;
   }
 
@@ -44,7 +44,7 @@ export class PdfGeneradorComponent implements OnInit {
           this.solicitud = res.body;
           this.listaActivosSolicitud = this.solicitud.sbja_activos_modelos;
           this.usuario = this.solicitud.sbja_usuario_modelo;
-          this.nuevoUsuario = this.solicitud.sbja_nuevoUsuario_modelo.cus_identificacion;
+          this.nuevoUsuario = this.solicitud.sbja_nuevoUsuario_modelo;
           this.isTraspaso = this.solicitud.sbja_solicitud_traspaso;
           this.isVisualizar = true;
           this.numeroFormulario = this.solicitud.sbja_numero_formulario;
