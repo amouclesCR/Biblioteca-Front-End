@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { DataStorageService, ActivoService, UsuarioService, SolicitudService, AlertasService } from '../../services/index';
+import { DataStorageService, ActivoService, UsuarioService, SolicitudService, AlertasService, MensajesAlertasService } from '../../services/index';
 import { Usuario, Activo, Solicitud } from 'src/app/interfaces/index';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { PdfGeneratorService } from 'src/app/services/index';
@@ -30,7 +30,8 @@ export class SolicitudBajaComponent implements OnInit {
     private usuarioService: UsuarioService,
     private solicitudServicio: SolicitudService,
     private alertas: AlertasService, 
-    private generadorServicio: PdfGeneratorService
+    private generadorServicio: PdfGeneratorService,
+    private mensajeAlertas: MensajesAlertasService
   ) { }
 
   // FUNCIONES
@@ -106,8 +107,9 @@ export class SolicitudBajaComponent implements OnInit {
         this.alertas.successInfoAlert("Solicitud registrada correctamente");
       },
       err => {
-        this.alertas.errorAlert("Ha ocurrido un problema durante el registro de la solicitud." +
-          " Por favor, contacte con el administrador. Status Code: " + err.status);
+        this.isSubmit = false;
+        this.alertas.errorAlert("Ha ocurrido un problema durante el registro de la solicitud. <br/>" +
+        this.mensajeAlertas.mensajeError(err.error.sbja_numero_formulario));
       }
     );
   }
