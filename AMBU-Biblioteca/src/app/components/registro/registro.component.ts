@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UsuarioService, AlertasService } from 'src/app/services/index';
+import { UsuarioService, AlertasService, MensajesAlertasService } from 'src/app/services/index';
 import { Usuario } from 'src/app/interfaces/index';
 import { Location } from '@angular/common';
 
@@ -20,7 +20,8 @@ export class RegistroComponent implements OnInit {
     private router: Router,
     private usuarioServicio: UsuarioService,
     private location: Location,
-    private alertas: AlertasService
+    private alertas: AlertasService,
+    private mensajeAlertas: MensajesAlertasService,
     ) { }
 
   // FUNCIONES
@@ -54,7 +55,10 @@ export class RegistroComponent implements OnInit {
           this.location.back();
         },
         err => {
-          this.alertas.errorInfoAlert("Error a la hora de registrar al usuario"+"<br/>"+err.error.username);
+          this.alertas.errorAlert("Error a la hora de registrar al usuario <br>"+
+          this.mensajeAlertas.mensajeError(err.error.username)+
+          this.mensajeAlertas.mensajeError(err.error.email)+
+          this.mensajeAlertas.mensajeError(err.error.cus_identificacion));
         }
       );
     }

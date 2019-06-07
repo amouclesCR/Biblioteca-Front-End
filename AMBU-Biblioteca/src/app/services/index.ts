@@ -9,3 +9,4 @@ export {SolicitudService} from './solicitud.service';
 export {PdfGeneratorService} from './pdf-generator.service';
 export {RecoveryService} from './recovery.service';
 export {PermisosService} from './permisos.service';
+export { MensajesAlertasService } from './mensajes-alertas.service';

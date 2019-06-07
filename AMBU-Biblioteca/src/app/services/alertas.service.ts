@@ -56,7 +56,8 @@ export class AlertasService {
       toast: true,
       position: 'top-end',
       showConfirmButton: false,
-      timer: 3000
+      timer: 3000,
+
     });
     toast.fire({
       type: tipo,
@@ -70,6 +71,7 @@ export class AlertasService {
     swal.fire({
       type: tipo,
       text: msn,
+      html: msn
     });
   }
 }
