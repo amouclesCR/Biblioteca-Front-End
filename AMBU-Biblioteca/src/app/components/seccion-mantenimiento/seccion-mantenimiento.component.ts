@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Seccion, Departamento } from '../../interfaces/index';
-import {SeccionService, AlertasService, DepartamentoService} from '../../services/index';
+import {SeccionService, AlertasService, DepartamentoService, MensajesAlertasService} from '../../services/index';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
@@ -27,7 +27,7 @@ export class SeccionMantenimientoComponent implements OnInit {
     private alertas: AlertasService, 
     private location: Location, 
     private ngxService: NgxUiLoaderService,
-    private departamentoServicio: DepartamentoService
+    private mensajeAlertas: MensajesAlertasService
   ) { }
 
   // FUNCIONES
@@ -62,7 +62,6 @@ export class SeccionMantenimientoComponent implements OnInit {
     this.obtenerId();
     this.btnMensaje = this.id > 0 ? "Actualizar" : "Agregar";
     this.iniciarFormulario();
-    //this.obtenerDepartamentos();
     if (this.id > 0) {
       this.obtenerSeccion();
     } else {
@@ -77,8 +76,8 @@ export class SeccionMantenimientoComponent implements OnInit {
         this.location.back();
       },
       err => {
-        this.alertas.errorAlert("Ha ocurrido un problema durante la actualización de la sección." +
-          " Por favor, contacte con el administrador. Status Code: " + err.status);
+        this.alertas.errorAlert("Ha ocurrido un problema durante la actualización de la sección. <br/>" +
+        this.mensajeAlertas.mensajeError(err.error.sec_nombre));
       }
     );
   }
@@ -90,8 +89,8 @@ export class SeccionMantenimientoComponent implements OnInit {
         this.location.back();
       },
       err => {
-        this.alertas.errorAlert("Ha ocurrido un problema durante la creación de la sección." +
-          " Por favor, contacte con el administrador. Status Code: " + err.status);
+        this.alertas.errorAlert("Ha ocurrido un problema durante la creación de la sección. <br/>" +
+        this.mensajeAlertas.mensajeError(err.error.sec_nombre));
       }
     );
   }
@@ -103,7 +102,6 @@ export class SeccionMantenimientoComponent implements OnInit {
         this.seccion = {
           id: this.id,
           sec_nombre: this.fGControls['nombre'].value,
-          sec_departamento: 1,
           sec_departamento_modelo: null
         }
         if (this.id > 0) {

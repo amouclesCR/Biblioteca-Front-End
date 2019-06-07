@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { UsuarioService, SeccionService, ActivoService, AlertasService } from 'src/app/services/index';
+import { UsuarioService, SeccionService, ActivoService, AlertasService, MensajesAlertasService } from 'src/app/services/index';
 import { Usuario, Activo, Seccion } from 'src/app/interfaces/index';
 import { Location } from '@angular/common';
 import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
@@ -29,7 +29,8 @@ export class ActivoMantenimientoComponent implements OnInit {
     private usuarioService: UsuarioService,
     private formBuilderActivo: FormBuilder,
     private location: Location,
-    private ngxService: NgxUiLoaderService
+    private ngxService: NgxUiLoaderService,
+    private mensajeAlertas: MensajesAlertasService
   ) { }
 
   // FUNCIONES
@@ -119,8 +120,8 @@ export class ActivoMantenimientoComponent implements OnInit {
         this.location.back();
       },
       err => {
-        this.alertas.errorAlert("Ha ocurrido un problema durante la actualización del activo." +
-          " Por favor, contacte con el administrador. Status Code: " + err.status);
+        this.alertas.errorAlert("Ha ocurrido un problema durante la actualización del activo. <br/>" +
+        this.mensajeAlertas.mensajeError(err.error.act_numero_activo));
       }
     );
   }
@@ -132,8 +133,8 @@ export class ActivoMantenimientoComponent implements OnInit {
         this.location.back();
       },
       err => {
-        this.alertas.errorAlert("Ha ocurrido un problema durante la creación del activo." +
-          " Por favor, contacte con el administrador. Status Code: " + err.status);
+        this.alertas.errorAlert("Ha ocurrido un problema durante la creación del activo. <br/>" +
+        this.mensajeAlertas.mensajeError(err.error.act_numero_activo));
       }
     );
   }
