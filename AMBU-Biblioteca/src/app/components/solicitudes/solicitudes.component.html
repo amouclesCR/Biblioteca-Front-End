@@ -17,7 +17,10 @@
             Fecha de solicitud
           </th>
           <th>
-            Estado de la solicitud
+          </th>
+          <th>
+          </th>
+          <th>
           </th>
         </tr>
       </thead>
@@ -31,6 +34,12 @@
           </td>
           <td>
             <button class="btn btn-primary" (click)="aprobarSolicitud(sol.id)">Aprobar</button>
+          </td>
+          <td>
+            <button class="btn btn-danger" (click)="rechazarSolicitud(sol.id)">Rechazar</button>
+          </td>
+          <td>
+            <button class="btn btn-primary" (click)="verSolicitud(sol.id)">Ver Solicitud</button>
           </td>
         </tr>
       </tbody>

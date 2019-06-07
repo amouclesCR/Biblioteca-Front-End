@@ -10,32 +10,36 @@ export class SolicitudService {
 
   // ATRIBUTOS
   private readonly url = "http://localhost:8000/api/"
-  private readonly SUBURL = "solicitud/"
-  private readonly SUBURLBYUSUARIO = "solicitudbyusuario/"
-  private readonly SUBURLNOAPROBADAS = "solicitudnoaprobar/"
-  private readonly SUBURLAPROBAR = "solicitudaprobar/"
+  private readonly SOLICITUD = "solicitud/"
+  private readonly SOLICITUDBYUSUARIO = "solicitudbyusuario/"
+  private readonly SOLICITUDNOAPROBADAS = "solicitudnoaprobadas/"
+  private readonly SOLICITUDAPROBAR = "solicitudaprobar/"
+  private readonly SOLICITUDRECHAZAR = "solicitudrechazar/"
   constructor(
     private httpsolicitud: HttpClient
   ) { }
 
   postSolicitud(solicitud: Solicitud): Observable<HttpResponse<Solicitud>>{
-    return this.httpsolicitud.post<Solicitud>(environment.SERVERURL+this.SUBURL, solicitud, {observe: 'response'});
+    return this.httpsolicitud.post<Solicitud>(environment.SERVERURL+this.SOLICITUD, solicitud, {observe: 'response'});
   }
 
   getSolicitudByUsuario(id: number): Observable<HttpResponse<Solicitud[]>>{
-    return this.httpsolicitud.get<Solicitud[]>(environment.SERVERURL+this.SUBURLBYUSUARIO+id, {observe: 'response'});
+    return this.httpsolicitud.get<Solicitud[]>(environment.SERVERURL+this.SOLICITUD+this.SOLICITUDBYUSUARIO+id, {observe: 'response'});
   }
 
   getSolicitud(id: number): Observable<HttpResponse<Solicitud>>{
-    return this.httpsolicitud.get<Solicitud>(environment.SERVERURL+this.SUBURL+id, {observe: 'response'});
+    return this.httpsolicitud.get<Solicitud>(environment.SERVERURL+this.SOLICITUD+id, {observe: 'response'});
   }
 
   getSolicitudesNoAprodadas(): Observable<HttpResponse<Solicitud[]>>{
-    return this.httpsolicitud.get<Solicitud[]>(environment.SERVERURL+this.SUBURLNOAPROBADAS, {observe: 'response'});
+    return this.httpsolicitud.get<Solicitud[]>(environment.SERVERURL+this.SOLICITUD+this.SOLICITUDNOAPROBADAS, {observe: 'response'});
   }
 
   aprobarSolicitud(id: number) {
-    return this.httpsolicitud.put<Solicitud>(environment.SERVERURL+this.SUBURLAPROBAR+id, {observe: 'response'});
+    return this.httpsolicitud.put<Solicitud>(environment.SERVERURL+this.SOLICITUD+this.SOLICITUDAPROBAR+id, {observe: 'response'});
   }
 
+  rechazarSolicitud(id: number) {
+    return this.httpsolicitud.put<Solicitud>(environment.SERVERURL+this.SOLICITUD+this.SOLICITUDRECHAZAR+id, {observe: 'response'});
+  }
 }

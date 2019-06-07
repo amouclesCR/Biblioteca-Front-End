@@ -39,7 +39,7 @@
               <td>{{act.act_modelo}}</td>
               <td>{{act.act_marca}}</td>
               <td>{{act.act_observacion}}</td>
-              <td>{{act.act_estatus}}</td>
+              <td>{{act.act_estatus?"N/I":"D"}}</td>
               <td>{{act.act_costo}}</td>
             </tr>
           </tbody>
@@ -74,7 +74,7 @@
               *ngFor="let sol of listaSolicitudes | slice: (pageSolicitudes-1) * pageSize : (pageSolicitudes-1) * pageSize + pageSize; let i = index">
               <td>{{i}}</td>
               <td>{{sol.sbja_numero_formulario}}</td>
-              <td>{{sol.sbja_estado_solicitud? "Aprovada" : "No aprovada"}}</td>
+              <td>{{sol.sbja_estado_solicitud=="A"? "Aprovada" : sol.sbja_estado_solicitud=="E"? "Espera" : "Rechazada"}}</td>
               <td>{{sol.sbja_solicitud_traspaso? "Traspaso" : "De baja"}}</td>
               <td><Button class="btn btn-primary" (click)="verSolicitud(sol.id)">Ver Solicitud</Button></td>
             </tr>

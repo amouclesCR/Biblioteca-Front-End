@@ -91,7 +91,7 @@ export class SolicitudBajaComponent implements OnInit {
     this.solicitud = {
       id: 0,
       sbja_activos: this.obtenerActivosGuardar(),
-      sbja_estado_solicitud: false,
+      sbja_estado_solicitud: "E",
       sbja_fecha_solicitud: null,
       sbja_usuario: this.usuario.id,
       sbja_usuario_nuevo: this.isTraspaso ? this.formGroupSolicitud.controls.usuario.value : null,

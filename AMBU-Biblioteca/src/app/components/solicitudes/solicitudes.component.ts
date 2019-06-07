@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Solicitud } from '../../interfaces/index';
 import { SolicitudService, AlertasService } from '../../services/index';
 import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-solicitudes',
   templateUrl: './solicitudes.component.html',
@@ -17,6 +18,7 @@ export class SolicitudesComponent implements OnInit {
   constructor(
     private solicitudServicio: SolicitudService,
     private alertas: AlertasService,
+    private router: Router,
     private ngxService: NgxUiLoaderService
   ) { }
 
@@ -44,6 +46,22 @@ export class SolicitudesComponent implements OnInit {
         this.alertas.errorAlert("Ha ocurrido un error a la hora de aprobar la sulicitud" + "\n" + err.error);
       }
     );
+  }
+
+  rechazarSolicitud(id: number) {
+    this.solicitudServicio.rechazarSolicitud(id).subscribe(
+      res => {
+        this.removerSolicitud(id);
+        this.alertas.successInfoAlert("Solicitud rechazada exitosamente");
+      },
+      err => {
+        this.alertas.errorAlert("Ha ocurrido un error a la hora de aprobar la sulicitud" + "\n" + err.error);
+      }
+    );
+  }
+
+  verSolicitud(id: number) {
+    this.router.navigate(['dashboard/visualizar-pdf', id]);
   }
 
   removerSolicitud(id: number) {
