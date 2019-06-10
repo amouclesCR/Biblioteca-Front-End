@@ -2,13 +2,11 @@
 <div class="container-fluid">
   <div>
     <div class="col-lg-6 col-md-6 col-sm-6">
-      <h1 class="">Perfil</h1>
-    </div>
-    <div class="col-lg-4 col-md-4 col-sm-4">
-      <div>
-        <p id="identificacion">Identificación: {{usuario.cus_identificacion}}</p>
-      </div>
-      <button (click)="editarPerfil()" class="btn btn-primary">modificar</button>
+      <h1 class="">Perfil
+        <span>
+          <button (click)="editarPerfil()" class="btn btn-primary">modificar</button>
+        </span>
+      </h1>
     </div>
   </div>
   <section class="table-seccion">
