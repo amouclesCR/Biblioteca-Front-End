@@ -29,7 +29,7 @@ export class PerfilComponent implements OnInit {
   getActivos(){
     this.activoServicio.getActivosByUsuario(this.usuario.id).subscribe(
       res => {
-        this.listaActivos = res.body;
+        this.listaActivos = res.body.filter(item => item.act_estatus);
         this.ngxService.stopLoader('load');
       },
       err => {

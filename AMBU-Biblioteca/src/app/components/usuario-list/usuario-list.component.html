@@ -10,8 +10,9 @@
         <thead class="thead-dark">
           <tr>
             <th scope="col" width="5%">#</th>
-            <th scope="col" width="42%">Identificación</th>
-            <th scope="col" width="42%">Correo</th>
+            <th scope="col" width="30%">Identificación</th>
+            <th scope="col" width="30%">Correo</th>
+            <th scope="col" width="30%">Fecha de ingreso</th>
             <th scope="col" width="5%">
               <!-- <button type="button" class="btn btn-plus" (click)="agregarUsuario()">
                         <fa-icon [icon]="faPlus"></fa-icon>
@@ -25,6 +26,7 @@
             <td>{{i}}</td>
             <td>{{usu.cus_identificacion}}</td>
             <td>{{usu.email}}</td>
+            <td>{{usu.date_joined | date:'dd/MM/yyyy'}}</td>
             <td *ngIf="permisos.isAdmin"> <button type="button" class="btn btn-plus" (click)="editarUsuario(usu.id)">
                 <fa-icon [icon]="faEdit"></fa-icon>
               </button>

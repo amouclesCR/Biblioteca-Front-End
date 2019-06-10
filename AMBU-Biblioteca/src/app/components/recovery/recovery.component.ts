@@ -22,6 +22,17 @@ export class RecoveryComponent implements OnInit {
 
   //  FUNCIONES
   submit() {
+    this.usuario = {
+      cus_identificacion: this.fGRecovery.identificacion.value,
+      cus_rol: null,
+      cus_rol_modelo: null,
+      date_joined: null,
+      email: this.fGRecovery.correo.value,
+      first_name: null,
+      id: null,
+      password: this.fGRecovery.clave.value,
+      username: null
+    }
     this.recoveryServicio.cambiarContraseña(this.usuario).subscribe();
   }
 
