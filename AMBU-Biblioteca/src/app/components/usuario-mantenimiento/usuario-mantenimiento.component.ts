@@ -39,7 +39,7 @@ export class UsuarioMantenimientoComponent implements OnInit {
     this.rolServicio.getRol().subscribe(
       res => {
         this.listaRol = res.body;
-        this.ngxService.stopLoader('load');
+        this.obtenerUsuario();
       },  
       err => {
         this.ngxService.stopLoader('load');
@@ -106,7 +106,6 @@ export class UsuarioMantenimientoComponent implements OnInit {
     this.obtenerId();
     this.inicializarFormulario();
     this.obtenerRoles();
-    this.obtenerUsuario();
   }
 
 }

@@ -119,6 +119,8 @@ export class ActivoMantenimientoComponent implements OnInit {
     this.iniciarFormulario();
     if (this.id > 0) {
       this.obtenerActivo();
+    }else {
+      this.ngxService.stopLoader('load');
     }
   }
 
