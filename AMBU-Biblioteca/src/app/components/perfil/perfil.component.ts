@@ -3,6 +3,7 @@ import { DataStorageService, ActivoService, SolicitudService, MensajesAlertasSer
 import { Usuario, Activo, Solicitud } from 'src/app/interfaces/index';
 import { Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.component.html',
@@ -78,7 +79,7 @@ export class PerfilComponent implements OnInit {
     this.listaActivos = [];
     this.listaSolicitudes = [];
     this.ngxService.startLoader('load');
-    this.usuario = this.dataSoterage.getObjectValue("USUARIO");
+    this.usuario = this.dataSoterage.getObjectValue(environment.USUARIO);
     this.obtenerSolicitudes();
   }
 

@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Login, Rol, Usuario } from '../interfaces/index';
+import { Login, Usuario } from '../interfaces/index';
 import { DataStorageService } from './dataStorage.service';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 @Injectable()
 export class LoginService {
 
     // ATRIBUTOS
-    private readonly url = "http://localhost:8000/api/login/"
+    private readonly LOGIN = "login/"
  
     constructor(
       private httpLogin: HttpClient,
@@ -18,22 +19,25 @@ export class LoginService {
   
     // FUNCIONES
     login(login: Login): Observable<HttpResponse<any>> {
-      return this.httpLogin.post(this.url, login, {observe: 'response'});
+      return this.httpLogin.post(environment.SERVERURL + this.LOGIN, login, {observe: 'response'});
     }
 
     logout() {
-      this.dataStorage.setObjectValue("USUARIO", null);
+      this.dataStorage.setObjectValue(environment.USUARIO, null);
       this.router.navigate(["account/login"]);
     }
 
     usuarioLogeado() {
-      let usuario = this.dataStorage.getObjectValue("USUARIO");
+      let usuario = this.dataStorage.getObjectValue(environment.USUARIO);
       return usuario==null? false : true;
     }
 
     tieneRol(roles: string[]) {
       let isRol = false;
-      let usuario = this.dataStorage.getObjectValue("USUARIO") as Usuario;
+      let usuario = this.dataStorage.getObjectValue(environment.USUARIO) as Usuario;
+      if (usuario == null || usuario == undefined) {
+        return false;
+      }
       roles.forEach(item => {
         if (usuario.cus_rol_modelo.rol_rol == item) {
           isRol = true;

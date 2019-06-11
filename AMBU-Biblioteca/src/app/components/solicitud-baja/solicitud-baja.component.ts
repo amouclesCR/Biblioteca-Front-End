@@ -4,6 +4,7 @@ import { Usuario, Activo, Solicitud } from 'src/app/interfaces/index';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { PdfGeneratorService } from 'src/app/services/index';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-solicitud-baja',
   templateUrl: './solicitud-baja.component.html',
@@ -174,7 +175,7 @@ export class SolicitudBajaComponent implements OnInit {
 
   ngOnInit() {
     this.ngxService.startLoader('load');
-    this.usuario = this.dataStorageService.getObjectValue("USUARIO");
+    this.usuario = this.dataStorageService.getObjectValue(environment.USUARIO);
     this.IniciarFormulario();
     this.getActivos();
     this.listaActivosSolicitud = [];

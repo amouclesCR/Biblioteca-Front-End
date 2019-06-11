@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Login } from '../../interfaces/index';
 import { LoginService, DataStorageService, MensajesAlertasService, AlertasService } from '../../services/index';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -45,7 +46,7 @@ export class LoginComponent implements OnInit {
           if (res.body == 0) {
             this.usuarioNoEncontrado = true;
           } else {
-            this.dataStorageService.setObjectValue("USUARIO", res.body);
+            this.dataStorageService.setObjectValue(environment.USUARIO, res.body);
             this.router.navigate(['dashboard']);
           }
         },

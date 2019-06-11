@@ -6,9 +6,7 @@ export const environment = {
   production: false,
   SERVERURL: "http://localhost:8000/api/",
   ACTIVO: "activo/",
-  ACTIVOBYSECCION: "activobyseccion/",
-  ACTIVOBYUSUARIO: "activobyusuario/",
-  ACTIVOBYNUMEROACTIVO: "activobynumeroactivo/"
+  USUARIO: "USUARIO"
 };
 
 /*
