@@ -12,17 +12,17 @@ import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
 export class UsuarioListComponent implements OnInit {
 
   // ATRIBUTOS
-  private faPlus = faPlus;
-  private faEdit = faEdit;
-  private listaUsuarios: Usuario[];
-  private page = 1;
-  private pageSize = 10;
+  public faPlus = faPlus;
+  public faEdit = faEdit;
+  public listaUsuarios: Usuario[];
+  public page = 1;
+  public pageSize = 10;
 
   constructor(
     private usuarioServicio: UsuarioService,
     private router: Router,
     private ngxService: NgxUiLoaderService,
-    private permisos: PermisosService,
+    public permisos: PermisosService,
     private mensajeAlertas: MensajesAlertasService,
     private alertas: AlertasService
   ) { }

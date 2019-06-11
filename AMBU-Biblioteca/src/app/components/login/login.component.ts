@@ -12,9 +12,9 @@ import { environment } from 'src/environments/environment';
 export class LoginComponent implements OnInit {
 
   // ATRIBUTOS
-  private formGroupLogin: FormGroup;
+  public formGroupLogin: FormGroup;
   private login: Login;
-  private usuarioNoEncontrado: boolean;
+  public usuarioNoEncontrado: boolean;
 
   constructor(
     private formBuilderLogin: FormBuilder,

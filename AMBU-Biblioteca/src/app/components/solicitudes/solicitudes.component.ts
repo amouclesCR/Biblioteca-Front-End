@@ -11,9 +11,9 @@ import { Router } from '@angular/router';
 export class SolicitudesComponent implements OnInit {
 
   //  ATRIBUTOS
-  private listaSolicitudes: Solicitud[];
-  private page = 1;
-  private pageSize = 10;
+  public listaSolicitudes: Solicitud[];
+  public page = 1;
+  public pageSize = 10;
 
   constructor(
     private solicitudServicio: SolicitudService,

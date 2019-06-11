@@ -11,8 +11,6 @@ import { UsuarioListComponent } from './components/usuario-list/usuario-list.com
 import { SolicitudBajaComponent } from './components/solicitud-baja/solicitud-baja.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { PerfilMantenimientoComponent } from './components/perfil-mantenimiento/perfil-mantenimiento.component';
-import { DepartamentoComponent } from './components/departamento/departamento.component';
-import { DepartamentoMantenimientoComponent } from './components/departamento-mantenimiento/departamento-mantenimiento.component';
 import { PdfGeneradorComponent } from './components/pdf-generador/pdf-generador.component';
 import { SolicitudesComponent } from './components/solicitudes/solicitudes.component';
 import { UsuarioMantenimientoComponent } from './components/usuario-mantenimiento/usuario-mantenimiento.component';
@@ -42,7 +40,6 @@ const routes: Routes = [
     {path: 'solicitudes', component: SolicitudesComponent, canActivate: [AutorizadoGuard], data: {role: ['admin']}},
     {path: 'perfil', component: PerfilComponent},
     {path: 'perfil-editar', component: PerfilMantenimientoComponent},
-    {path: 'departamento-mantenimiento/:id', component: DepartamentoMantenimientoComponent},
     {path: 'visualizar-pdf/:id', component: PdfGeneradorComponent},
     {path: '**', pathMatch: 'full', redirectTo: 'seccion-list'}
   ], canActivate: [AutenticacionGuard], data: {role: ['normal','admin']}},

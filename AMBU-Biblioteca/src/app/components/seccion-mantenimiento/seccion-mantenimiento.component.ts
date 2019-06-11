@@ -13,15 +13,15 @@ import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
 export class SeccionMantenimientoComponent implements OnInit {
 
   // ATRIBUTOS
-  private formGroupSeccion: FormGroup;
-  private seccion: Seccion;
-  private id: number;
-  private btnMensaje: string;
-  private isSubmit = false;
-  private listaDepartamento: Departamento[];
+  public formGroupSeccion: FormGroup;
+  public seccion: Seccion;
+  public id: number;
+  public btnMensaje: string;
+  public isSubmit = false;
+  public listaDepartamento: Departamento[];
 
   constructor(
-    private formBuilderSeccion: FormBuilder,
+    public formBuilderSeccion: FormBuilder,
     private seccionService: SeccionService,
     private activetedRouter: ActivatedRoute,
     private alertas: AlertasService, 

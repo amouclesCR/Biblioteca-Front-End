@@ -13,16 +13,16 @@ import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
 export class ActivoListComponent implements OnInit {
 
   // ATRIBUTOS
-  private listaActivos: Activo[];
-  private listaActivosTabla: Activo[];
-  private listUsuario: Usuario[];
-  private faEdit = faEdit;
-  private faPlus = faPlus;
-  private faCalendarAlt = faCalendarAlt;
-  private term = '';
-  private usuairoResponsable = '';
-  private date: Date; 
-  private orden: number;
+  public listaActivos: Activo[];
+  public listaActivosTabla: Activo[];
+  public listUsuario: Usuario[];
+  public faEdit = faEdit;
+  public faPlus = faPlus;
+  public faCalendarAlt = faCalendarAlt;
+  public term = '';
+  public usuairoResponsable = '';
+  public date: Date; 
+  public orden: number;
   page = 1;
   pageSize = 5;
 
@@ -31,7 +31,7 @@ export class ActivoListComponent implements OnInit {
     private usuarioServicio: UsuarioService,
     private router: Router,
     private ngxService: NgxUiLoaderService,
-    private permisos: PermisosService,
+    public permisos: PermisosService,
     private mensajeAlertas: MensajesAlertasService,
     private alertas: AlertasService
     ) { }

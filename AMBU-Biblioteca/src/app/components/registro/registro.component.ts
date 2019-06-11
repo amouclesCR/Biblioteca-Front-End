@@ -14,7 +14,7 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 export class RegistroComponent implements OnInit {
 
   //  ATRIBUTOS
-  private formGroupRegistro: FormGroup;
+  public formGroupRegistro: FormGroup;
 
   constructor( 
     private formBuilderRegistro: FormBuilder,

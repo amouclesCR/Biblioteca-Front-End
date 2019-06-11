@@ -21,8 +21,6 @@ import { SolicitudBajaComponent } from './components/solicitud-baja/solicitud-ba
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { PerfilMantenimientoComponent } from './components/perfil-mantenimiento/perfil-mantenimiento.component';
-import { DepartamentoComponent } from './components/departamento/departamento.component';
-import { DepartamentoMantenimientoComponent } from './components/departamento-mantenimiento/departamento-mantenimiento.component';
 import { PdfGeneradorComponent } from './components/pdf-generador/pdf-generador.component';
 import { PdfGeneratorService } from './services/pdf-generator.service';
 import { SolicitudesComponent } from './components/solicitudes/solicitudes.component';
@@ -49,8 +47,6 @@ import { NgxUiLoaderModule } from  'ngx-ui-loader';
     SidebarComponent,
     PerfilComponent,
     PerfilMantenimientoComponent,
-    DepartamentoComponent,
-    DepartamentoMantenimientoComponent,
     PdfGeneradorComponent,
     SolicitudesComponent,
     AccountComponent,

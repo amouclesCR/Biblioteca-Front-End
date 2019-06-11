@@ -17,7 +17,7 @@ export class PdfGeneradorComponent implements OnInit {
   @Input() nuevoUsuario: Usuario;
   @Input() isVisualizar: boolean;
   @Input() numeroFormulario: string;
-  private date: Date;
+  public date: Date;
   private solicitud: Solicitud;
 
   constructor(

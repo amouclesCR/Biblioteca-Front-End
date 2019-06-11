@@ -13,8 +13,8 @@ import { environment } from 'src/environments/environment';
 export class PerfilMantenimientoComponent implements OnInit {
 
   // ATRIBUTOS
-  private formGroupPerfil: FormGroup;
-  private usuario: Usuario;
+  public formGroupPerfil: FormGroup;
+  public usuario: Usuario;
   constructor(
     private formBuilderPerfil: FormBuilder, 
     private usuarioServicio: UsuarioService, 

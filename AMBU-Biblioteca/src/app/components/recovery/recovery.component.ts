@@ -14,7 +14,7 @@ export class RecoveryComponent implements OnInit {
 
   //  ATRIBUTOS
   private usuario: Usuario;
-  private formGroupRecovery: FormGroup;
+  public formGroupRecovery: FormGroup;
 
 
   constructor(

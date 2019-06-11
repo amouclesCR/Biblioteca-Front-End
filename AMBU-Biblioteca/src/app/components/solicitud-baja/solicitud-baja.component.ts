@@ -13,16 +13,16 @@ import { environment } from 'src/environments/environment';
 export class SolicitudBajaComponent implements OnInit {
 
   // ATRIBUTOS
-  private usuario: Usuario;
-  private solicitud: Solicitud;
-  private formGroupSolicitud: FormGroup;
-  private listaActivos: Activo[];
-  private listaActivosSolicitud: Activo[];
-  private listaUsuario: Usuario[];
-  private isTraspaso: boolean;
-  private nuevoUsuario: string;
-  private isSubmit: boolean;
-  private listaActivosSubmit: number[];
+  public usuario: Usuario;
+  public solicitud: Solicitud;
+  public formGroupSolicitud: FormGroup;
+  public listaActivos: Activo[];
+  public listaActivosSolicitud: Activo[];
+  public listaUsuario: Usuario[];
+  public isTraspaso: boolean;
+  public nuevoUsuario: string;
+  public isSubmit: boolean;
+  public listaActivosSubmit: number[];
 
 
   constructor(

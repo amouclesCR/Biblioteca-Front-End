@@ -14,10 +14,10 @@ import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
 export class UsuarioMantenimientoComponent implements OnInit {
 
   //  ATRIBUTOS
-  private id: number;
-  private usuario: Usuario;
-  private listaRol: Rol[];
-  private formGroupUsuario: FormGroup;
+  public id: number;
+  public usuario: Usuario;
+  public listaRol: Rol[];
+  public formGroupUsuario: FormGroup;
 
   constructor(
     private activeRoute: ActivatedRoute,
