@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SeccionService, PermisosService } from '../../services/index';
+import { SeccionService, PermisosService, MensajesAlertasService, AlertasService } from '../../services/index';
 import { Seccion } from 'src/app/interfaces/index';
 import { faEdit, faBook, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
@@ -23,7 +23,9 @@ export class SeccionListComponent implements OnInit {
     private seccionService: SeccionService,
     private router: Router,
     private ngxService: NgxUiLoaderService,
-    private permisos: PermisosService
+    private permisos: PermisosService,
+    private mensajeAlertas: MensajesAlertasService,
+    private alertas: AlertasService
   ) { }
 
   // FUNCIONES
@@ -35,6 +37,9 @@ export class SeccionListComponent implements OnInit {
       },  
       err => {
         this.ngxService.stopLoader('load');
+        this.alertas.errorAlert(
+          this.mensajeAlertas.mensajeStatusCode(err.status)
+        );
       });
   }
 

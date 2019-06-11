@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataStorageService, ActivoService, SolicitudService } from 'src/app/services/index';
+import { DataStorageService, ActivoService, SolicitudService, MensajesAlertasService, AlertasService } from 'src/app/services/index';
 import { Usuario, Activo, Solicitud } from 'src/app/interfaces/index';
 import { Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
@@ -22,7 +22,9 @@ export class PerfilComponent implements OnInit {
     private activoServicio: ActivoService, 
     private solicitudServicio: SolicitudService,
     private router: Router,
-    private ngxService: NgxUiLoaderService
+    private ngxService: NgxUiLoaderService,
+    private mensajeAlertas: MensajesAlertasService,
+    private alertas: AlertasService,
   ) { }
 
   // FUNCIONES
@@ -34,6 +36,9 @@ export class PerfilComponent implements OnInit {
       },
       err => {
         this.ngxService.stopLoader('load');
+        this.alertas.errorAlert(
+          this.mensajeAlertas.mensajeStatusCode(err.status)
+        );
       }
     );
   }
@@ -50,6 +55,9 @@ export class PerfilComponent implements OnInit {
       },
       err => {
         this.ngxService.stopLoader('load');
+        this.alertas.errorAlert(
+          this.mensajeAlertas.mensajeStatusCode(err.status)
+        );
       }
     );
   }

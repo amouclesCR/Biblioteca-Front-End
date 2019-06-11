@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UsuarioService, DataStorageService, AlertasService } from 'src/app/services/index';
+import { UsuarioService, DataStorageService, AlertasService, MensajesAlertasService } from 'src/app/services/index';
 import { Usuario } from 'src/app/interfaces/index';
 import { Location } from '@angular/common';
 import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
@@ -20,7 +20,8 @@ export class PerfilMantenimientoComponent implements OnInit {
     private dataStoreServicio: DataStorageService,
     private location: Location, 
     private alertas: AlertasService,
-    private ngxService: NgxUiLoaderService
+    private ngxService: NgxUiLoaderService,
+    private mensajeAlertas: MensajesAlertasService
   ) { }
 
   // FUNCIONES
@@ -45,7 +46,10 @@ export class PerfilMantenimientoComponent implements OnInit {
       },
       err => {
         this.alertas.errorAlert("Ha ocurrido un problema durante la actualización del perfil." +
-          " Por favor, contacte con el administrador. Status Code: " + err.status);
+        this.mensajeAlertas.mensajeError(err.error.username) +
+        this.mensajeAlertas.mensajeError(err.error.email) +
+        this.mensajeAlertas.mensajeError(err.error.cus_identificacion) +
+        this.mensajeAlertas.mensajeStatusCode(err.status));
       }
     );
   }

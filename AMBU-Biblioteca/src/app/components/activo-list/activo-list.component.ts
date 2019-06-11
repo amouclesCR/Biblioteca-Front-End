@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivoService, UsuarioService, PermisosService } from '../../services/index';
+import { ActivoService, UsuarioService, PermisosService, MensajesAlertasService, AlertasService } from '../../services/index';
 import { Activo, Usuario } from '../../interfaces/index';
 import { faEdit, faPlus, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
@@ -31,8 +31,10 @@ export class ActivoListComponent implements OnInit {
     private usuarioServicio: UsuarioService,
     private router: Router,
     private ngxService: NgxUiLoaderService,
-    private permisos: PermisosService
-  ) { }
+    private permisos: PermisosService,
+    private mensajeAlertas: MensajesAlertasService,
+    private alertas: AlertasService
+    ) { }
 
   // FUNCIONES
   agregar() {
@@ -52,6 +54,9 @@ export class ActivoListComponent implements OnInit {
       },
       err => {
         this.ngxService.stopLoader('load');
+        this.alertas.errorAlert(
+          this.mensajeAlertas.mensajeStatusCode(err.status, "Activos")
+        );
       }
     );
   }
@@ -63,6 +68,9 @@ export class ActivoListComponent implements OnInit {
         this.getActivos();
       },  err => {
         this.ngxService.stopLoader('load');
+        this.alertas.errorAlert(
+          this.mensajeAlertas.mensajeStatusCode(err.status, "Usuarios")
+        );
       }
     );
   }

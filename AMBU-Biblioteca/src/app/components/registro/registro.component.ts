@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { UsuarioService, AlertasService, MensajesAlertasService } from 'src/app/services/index';
 import { Usuario } from 'src/app/interfaces/index';
 import { Location } from '@angular/common';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-registro',
@@ -18,6 +19,7 @@ export class RegistroComponent implements OnInit {
   constructor( 
     private formBuilderRegistro: FormBuilder,
     private router: Router,
+    private ngxService: NgxUiLoaderService,
     private usuarioServicio: UsuarioService,
     private location: Location,
     private alertas: AlertasService,
@@ -37,6 +39,7 @@ export class RegistroComponent implements OnInit {
   }
 
   submit() {
+    this.ngxService.startLoader('load');
     if (this.formGroupRegistro.valid) {
       let usuario: Usuario;
       usuario = {
@@ -51,14 +54,17 @@ export class RegistroComponent implements OnInit {
       }
       this.usuarioServicio.postUsuario(usuario).subscribe(
         res => {
+          this.ngxService.stopLoader('load');
           this.alertas.successInfoAlert("Usuario creado exitosamente");
           this.location.back();
         },
         err => {
+          this.ngxService.stopLoader('load');
           this.alertas.errorAlert("Error a la hora de registrar al usuario <br>"+
           this.mensajeAlertas.mensajeError(err.error.username)+
           this.mensajeAlertas.mensajeError(err.error.email)+
-          this.mensajeAlertas.mensajeError(err.error.cus_identificacion));
+          this.mensajeAlertas.mensajeError(err.error.cus_identificacion)+
+          this.mensajeAlertas.mensajeStatusCode(err.status));
         }
       );
     }

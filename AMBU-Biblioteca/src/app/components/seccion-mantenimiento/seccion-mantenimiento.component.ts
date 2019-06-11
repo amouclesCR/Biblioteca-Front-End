@@ -54,6 +54,9 @@ export class SeccionMantenimientoComponent implements OnInit {
       },  
       err => {
         this.ngxService.stopLoader('load');
+        this.alertas.errorAlert(
+          this.mensajeAlertas.mensajeStatusCode(err.status)
+        );
       }
     );
   }
@@ -77,7 +80,8 @@ export class SeccionMantenimientoComponent implements OnInit {
       },
       err => {
         this.alertas.errorAlert("Ha ocurrido un problema durante la actualización de la sección. <br/>" +
-        this.mensajeAlertas.mensajeError(err.error.sec_nombre));
+        this.mensajeAlertas.mensajeError(err.error.sec_nombre)+
+        this.mensajeAlertas.mensajeStatusCode(err.status));
       }
     );
   }
@@ -90,7 +94,8 @@ export class SeccionMantenimientoComponent implements OnInit {
       },
       err => {
         this.alertas.errorAlert("Ha ocurrido un problema durante la creación de la sección. <br/>" +
-        this.mensajeAlertas.mensajeError(err.error.sec_nombre));
+        this.mensajeAlertas.mensajeError(err.error.sec_nombre)+
+        this.mensajeAlertas.mensajeStatusCode(err.status));
       }
     );
   }

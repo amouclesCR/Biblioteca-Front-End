@@ -3,6 +3,7 @@ import { DataStorageService, ActivoService, UsuarioService, SolicitudService, Al
 import { Usuario, Activo, Solicitud } from 'src/app/interfaces/index';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { PdfGeneratorService } from 'src/app/services/index';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 @Component({
   selector: 'app-solicitud-baja',
   templateUrl: './solicitud-baja.component.html',
@@ -30,6 +31,7 @@ export class SolicitudBajaComponent implements OnInit {
     private usuarioService: UsuarioService,
     private solicitudServicio: SolicitudService,
     private alertas: AlertasService, 
+    private ngxService: NgxUiLoaderService,
     private generadorServicio: PdfGeneratorService,
     private mensajeAlertas: MensajesAlertasService
   ) { }
@@ -65,6 +67,13 @@ export class SolicitudBajaComponent implements OnInit {
     this.activoServicio.getActivosByUsuario(this.usuario.id).subscribe(
       res => {
         this.listaActivos = res.body;
+        this.getUsuarios();
+      },
+      err => {
+        this.ngxService.stopLoader('load');
+        this.alertas.errorAlert(
+          this.mensajeAlertas.mensajeStatusCode(err.status)
+        );
       }
     );
   }
@@ -75,7 +84,15 @@ export class SolicitudBajaComponent implements OnInit {
         let index = res.body.findIndex(item => item.id == this.usuario.id);
         this.listaUsuario = res.body;
         this.listaUsuario.splice(index, 1);
-      });
+        this.ngxService.stopLoader('load');
+      },
+      err => {
+        this.ngxService.stopLoader('load');
+        this.alertas.errorAlert(
+          this.mensajeAlertas.mensajeStatusCode(err.status)
+        );
+      }
+      );
   }
 
   agregarActivoSolicitud(id: number) {
@@ -89,6 +106,7 @@ export class SolicitudBajaComponent implements OnInit {
   }
 
   guardarSolicitud() {
+    this.ngxService.startLoader('load');
     this.solicitud = {
       id: 0,
       sbja_activos: this.obtenerActivosGuardar(),
@@ -104,12 +122,15 @@ export class SolicitudBajaComponent implements OnInit {
     }
     this.solicitudServicio.postSolicitud(this.solicitud).subscribe(
       res => {
+        this.ngxService.stopLoader('load');
         this.alertas.successInfoAlert("Solicitud registrada correctamente");
       },
       err => {
+        this.ngxService.stopLoader('load');
         this.isSubmit = false;
         this.alertas.errorAlert("Ha ocurrido un problema durante el registro de la solicitud. <br/>" +
-        this.mensajeAlertas.mensajeError(err.error.sbja_numero_formulario));
+        this.mensajeAlertas.mensajeError(err.error.sbja_numero_formulario)+
+        this.mensajeAlertas.mensajeStatusCode(err.status));
       }
     );
   }
@@ -152,10 +173,10 @@ export class SolicitudBajaComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.ngxService.startLoader('load');
     this.usuario = this.dataStorageService.getObjectValue("USUARIO");
     this.IniciarFormulario();
     this.getActivos();
-    this.getUsuarios();
     this.listaActivosSolicitud = [];
   }
 }

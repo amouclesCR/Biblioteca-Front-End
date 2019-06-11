@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faPlus, faEdit } from '@fortawesome/free-solid-svg-icons';
-import { UsuarioService, PermisosService } from '../../services/index';
+import { UsuarioService, PermisosService, AlertasService, MensajesAlertasService } from '../../services/index';
 import { Usuario } from 'src/app/interfaces/index';
 import { Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
@@ -22,7 +22,9 @@ export class UsuarioListComponent implements OnInit {
     private usuarioServicio: UsuarioService,
     private router: Router,
     private ngxService: NgxUiLoaderService,
-    private permisos: PermisosService
+    private permisos: PermisosService,
+    private mensajeAlertas: MensajesAlertasService,
+    private alertas: AlertasService
   ) { }
 
   // FUNCIONES
@@ -34,13 +36,10 @@ export class UsuarioListComponent implements OnInit {
       },
       err => {
         this.ngxService.stopLoader('load');
+        this.alertas.errorAlert(this.mensajeAlertas.mensajeStatusCode(err.status));
       }
     );
   }
-
-  // agregarUsuario() {
-  //   this.router.navigate(['dashboard/usuario-mantenimiento']);
-  // }
 
   editarUsuario(id: number) {
     this.router.navigate(['dashboard/usuario-mantenimiento', id]);

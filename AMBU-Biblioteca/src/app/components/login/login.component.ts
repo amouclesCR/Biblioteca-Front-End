@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Login } from '../../interfaces/index';
-import { LoginService, DataStorageService } from '../../services/index';
+import { LoginService, DataStorageService, MensajesAlertasService, AlertasService } from '../../services/index';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -19,7 +19,9 @@ export class LoginComponent implements OnInit {
     private formBuilderLogin: FormBuilder,
     private router: Router,
     private loginService: LoginService, 
-    private dataStorageService: DataStorageService
+    private dataStorageService: DataStorageService,
+    private mensajeAlertas: MensajesAlertasService,
+    private alertas: AlertasService,
   ) { }
 
   // FUNCIONES
@@ -48,7 +50,9 @@ export class LoginComponent implements OnInit {
           }
         },
         err => {
-          console.log(err.status);
+          this.alertas.errorAlert(
+            this.mensajeAlertas.mensajeStatusCode(err.status)
+          );
         }
       );
     }

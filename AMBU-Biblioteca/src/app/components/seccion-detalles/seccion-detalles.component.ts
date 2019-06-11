@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivoService, SeccionService } from 'src/app/services/index';
+import { ActivoService, SeccionService, AlertasService, MensajesAlertasService } from 'src/app/services/index';
 import { Activo, Seccion } from '../../interfaces/index';
 import { faEdit, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -26,7 +26,9 @@ export class SeccionDetallesComponent implements OnInit {
     private seccionServicio: SeccionService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private ngxService: NgxUiLoaderService
+    private ngxService: NgxUiLoaderService,
+    private alertas: AlertasService,
+    private mensajeAlertas: MensajesAlertasService,
   ) { }
 
   // FUNCIONES
@@ -42,6 +44,9 @@ export class SeccionDetallesComponent implements OnInit {
       }, 
       err => {
         this.ngxService.stopLoader('load');
+        this.alertas.errorAlert(
+          this.mensajeAlertas.mensajeStatusCode(err.status)
+        );
       }
     );
   }
@@ -63,6 +68,9 @@ export class SeccionDetallesComponent implements OnInit {
       },
       err => {
         this.ngxService.stopLoader('load');
+        this.alertas.errorAlert(
+          this.mensajeAlertas.mensajeStatusCode(err.status)
+        );
       }
     );
   }

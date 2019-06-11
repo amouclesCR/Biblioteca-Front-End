@@ -77,6 +77,9 @@ export class ActivoMantenimientoComponent implements OnInit {
       },
       err => {
         this.ngxService.stopLoader('load');
+        this.alertas.errorAlert(
+          this.mensajeAlertas.mensajeStatusCode(err.status)
+        );
       }
     );
   }
@@ -89,6 +92,9 @@ export class ActivoMantenimientoComponent implements OnInit {
       },
       err => {
         this.ngxService.stopLoader('load');
+        this.alertas.errorAlert(
+          this.mensajeAlertas.mensajeStatusCode(err.status)
+        );
       });
   }
 
@@ -100,6 +106,9 @@ export class ActivoMantenimientoComponent implements OnInit {
       },
       err => {
         this.ngxService.stopLoader('load');
+        this.alertas.errorAlert(
+          this.mensajeAlertas.mensajeStatusCode(err.status)
+        );
       });
   }
 
@@ -121,7 +130,8 @@ export class ActivoMantenimientoComponent implements OnInit {
       },
       err => {
         this.alertas.errorAlert("Ha ocurrido un problema durante la actualización del activo. <br/>" +
-        this.mensajeAlertas.mensajeError(err.error.act_numero_activo));
+        this.mensajeAlertas.mensajeError(err.error.act_numero_activo) +
+        this.mensajeAlertas.mensajeStatusCode(err.status));
       }
     );
   }
@@ -134,7 +144,8 @@ export class ActivoMantenimientoComponent implements OnInit {
       },
       err => {
         this.alertas.errorAlert("Ha ocurrido un problema durante la creación del activo. <br/>" +
-        this.mensajeAlertas.mensajeError(err.error.act_numero_activo));
+        this.mensajeAlertas.mensajeError(err.error.act_numero_activo) +
+        this.mensajeAlertas.mensajeStatusCode(err.status));
       }
     );
   }

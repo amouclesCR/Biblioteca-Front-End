@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { RecoveryService } from 'src/app/services/index';
+import { RecoveryService, MensajesAlertasService, AlertasService } from 'src/app/services/index';
 import { Usuario } from 'src/app/interfaces/index';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-recovery',
@@ -17,11 +19,16 @@ export class RecoveryComponent implements OnInit {
 
   constructor(
     private recoveryServicio: RecoveryService,
-    private formBuilderRecovery: FormBuilder
+    private formBuilderRecovery: FormBuilder,
+    private router: Router,
+    private ngxService: NgxUiLoaderService,
+    private mensajeAlertas: MensajesAlertasService,
+    private alertas: AlertasService,
   ) { }
 
   //  FUNCIONES
   submit() {
+    this.ngxService.startLoader('load');
     this.usuario = {
       cus_identificacion: this.fGRecovery.identificacion.value,
       cus_rol: null,
@@ -33,7 +40,18 @@ export class RecoveryComponent implements OnInit {
       password: this.fGRecovery.clave.value,
       username: null
     }
-    this.recoveryServicio.cambiarContraseña(this.usuario).subscribe();
+    this.recoveryServicio.cambiarContraseña(this.usuario).subscribe(
+      res => {
+        this.ngxService.stopLoader('load');
+        this.router.navigate(['login']);
+      },
+      err => {
+        this.ngxService.stopLoader('load');
+        this.alertas.errorAlert(
+          this.mensajeAlertas.mensajeStatusCode(err.status)
+        );
+      }
+    );
   }
 
   iniciarFormulario() {

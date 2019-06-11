@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Solicitud } from '../../interfaces/index';
-import { SolicitudService, AlertasService } from '../../services/index';
+import { SolicitudService, AlertasService, MensajesAlertasService } from '../../services/index';
 import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
 import { Router } from '@angular/router';
 @Component({
@@ -19,7 +19,8 @@ export class SolicitudesComponent implements OnInit {
     private solicitudServicio: SolicitudService,
     private alertas: AlertasService,
     private router: Router,
-    private ngxService: NgxUiLoaderService
+    private ngxService: NgxUiLoaderService,
+    private mensajeAlertas: MensajesAlertasService
   ) { }
 
   //  FUNCIONES
@@ -31,7 +32,8 @@ export class SolicitudesComponent implements OnInit {
       },
       err => {
         this.ngxService.stopLoader('load');
-        this.alertas.errorAlert("Ha ocurrido un error a la hora de cargar listas de solicitudes");
+        this.alertas.errorAlert("Ha ocurrido un error a la hora de cargar listas de solicitudes"+
+        this.mensajeAlertas.mensajeStatusCode(err.status));
       }
     );
   }
@@ -40,10 +42,13 @@ export class SolicitudesComponent implements OnInit {
     this.solicitudServicio.aprobarSolicitud(id).subscribe(
       res => {
         this.removerSolicitud(id);
+        this.ngxService.stopLoader('load');
         this.alertas.successInfoAlert("Solicitud aprobada exitosamente");
       },
       err => {
-        this.alertas.errorAlert("Ha ocurrido un error a la hora de aprobar la sulicitud" + "\n" + err.error);
+        this.ngxService.stopLoader('load');
+        this.alertas.errorAlert("Ha ocurrido un error a la hora de aprobar la sulicitud" + "<br/>" + 
+        this.mensajeAlertas.mensajeStatusCode(err.status));
       }
     );
   }
@@ -52,10 +57,12 @@ export class SolicitudesComponent implements OnInit {
     this.solicitudServicio.rechazarSolicitud(id).subscribe(
       res => {
         this.removerSolicitud(id);
+        this.ngxService.stopLoader('load');
         this.alertas.successInfoAlert("Solicitud rechazada exitosamente");
       },
       err => {
-        this.alertas.errorAlert("Ha ocurrido un error a la hora de aprobar la sulicitud" + "\n" + err.error);
+        this.alertas.errorAlert("Ha ocurrido un error a la hora de aprobar la sulicitud" + "<br/>" + 
+        this.mensajeAlertas.mensajeStatusCode(err.status));
       }
     );
   }

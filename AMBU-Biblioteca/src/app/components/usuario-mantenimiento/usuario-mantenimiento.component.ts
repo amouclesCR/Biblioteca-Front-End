@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario, Rol } from 'src/app/interfaces/index';
-import { UsuarioService, AlertasService } from 'src/app/services/index';
+import { UsuarioService, AlertasService, MensajesAlertasService } from 'src/app/services/index';
 import { RolService } from 'src/app/services/rol.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
@@ -27,6 +27,7 @@ export class UsuarioMantenimientoComponent implements OnInit {
     private formBuilderUsuario: FormBuilder,
     private ngxService: NgxUiLoaderService,
     private alertas: AlertasService,
+    private mensajeAlertas: MensajesAlertasService,
   ) { }
 
   //  FUNCIONES
@@ -42,6 +43,7 @@ export class UsuarioMantenimientoComponent implements OnInit {
       },  
       err => {
         this.ngxService.stopLoader('load');
+        this.alertas.errorAlert(this.mensajeAlertas.mensajeStatusCode(err.status));
       }
     );
   }
@@ -56,6 +58,7 @@ export class UsuarioMantenimientoComponent implements OnInit {
         },  
         err => {
           this.ngxService.stopLoader('load');
+          this.alertas.errorAlert(this.mensajeAlertas.mensajeStatusCode(err.status));
         }
       );
     }
@@ -78,15 +81,18 @@ export class UsuarioMantenimientoComponent implements OnInit {
   }
 
   submit() {
+    this.ngxService.startLoader('load');
     this.usuario.cus_rol = this.fGControls.roles.value;
     this.usuarioServicio.updateUsuario(this.usuario).subscribe(
       res => {
+        this.ngxService.stopLoader('load');
         this.alertas.successInfoAlert("Activo actualizada correctamente");
         this.location.back();
       },
       err => {
+        this.ngxService.stopLoader('load');
         this.alertas.errorAlert("Ha ocurrido un problema durante la actualización del activo." +
-        " Por favor, contacte con el administrador. Status Code: " + err.status);
+        this.mensajeAlertas.mensajeStatusCode(err.status));
       }
     );
   }
