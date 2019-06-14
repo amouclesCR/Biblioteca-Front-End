@@ -20,7 +20,7 @@ export class SolicitudBajaComponent implements OnInit {
   public listaActivosSolicitud: Activo[];
   public listaUsuario: Usuario[];
   public isTraspaso: boolean;
-  public nuevoUsuario: string;
+  public nuevoUsuario: Usuario;
   public isSubmit: boolean;
   public listaActivosSubmit: number[];
 
@@ -145,7 +145,7 @@ export class SolicitudBajaComponent implements OnInit {
 
   usuarioSelecionado(id: number) {
     if (id) {
-      this.nuevoUsuario = this.listaUsuario.find(item => item.id == id).cus_identificacion;
+      this.nuevoUsuario = this.listaUsuario.find(item => item.id == id);
     }
   }
 
