@@ -19,7 +19,7 @@
             <th scope="col" width="10%">Marca</th>
             <th scope="col" width="10%">A cargo de</th>
             <th scope="col" width="10%">Estado</th>
-            <th scope="col" width="5%">
+            <th scope="col" width="5%" *ngIf="permisos.isAdmin">
               <button type="button" class="btn btn-plus" (click)="agregar()" placement="left"
               ngbTooltip="Agregar un nuevo activo">
                 <fa-icon [icon]="faPlus"></fa-icon>
@@ -37,7 +37,7 @@
             <td>{{act.act_marca}}</td>
             <td>{{act.act_usuario.usu_identificacion}}</td>
             <td>{{act.act_estatus? 'N/I' : 'D'}}</td>
-            <td>
+            <td *ngIf="permisos.isAdmin">
               <button type="button" class="btn" (click)="editar(act.id)" placement="left"
               ngbTooltip="Editar activo">
                 <fa-icon [icon]="faEdit"></fa-icon>

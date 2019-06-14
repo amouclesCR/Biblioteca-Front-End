@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivoService, SeccionService, AlertasService, MensajesAlertasService } from 'src/app/services/index';
+import { ActivoService, SeccionService, AlertasService, MensajesAlertasService, PermisosService } from 'src/app/services/index';
 import { Activo, Seccion } from '../../interfaces/index';
 import { faEdit, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -29,6 +29,7 @@ export class SeccionDetallesComponent implements OnInit {
     private ngxService: NgxUiLoaderService,
     private alertas: AlertasService,
     private mensajeAlertas: MensajesAlertasService,
+    public permisos: PermisosService
   ) { }
 
   // FUNCIONES
