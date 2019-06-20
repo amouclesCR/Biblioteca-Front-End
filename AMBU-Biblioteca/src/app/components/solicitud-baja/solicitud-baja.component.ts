@@ -67,7 +67,7 @@ export class SolicitudBajaComponent implements OnInit {
   getActivos() {
     this.activoServicio.getActivosByUsuario(this.usuario.id).subscribe(
       res => {
-        this.listaActivos = res.body;
+        this.listaActivos = res.body.filter(item => item.act_estatus = true);
         this.getUsuarios();
       },
       err => {

@@ -43,7 +43,7 @@
           </tbody>
         </table>
         <ngb-pagination [collectionSize]="listaActivos.length" [(page)]="pageActivos" [pageSize]="pageSize"
-          aria-label="Default pagination"></ngb-pagination>
+          aria-label="Default pagination" *ngIf="activos"></ngb-pagination>
       </div>
       <div *ngIf="!activos">
         <p>
@@ -79,7 +79,7 @@
           </tbody>
         </table>
         <ngb-pagination [collectionSize]="listaSolicitudes.length" [(page)]="pageSolicitudes" [pageSize]="pageSize"
-          aria-label="Default pagination"></ngb-pagination>
+          aria-label="Default pagination" *ngIf="solicitudes"></ngb-pagination>
       </div>
       <div *ngIf="!solicitudes">
         <p>

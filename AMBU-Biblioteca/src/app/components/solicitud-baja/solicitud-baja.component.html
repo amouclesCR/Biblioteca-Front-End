@@ -74,7 +74,7 @@
                     <td>{{act.act_modelo}}</td>
                     <td>{{act.act_marca}}</td>
                     <td>{{act.act_observacion}}</td>
-                    <td>{{act.act_estatus}}</td>
+                    <td>{{act.act_estatus? "N/A" : "D"}}</td>
                     <td>{{act.act_costo}}</td>
                     <td align="center">
                       <input type="checkbox" (change)="agregarActivoSolicitud(act.id)">
