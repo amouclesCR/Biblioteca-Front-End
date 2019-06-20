@@ -1,85 +1,103 @@
 <ngx-ui-loader [loaderId]="'load'" [text]="'Cargando datos'"></ngx-ui-loader>
-<div>
-  <div class="form-registro">
-    <div class="col-4">
-      <h1>Registro</h1>
-      <form [formGroup]="formGroupRegistro" (ngSubmit)="submit()" class="form-registro-border">
-        <div class="form-group">
-          <label for="identificacion">Identificación</label>
-          <input type="text" class="form-control form-control-sm" formControlName="identificacion" id="identificacion"
-            autocomplete="username" placeholder="Escriba su identificación"
-            [ngClass]="{'is-invalid': fGRegistro.identificacion.errors && fGRegistro.identificacion.touched}">
-          <div *ngIf="fGRegistro.identificacion.errors?.required" class="invalid-feedback">
-            <div class="form-control-feedback text-danger" *ngIf="fGRegistro.identificacion.errors?.required">
-              * La identificación es requerida
-            </div>
+<section class="register__section text-center">
+  <div class="container">
+    <div class="col-12">
+      <div class="form-register row">
+        <h1 class="col-12">Registro</h1>
+        <form [formGroup]="formGroupRegistro" (ngSubmit)="submit()" class="col-12">
+          <section class="row">
+              <div class="col-6 linea-divisora">
+                  <div class="form-group">
+                    <label for="identificacion">Identificación</label>
+                    <input type="text" class="form-control form-control-sm text-center" formControlName="identificacion"
+                      id="identificacion" placeholder="Escriba su identificación"
+                      [ngClass]="{'is-invalid': fGRegistro.identificacion.errors && fGRegistro.identificacion.touched}">
+                    <div *ngIf="fGRegistro.identificacion.errors?.required" class="invalid-feedback">
+                      <div class="form-control-feedback text-danger" *ngIf="fGRegistro.identificacion.errors?.required">
+                        * La identificación es requerida
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="nombrecompleto">Nombre completo</label>
+                    <input type="text" class="form-control form-control-sm text-center" formControlName="nombrecompleto"
+                      id="nombrecompleto" placeholder="Escriba su nombre"
+                      [ngClass]="{'is-invalid': fGRegistro.nombrecompleto.errors && fGRegistro.nombrecompleto.touched}">
+                    <div *ngIf="fGRegistro.nombrecompleto.errors?.required" class="invalid-feedback">
+                      <div class="form-control-feedback text-danger" *ngIf="fGRegistro.nombrecompleto.errors?.required">
+                        * El nombre completo es requerido
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="correo">Correo</label>
+                    <input type="text" class="form-control form-control-sm text-center" formControlName="correo" id="correo"
+                      placeholder="Escriba el correo" [ngClass]="{'is-invalid': fGRegistro.correo.errors && fGRegistro.correo.touched}">
+                    <div *ngIf="fGRegistro.correo.errors?.required" class="invalid-feedback">
+                      <div class="form-control-feedback text-danger" *ngIf="fGRegistro.correo.errors?.required">
+                        * El correo es requerido
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="username">Nombre de Usuario</label>
+                    <input type="text" class="form-control form-control-sm text-center" formControlName="username"
+                      id="username" placeholder="Escriba su usuario"
+                      [ngClass]="{'is-invalid': fGRegistro.username.errors && fGRegistro.username.touched}">
+                    <div *ngIf="fGRegistro.username.errors?.required" class="invalid-feedback">
+                      <div class="form-control-feedback text-danger" *ngIf="fGRegistro.username.errors?.required">
+                        * El nombre de usuario es requerido
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="clave">Clave</label>
+                    <input type="password" class="form-control form-control-sm text-center" formControlName="clave" id="clave"
+                      autocomplete="new-password" placeholder="Escriba la clave"
+                      [ngClass]="{'is-invalid': fGRegistro.clave.errors && fGRegistro.clave.touched}">
+                    <div *ngIf="fGRegistro.clave.errors?.required" class="invalid-feedback">
+                      <div class="form-control-feedback text-danger" *ngIf="fGRegistro.clave.errors?.required">
+                        * La contraseña es requerida
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="confirmacion">Confirmacion</label>
+                    <input type="password" class="form-control form-control-sm text-center" formControlName="confirmacion"
+                      id="confirmacion" placeholder="Escriba la confirmación"
+                      [ngClass]="{'is-invalid': fGRegistro.confirmacion.errors && fGRegistro.confirmacion.touched}">
+                    <div *ngIf="fGRegistro.confirmacion.errors?.required" class="invalid-feedback">
+                      <div class="form-control-feedback text-danger" *ngIf="fGRegistro.confirmacion.errors?.required">
+                        * La confirmación es requerida
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div *ngIf="!(confirmacionClave)" class="form-control-feedback text-danger">
+                      * La clave y la confirmación no coinciden
+                    </div>
+                  </div>
+                </div>
+          </section>
+
+          <div class="form-group button-container">
+            <button class="btn btn-lg btn-block btn-primary" type="submit"
+              [disabled]="!(fGRegistroValidado)">Registrar</button>
           </div>
-        </div>
-        <div class="form-group">
-            <label for="nombrecompleto">Nombre completo</label>
-            <input type="text" class="form-control form-control-sm" formControlName="nombrecompleto" id="nombrecompleto"
-              autocomplete="username" placeholder="Escriba su identificación"
-              [ngClass]="{'is-invalid': fGRegistro.nombrecompleto.errors && fGRegistro.nombrecompleto.touched}">
-            <div *ngIf="fGRegistro.nombrecompleto.errors?.required" class="invalid-feedback">
-              <div class="form-control-feedback text-danger" *ngIf="fGRegistro.nombrecompleto.errors?.required">
-                * El nombre completo es requerido
-              </div>
-            </div>
-          </div>
-        <div class="form-group">
-          <label for="correo">Correo</label>
-          <input type="text" class="form-control form-control-sm" formControlName="correo" id="correo"
-            placeholder="Escriba el correo"
-            [ngClass]="{'is-invalid': fGRegistro.correo.errors && fGRegistro.correo.touched}">
-          <div *ngIf="fGRegistro.correo.errors?.required" class="invalid-feedback">
-            <div class="form-control-feedback text-danger" *ngIf="fGRegistro.correo.errors?.required">
-              * El correo es requerido
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="username">Nombre de Usuario</label>
-          <input type="text" class="form-control form-control-sm" formControlName="username" id="username"
-            placeholder="Escriba su username"
-            [ngClass]="{'is-invalid': fGRegistro.username.errors && fGRegistro.username.touched}">
-          <div *ngIf="fGRegistro.username.errors?.required" class="invalid-feedback">
-            <div class="form-control-feedback text-danger" *ngIf="fGRegistro.username.errors?.required">
-              * El nombre de usuario es requerido
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="clave">Clave</label>
-          <input type="password" class="form-control form-control-sm" formControlName="clave" id="clave"
-            autocomplete="new-password" placeholder="Escriba la clave"
-            [ngClass]="{'is-invalid': fGRegistro.clave.errors && fGRegistro.clave.touched}">
-          <div *ngIf="fGRegistro.clave.errors?.required" class="invalid-feedback">
-            <div class="form-control-feedback text-danger" *ngIf="fGRegistro.clave.errors?.required">
-              * La contraseña es requerida
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="confirmacion">Confirmacion</label>
-          <input type="password" class="form-control form-control-sm" formControlName="confirmacion" id="confirmacion"
-            placeholder="Escriba la confirmación"
-            [ngClass]="{'is-invalid': fGRegistro.confirmacion.errors && fGRegistro.confirmacion.touched}">
-          <div *ngIf="fGRegistro.confirmacion.errors?.required" class="invalid-feedback">
-            <div class="form-control-feedback text-danger" *ngIf="fGRegistro.confirmacion.errors?.required">
-              * La confirmación es requerida
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-            <div *ngIf="!(confirmacionClave)"  class="form-control-feedback text-danger">
-                * La clave y la confirmación no coinciden
-              </div>
-        </div>
-        <div class="form-group">
-          <button class="btn btn-lg btn-block btn-primary" type="submit"
-            [disabled]="!(fGRegistroValidado)">Registrar</button>
-        </div>
-      </form>
+        </form>
+      </div>
+      <div class="row back__image">
+        <img src="../../../assets/imagenes/logo-una.png" alt="Logo de la Universidad Nacional de Costa Rica">
+      </div>
     </div>
   </div>
-</div>
+</section>
+<!-- <div>
+  <div class="form-registro">
+    <div class="col-4">
+     
+    </div>
+  </div>
+</div> -->
