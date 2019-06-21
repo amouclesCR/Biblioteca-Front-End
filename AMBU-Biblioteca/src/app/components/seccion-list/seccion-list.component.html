@@ -8,7 +8,7 @@
       <table class="table ">
         <thead class="thead-dark">
           <tr>
-            <th scope="col" width="5%">#</th>
+            <!-- <th scope="col" width="5%">#</th> -->
             <th scope="col" width="42%">Nombre</th>
             <th scope="col" width="5%"></th>
             <th scope="col" width="5%" *ngIf="permisos.isAdmin">
@@ -20,7 +20,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let sec of listaSeccion | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; let i = index">
-            <td>{{i}}</td>
+            <!-- <td>{{i}}</td> -->
             <td>{{sec.sec_nombre}}</td>
             <td>
               <button type="button" class="btn" (click)="detalle(sec.id)" placement="left" ngbTooltip="Activos asignados a esta sección">

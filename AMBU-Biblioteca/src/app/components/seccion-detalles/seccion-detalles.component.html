@@ -6,51 +6,55 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12">
-     <div class="table-container">
-      <table class="table">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col" width="5%">#</th>
-            <th scope="col" width="10%">N° Activo</th>
-            <th scope="col" width="10%">Descripción</th>
-            <th scope="col" width="10%">Serie</th>
-            <th scope="col" width="10%">Modelo</th>
-            <th scope="col" width="10%">Marca</th>
-            <th scope="col" width="10%">A cargo de</th>
-            <th scope="col" width="10%">Estado</th>
-            <th scope="col" width="5%" *ngIf="permisos.isAdmin">
-              <button type="button" class="btn btn-plus" (click)="agregar()" placement="left"
-              ngbTooltip="Agregar un nuevo activo">
-                <fa-icon [icon]="faPlus"></fa-icon>
-              </button>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let act of listaActivo | slice: (pag-1) * pageSize : (pag-1) * pageSize + pageSize; let i = index">
-            <td>{{i}}</td>
-            <td>{{act.act_numero_activo}}</td>
-            <td>{{act.act_descripcion}}</td>
-            <td>{{act.act_serie}}</td>
-            <td>{{act.act_modelo}}</td>
-            <td>{{act.act_marca}}</td>
-            <td>{{act.act_usuario.usu_identificacion}}</td>
-            <td>{{act.act_estatus? 'N/I' : 'D'}}</td>
-            <td *ngIf="permisos.isAdmin">
-              <button type="button" class="btn" (click)="editar(act.id)" placement="left"
-              ngbTooltip="Editar activo">
-                <fa-icon [icon]="faEdit"></fa-icon>
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-     </div>
+    <div class="col-lg-12 col-md-12 col-sm-12" *ngIf="!vacio">
+      <div class="form-group">
+        <label class="text-success">Activos vigentes (N/I)</label>
+        <label class="segundo-label text-danger"> Activos dados de baja (D)</label>
+      </div>
+      <div class="table-container">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <!-- <th scope="col" width="5%">#</th> -->
+              <th scope="col" width="10%">N° Activo</th>
+              <th scope="col" width="10%">Descripción</th>
+              <th scope="col" width="10%">Serie</th>
+              <th scope="col" width="10%">Modelo</th>
+              <th scope="col" width="10%">Marca</th>
+              <th scope="col" width="10%">A cargo de</th>
+              <!-- <th scope="col" width="10%">Estado</th> -->
+              <th scope="col" width="5%" *ngIf="permisos.isAdmin">
+                <button type="button" class="btn btn-plus" (click)="agregar()" placement="left"
+                  ngbTooltip="Agregar un nuevo activo">
+                  <fa-icon [icon]="faPlus"></fa-icon>
+                </button>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr [ngClass]="{'alert-success': act.act_estatus, 'alert-danger': !act.act_estatus}"
+              *ngFor="let act of listaActivo | slice: (pag-1) * pageSize : (pag-1) * pageSize + pageSize; let i = index">
+              <!-- <td>{{i}}</td> -->
+              <td>{{act.act_numero_activo}}</td>
+              <td>{{act.act_descripcion}}</td>
+              <td>{{act.act_serie}}</td>
+              <td>{{act.act_modelo}}</td>
+              <td>{{act.act_marca}}</td>
+              <td>{{act.act_usuario.cus_identificacion}}</td>
+              <!-- <td>{{act.act_estatus? 'N/I' : 'D'}}</td> -->
+              <td *ngIf="permisos.isAdmin">
+                <button type="button" class="btn" (click)="editar(act.id)" placement="left" ngbTooltip="Editar activo">
+                  <fa-icon [icon]="faEdit"></fa-icon>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <ngb-pagination [collectionSize]="listaActivo.length" [(page)]="pag" [pageSize]="pageSize"
-          aria-label="Default pagination"></ngb-pagination>
+        aria-label="Default pagination"></ngb-pagination>
     </div>
-    <div *ngIf="vacio" width="100%">
+    <div *ngIf="vacio" width="100%" class="col-lg-12 col-md-12 col-sm-12">
       No hay activos asignados a esta sección
     </div>
   </div>

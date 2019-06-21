@@ -9,7 +9,7 @@
       <table class="table text-center">
         <thead class="thead-dark">
           <tr>
-            <th scope="col" width="5%">#</th>
+            <!-- <th scope="col" width="5%">#</th> -->
             <th scope="col" width="30%">Identificación</th>
             <th scope="col" width="30%">Correo</th>
             <th scope="col" width="30%">Fecha de ingreso</th>
@@ -23,7 +23,7 @@
         <tbody>
           <tr
             *ngFor="let usu of listaUsuarios | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; let i = index">
-            <td>{{i}}</td>
+            <!-- <td>{{i}}</td> -->
             <td>{{usu.cus_identificacion}}</td>
             <td>{{usu.email}}</td>
             <td>{{usu.date_joined | date:'dd/MM/yyyy'}}</td>
