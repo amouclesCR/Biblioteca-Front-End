@@ -15,34 +15,43 @@
           {{date | date:'fullDate'}} <br>
         </p>
       </div>
-      <div>
-        <p>Solicitante: <br>
-          {{usuario?usuario.first_name:""}}
-        </p>
+      <div class="row">
+        <div class="col-3">
+          <p class="bold-text">Solicitante: <br>
+            {{usuario?usuario.first_name:""}}
+          </p>
+        </div>
 
-        <p>Identificación:<br>
-          {{usuario?usuario.cus_identificacion:""}}
-        </p>
+        <div class="col-3">
+          <p class="bold-text">Identificación:<br>
+            {{usuario?usuario.cus_identificacion:""}}
+          </p>
+        </div>
       </div>
 
-      <div *ngIf="isTraspaso">
-        <p>Recibido por:<br>
-          {{nuevoUsuario.first_name}}
-        </p>
+      <div *ngIf="isTraspaso" class="row">
+        <div class="col-3">
+          <p class="bold-text">Recibido por:<br>
+            {{nuevoUsuario.first_name}}
+          </p>
+        </div>
 
-        <p>Identificación:<br>
-          {{nuevoUsuario.cus_identificacion}}
-        </p>
+        <div class="col-3">
+          <p class="bold-text">Identificación:<br>
+            {{nuevoUsuario.cus_identificacion}}
+          </p>
+        </div>
       </div>
     </section>
     <section>
       <div>
-        <h2>Solicitud de Activos para dar de baja</h2>
+        <h2 *ngIf="!isTraspaso">Solicitud de activos para dar de baja</h2>
+        <h2 *ngIf="isTraspaso">Solicitud de activos para traslado</h2>
       </div>
     </section>
     <section>
       <div *ngIf="listaActivosSolicitud.length > 0">
-        <table class="table table-bordered">
+        <table class="table table-bordered text-center">
           <thead class="thead-dark">
             <tr>
               <th scope="col" width="5%">#</th>
@@ -52,7 +61,7 @@
               <th scope="col" width="10%">Modelo</th>
               <th scope="col" width="10%">Marca</th>
               <th scope="col" width="10%">Observaciones</th>
-              <th scope="col" width="10%">Estado</th>
+              <!-- <th scope="col" width="10%">Estado</th> -->
               <th scope="col" width="10%">Costo</th>
             </tr>
           </thead>
@@ -65,7 +74,7 @@
               <td>{{act.act_modelo}}</td>
               <td>{{act.act_marca}}</td>
               <td>{{act.act_observacion}}</td>
-              <td>{{act.act_estatus}}</td>
+              <!-- <td>{{act.act_estatus? "N/I" : "D"}}</td> -->
               <td>{{act.act_costo}}</td>
             </tr>
           </tbody>
@@ -82,13 +91,13 @@
         <div>
           <h4>Firma</h4>
           <p class="firma"></p>
-          <p *ngIf="usuario">{{usuario.cus_identificacion}}</p>
+          <p class="identificacion" *ngIf="usuario">{{usuario.cus_identificacion}}</p>
         </div>
 
         <div *ngIf="isTraspaso">
           <h4>Firma</h4>
           <p class="firma"></p>
-          <p>{{nuevoUsuario.cus_identificacion}}</p>
+          <p class="identificacion">{{nuevoUsuario.cus_identificacion}}</p>
         </div>
       </div>
     </section>

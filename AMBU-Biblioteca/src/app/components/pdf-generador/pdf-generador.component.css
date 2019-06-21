@@ -23,7 +23,8 @@
 .sections {
     margin-top: 10px;
     padding-top: 5px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+    border-bottom: 1px solid black;
 }
 #solicitud-mensaje-sinactivos {
     display: flex;
@@ -36,7 +37,7 @@
     font-family: 'Courier New', Courier, monospace;
 }
 .firma {
-    height: 50px;
+    height: 25px;
     width: 200px;
     border-bottom: 2px solid black;
 }
@@ -59,4 +60,12 @@
   }
   .fixed_header thead tr{
     display:block;
+  }
+
+  p.identificacion::before {
+      content: "cédula: ";
+      font-style: italic;
+  }
+.bold-text {
+    font-weight: bold;
   }

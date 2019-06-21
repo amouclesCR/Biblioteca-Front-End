@@ -21,7 +21,9 @@
     width: 450px;
     border: 2px solid #d2d1d1;
    }
-
+.btn-margin {
+    margin-top: 50px;
+}
 
 /* .formGroupRecovery{
     position: absolute;

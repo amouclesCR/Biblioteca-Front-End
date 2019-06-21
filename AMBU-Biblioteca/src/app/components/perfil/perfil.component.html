@@ -4,7 +4,9 @@
     <div class="col-lg-6 col-md-6 col-sm-6">
       <h1 class="">Perfil
         <span>
-          <button (click)="editarPerfil()" class="btn btn-primary">modificar</button>
+          <button (click)="editarPerfil()" class="btn btn-primary"> Modificar
+            <fa-icon [icon]="faEdit"></fa-icon>
+          </button>
         </span>
       </h1>
     </div>
@@ -13,7 +15,7 @@
     <div class="col-lg-12 col-md-12 col-sm-12">
       <h2>Mis activos</h2>
       <div class="table-scroll">
-        <table class="table table-bordered" *ngIf="activos">
+        <table class="table text-center" *ngIf="activos">
           <thead class="thead-dark">
             <tr>
               <th scope="col" width="5%">#</th>
@@ -57,7 +59,7 @@
     <div class="col-lg-12 col-md-12 col-sm-12">
       <h2>Mis solicitudes</h2>
       <div class="table-scroll">
-        <table class="table table-bordered" *ngIf="solicitudes">
+        <table class="table text-center" *ngIf="solicitudes">
           <thead class="thead-dark">
             <tr>
               <th scope="col" width="5%">#</th>
@@ -74,7 +76,7 @@
               <td>{{sol.sbja_numero_formulario}}</td>
               <td>{{sol.sbja_estado_solicitud=="A"? "Aprovada" : sol.sbja_estado_solicitud=="E"? "Espera" : "Rechazada"}}</td>
               <td>{{sol.sbja_solicitud_traspaso? "Traspaso" : "De baja"}}</td>
-              <td><Button class="btn btn-primary" (click)="verSolicitud(sol.id)">Ver Solicitud</Button></td>
+              <td><Button class="btn btn-info" (click)="verSolicitud(sol.id)">Ver Solicitud</Button></td>
             </tr>
           </tbody>
         </table>

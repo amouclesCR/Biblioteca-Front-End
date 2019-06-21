@@ -3,6 +3,7 @@ import { DataStorageService, ActivoService, SolicitudService, MensajesAlertasSer
 import { Usuario, Activo, Solicitud } from 'src/app/interfaces/index';
 import { Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-perfil',
@@ -18,6 +19,7 @@ export class PerfilComponent implements OnInit {
   public pageActivos = 1;
   public pageSolicitudes = 1;
   public pageSize = 10;
+  public faEdit = faEdit;
   constructor(
     private dataSoterage: DataStorageService,
     private activoServicio: ActivoService, 
