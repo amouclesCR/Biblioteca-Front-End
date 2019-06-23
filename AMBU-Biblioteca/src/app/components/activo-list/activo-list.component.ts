@@ -101,6 +101,9 @@ export class ActivoListComponent implements OnInit {
     }
 
   }
+  get activos() {
+    return this.listaActivosTabla.length > 0;
+  }
   ngOnInit() {
     this.ngxService.startLoader('load');
     this.orden = 0;

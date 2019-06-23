@@ -26,10 +26,10 @@
               <option value="2">D</option>
             </select>
           </div>
-          <div class="form-group">
-              <label class="text-success">Activos vigentes (N/I)</label>
-              <label class="segundo-label text-danger"> Activos dados de baja (D)</label>
-            </div>
+          <div class="form-group" *ngIf="activos">
+            <label class="text-success">Activos vigentes (N/I)</label>
+            <label class="segundo-label text-danger"> Activos dados de baja (D)</label>
+          </div>
           <!-- <div class="form-group">
             <div class="input-group">
               <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker
@@ -45,7 +45,7 @@
       </div>
       <div class=" col-lg-12 col-md-12 col-sm-12">
         <div class="table-container">
-          <table class="table">
+          <table class="table" *ngIf="activos">
             <thead class="thead-dark">
               <tr>
                 <th scope="col">N° Activo</th>
@@ -85,8 +85,11 @@
             </tbody>
           </table>
         </div>
-        <ngb-pagination [collectionSize]="listaActivosTabla.length" [(page)]="page" [pageSize]="pageSize"
-          aria-label="Default pagination"></ngb-pagination>
+        <ngb-pagination *ngIf="activos" [collectionSize]="listaActivosTabla.length" [(page)]="page"
+          [pageSize]="pageSize" aria-label="Default pagination"></ngb-pagination>
+        <div *ngIf="!activos">
+          No hay activos en el sistema
+        </div>
       </div>
     </div>
   </div>
