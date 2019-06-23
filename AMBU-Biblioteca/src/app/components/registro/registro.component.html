@@ -33,9 +33,12 @@
                     <label for="correo">Correo</label>
                     <input type="text" class="form-control form-control-sm text-center" formControlName="correo" id="correo"
                       placeholder="Escriba el correo" [ngClass]="{'is-invalid': fGRegistro.correo.errors && fGRegistro.correo.touched}">
-                    <div *ngIf="fGRegistro.correo.errors?.required" class="invalid-feedback">
+                    <div *ngIf="fGRegistro.correo.errors" class="invalid-feedback">
                       <div class="form-control-feedback text-danger" *ngIf="fGRegistro.correo.errors?.required">
                         * El correo es requerido
+                      </div>
+                      <div class="form-control-feedback text-danger" *ngIf="fGRegistro.correo.errors?.pattern">
+                        * El correo no está en el formato correcto
                       </div>
                     </div>
                   </div>
