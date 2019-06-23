@@ -28,11 +28,13 @@
             <td>{{usu.cus_identificacion}}</td>
             <td>{{usu.email}}</td>
             <td>{{usu.date_joined | date:'dd/MM/yyyy'}}</td>
-            <td *ngIf="permisos.isAdmin"> <button type="button" class="btn" (click)="editarUsuario(usu.id)">
+            <td *ngIf="permisos.isAdmin"> <button type="button" class="btn" (click)="editarUsuario(usu.id)" placement="left"
+              ngbTooltip="Modificar usuario">
                 <fa-icon [icon]="faEdit"></fa-icon>
               </button>
             </td>
-            <td *ngIf="permisos.isAdmin"> <button type="button" class="btn trash" (click)="eliminarUsuario(usu.id)">
+            <td *ngIf="permisos.isAdmin"> <button type="button" class="btn trash" (click)="eliminarUsuario(usu.id)" placement="left"
+              ngbTooltip="Eliminar este activor">
                 <fa-icon [icon]="faTrash"></fa-icon>
               </button>
             </td>
