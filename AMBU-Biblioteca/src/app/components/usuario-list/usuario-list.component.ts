@@ -62,6 +62,10 @@ export class UsuarioListComponent implements OnInit {
     );
   }
 
+  get usuarios() {
+    return this.listaUsuarios.length > 0;
+  }
+
   ngOnInit() {
     this.listaUsuarios = [];
     this.ngxService.startLoader('load');

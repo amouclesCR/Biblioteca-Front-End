@@ -6,7 +6,7 @@
     </div>
 
     <div class="col-lg-12 col-md-12 col-sm-12">
-      <table class="table text-center">
+      <table class="table text-center" *ngIf="usuarios">
         <thead class="thead-dark">
           <tr>
             <!-- <th scope="col" width="5%">#</th> -->
@@ -28,13 +28,13 @@
             <td>{{usu.cus_identificacion}}</td>
             <td>{{usu.email}}</td>
             <td>{{usu.date_joined | date:'dd/MM/yyyy'}}</td>
-            <td *ngIf="permisos.isAdmin"> <button type="button" class="btn" (click)="editarUsuario(usu.id)" placement="left"
-              ngbTooltip="Modificar usuario">
+            <td *ngIf="permisos.isAdmin"> <button type="button" class="btn" (click)="editarUsuario(usu.id)"
+                placement="left" ngbTooltip="Modificar usuario">
                 <fa-icon [icon]="faEdit"></fa-icon>
               </button>
             </td>
-            <td *ngIf="permisos.isAdmin"> <button type="button" class="btn trash" (click)="eliminarUsuario(usu.id)" placement="left"
-              ngbTooltip="Eliminar este usuario">
+            <td *ngIf="permisos.isAdmin"> <button type="button" class="btn trash" (click)="eliminarUsuario(usu.id)"
+                placement="left" ngbTooltip="Eliminar este usuario">
                 <fa-icon [icon]="faTrash"></fa-icon>
               </button>
             </td>
@@ -42,7 +42,10 @@
         </tbody>
       </table>
       <ngb-pagination [collectionSize]="listaUsuarios.length" [(page)]="page" [pageSize]="pageSize"
-        aria-label="Default pagination"></ngb-pagination>
+        aria-label="Default pagination" *ngIf="usuarios"></ngb-pagination>
+        <div *ngIf="!usuarios">
+          No hay usuarios en el sistema
+        </div>
     </div>
   </div>
 </div>

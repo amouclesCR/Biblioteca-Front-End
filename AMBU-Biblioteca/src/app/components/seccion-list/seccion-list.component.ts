@@ -54,6 +54,9 @@ export class SeccionListComponent implements OnInit {
   editar(id: number) {
     this.router.navigate(['dashboard/seccion-actualizar', id]);
   }
+  get seccion() {
+    return this.listaSeccion.length > 0;
+  }
   ngOnInit() {
     this.ngxService.startLoader('load');
     this.listaSeccion = [];
