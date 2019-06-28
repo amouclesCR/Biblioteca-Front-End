@@ -5,7 +5,7 @@
       <h1>Secciones</h1>
     </div>
     <div class="col-lg-12 col-md-12 col-sm-12">
-      <table class="table" *ngIf="seccion">
+      <table class="table">
         <thead class="thead-dark">
           <tr>
             <!-- <th scope="col" width="5%">#</th> -->
@@ -18,7 +18,7 @@
             </th>
           </tr>
         </thead>
-        <tbody>
+        <tbody *ngIf="seccion">
           <tr *ngFor="let sec of listaSeccion | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; let i = index">
             <!-- <td>{{i}}</td> -->
             <td>{{sec.sec_nombre}}</td>

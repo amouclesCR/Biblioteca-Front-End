@@ -24,7 +24,7 @@
           </th>
         </tr>
       </thead>
-      <tbody>
+      <tbody *ngIf="solicitudes">
         <tr *ngFor="let sol of listaSolicitudes | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
           <td>
             {{sol.sbja_numero_formulario}}
@@ -44,8 +44,11 @@
         </tr>
       </tbody>
     </table>
-    <ngb-pagination [collectionSize]="listaSolicitudes.length" [(page)]="page" [pageSize]="pageSize"
+    <ngb-pagination [collectionSize]="listaSolicitudes.length" [(page)]="page" [pageSize]="pageSize" *ngIf="solicitudes"
     aria-label="Default pagination"></ngb-pagination>
+    <div *ngIf="!solicitudes">
+      No hay solicitudes pendientes
+    </div>
   </div>
 </div>
 </div>

@@ -75,6 +75,9 @@ export class SolicitudesComponent implements OnInit {
     let index = this.listaSolicitudes.findIndex(item => item.id == id);
     this.listaSolicitudes.splice(index, 1);
   }
+  get solicitudes() {
+    return this.listaSolicitudes.length > 0;
+  }
 
   ngOnInit() {
     this.ngxService.startLoader('load');
