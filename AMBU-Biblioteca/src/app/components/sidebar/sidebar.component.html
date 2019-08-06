@@ -1,0 +1,52 @@
+<!-- Sidebar -->
+<div class="border-right" id="sidebar-wrapper">
+  <div class="sidebar-heading">
+    <img src="../../../assets/imagenes/logo-una.png" alt="" class="img-size">
+  </div>
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['seccion-list']" routerLinkActive="active">Secciones</a>
+    </li>
+    <li class="nav-item ">
+      <a class="nav-link" [routerLink]="['activo-list']" routerLinkActive="active">Activos</a>
+    </li>
+    <li class="nav-item ">
+      <a class="nav-link" [routerLink]="['usuario-list']" routerLinkActive="active">Usuarios</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['perfil']" routerLinkActive="active">Perfil</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['solicitud-baja']" routerLinkActive="active">Solicitar Baja/Traslado</a>
+    </li>
+    <li class="nav-item" *ngIf="permisos.isAdmin">
+      <a class="nav-link" [routerLink]="['solicitudes']" routerLinkActive="active">Solicitudes</a>
+    </li>
+    <li class="nav-item">
+      <button class="btn btn-link nav-link" data-toggle="modal" (click)="logout()">Salir</button>
+    </li>
+  </ul>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Advertencia!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ¿Desea abandonar la aplicación?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="logout()">Sí</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /#sidebar-wrapper -->

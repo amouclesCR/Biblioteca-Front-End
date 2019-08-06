@@ -1,0 +1,14 @@
+.btn-plus {
+    color: aliceblue;
+}
+
+.table-container {
+    overflow-x: scroll;    
+}
+
+.filter-container div{
+   margin-right: 5%;
+}
+.container-all {
+    height: 100%;
+}

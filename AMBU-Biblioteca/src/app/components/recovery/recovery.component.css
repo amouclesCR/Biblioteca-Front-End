@@ -1,0 +1,42 @@
+/* .recovery-container {
+    display: flex;
+    justify-content: center;
+} */
+
+.recovery__section{
+    position: relative;
+    left: 9px;
+    margin-left: 156px;
+}
+
+
+.form-recovery {
+    margin-left: 4px;
+    position: absolute;
+    left: 184px;
+    top: 34px;
+    background-color: black;
+    color: white;
+    height: 549px;
+    width: 450px;
+    border: 2px solid #d2d1d1;
+   }
+.btn-margin {
+    margin-top: 50px;
+}
+
+/* .formGroupRecovery{
+    position: absolute;
+    left: 315.8px;
+top: 19px;
+width: 450px;
+
+height: 564px;
+    background-color: black;
+    color: white;
+
+} */
+
+/* .back__image{
+    left: 259px;
+} */

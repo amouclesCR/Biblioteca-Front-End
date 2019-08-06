@@ -1,0 +1,54 @@
+<ngx-ui-loader [loaderId]="'load'" [text]="'Cargando datos'"></ngx-ui-loader>
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-4">
+          <h1>Solicitudes</h1>
+        </div>
+  </div>
+<div class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12">
+    <table class="table text-center">
+      <thead class="thead-dark">
+        <tr>
+          <th>
+            N° Formulario
+          </th>
+          <th>
+            Fecha de solicitud
+          </th>
+          <th>
+          </th>
+          <th>
+          </th>
+          <th>
+          </th>
+        </tr>
+      </thead>
+      <tbody *ngIf="solicitudes">
+        <tr *ngFor="let sol of listaSolicitudes | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+          <td>
+            {{sol.sbja_numero_formulario}}
+          </td>
+          <td>
+            {{sol.sbja_fecha_solicitud | date: 'dd/MM/yyyy'}}
+          </td>
+          <td>
+            <button class="btn btn-primary" (click)="aprobarSolicitud(sol.id)">Aprobar</button>
+          </td>
+          <td>
+            <button class="btn btn-danger" (click)="rechazarSolicitud(sol.id)">Rechazar</button>
+          </td>
+          <td>
+            <button class="btn btn-info" (click)="verSolicitud(sol.id)">Ver Solicitud</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <ngb-pagination [collectionSize]="listaSolicitudes.length" [(page)]="page" [pageSize]="pageSize" *ngIf="solicitudes"
+    aria-label="Default pagination"></ngb-pagination>
+    <div *ngIf="!solicitudes">
+      No hay solicitudes pendientes
+    </div>
+  </div>
+</div>
+</div>

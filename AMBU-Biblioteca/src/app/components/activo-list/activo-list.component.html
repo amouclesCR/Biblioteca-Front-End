@@ -1,0 +1,96 @@
+<ngx-ui-loader [loaderId]="'load'" [text]="'Cargando datos'"></ngx-ui-loader>
+<div class="container-fluid">
+  <div class="container-all">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <h1>Activos</h1>
+        <h4>Filtro</h4>
+        <div class="filter-container">
+          <div class="form-group">
+            <label for="numeroActivo">N° Activo</label>
+            <input type="text" class="form-control" id="numeroActivo" (keyup.enter)="filtrar()" [(ngModel)]="term"
+              placeholder="Escriba el número de activo">
+          </div>
+          <div class="form-group">
+            <label for="usuario">Usuario</label>
+            <select class="form-control" id="usuario" (change)="filtrar()" [(ngModel)]="usuairoResponsable">
+              <option value=''>Seleccione un usuario</option>
+              <option [value]="usu.id" *ngFor="let usu of listUsuario">{{usu.cus_identificacion}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="orden">Orden</label>
+            <select class="form-control" id="orden" (change)="filtrar()" [(ngModel)]="orden">
+              <option value="0">Todos</option>
+              <option value="1">N/I</option>
+              <option value="2">D</option>
+            </select>
+          </div>
+          <div class="form-group" *ngIf="activos">
+            <label class="text-success">Activos vigentes (N/I)</label>
+            <label class="segundo-label text-danger"> Activos dados de baja (D)</label>
+          </div>
+          <!-- <div class="form-group">
+            <div class="input-group">
+              <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker
+                #d="ngbDatepicker">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">
+                  <fa-icon [icon]="faCalendarAlt"></fa-icon>
+                </button>
+              </div>
+            </div>
+          </div> -->
+        </div>
+      </div>
+      <div class=" col-lg-12 col-md-12 col-sm-12">
+        <div class="table-container">
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">N° Activo</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Serie</th>
+                <th scope="col">Modelo</th>
+                <th scope="col">Marca</th>
+                <th scope="col">Ubicación</th>
+                <!-- <th scope="col">Estado</th> -->
+                <th scope="col">Costo</th>
+                <th scope="col" *ngIf="permisos.isAdmin">
+                  <button type="button" class="btn btn-plus" (click)="agregar()" placement="left"
+                    ngbTooltip="Agregar un nuevo activo">
+                    <fa-icon [icon]="faPlus"></fa-icon>
+                  </button>
+                </th>
+              </tr>
+            </thead>
+            <tbody *ngIf="activos">
+              <tr [ngClass]="{'alert-success': act.act_estatus, 'alert-danger': !act.act_estatus}"
+                *ngFor="let act of listaActivosTabla | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; let i = index">
+                <td>{{act.act_numero_activo}}</td>
+                <td>{{act.act_descripcion}}</td>
+                <td>{{act.act_serie}}</td>
+                <td>{{act.act_modelo}}</td>
+                <td>{{act.act_marca}}</td>
+                <td>{{act.act_seccion_modelo.sec_nombre}}</td>
+                <!-- <td>{{act.act_estatus? "N/I" : "D"}}</td> -->
+                <td>{{act.act_costo}}</td>
+                <td *ngIf="permisos.isAdmin">
+                  <button type="button" class="btn" (click)="editar(act.id)" placement="left"
+                    ngbTooltip="Modificar este activo">
+                    <fa-icon [icon]="faEdit"></fa-icon>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <ngb-pagination *ngIf="activos" [collectionSize]="listaActivosTabla.length" [(page)]="page"
+          [pageSize]="pageSize" aria-label="Default pagination"></ngb-pagination>
+        <div *ngIf="!activos">
+          No hay activos en el sistema
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

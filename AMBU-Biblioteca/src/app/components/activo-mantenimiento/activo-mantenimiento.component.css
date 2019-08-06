@@ -1,0 +1,18 @@
+.section-horizontal {
+    display: flex;
+}
+
+.text-area {
+    max-height: 100px;
+}
+
+.nopadding {
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+ }
+.linea-divisora {
+    border-right: 1px solid #ececec;
+}
+.form-button {
+    margin-top: 2%;
+}

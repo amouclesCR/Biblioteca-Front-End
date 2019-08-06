@@ -1,0 +1,73 @@
+.solicitud-container {
+    background-color: white;
+}
+.img-size {
+    width: 25%;
+}
+.form-container {
+    width: 100%;
+}
+.img-section {
+    margin-bottom: 2%;
+}
+.table-container {
+    max-height: 500px;
+    overflow-y: auto;
+    border-bottom: 1px solid black;
+}
+#estructura-pdf {
+    padding: 2%;
+}
+
+.sections {
+    margin-top: 10px;
+    padding-top: 5px;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+    border-bottom: 1px solid black;
+}
+#solicitud-mensaje-sinactivos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 5%;
+}
+#solicitud-mensaje-sinactivos p {
+    font-size: 2rem;
+    font-family: 'Courier New', Courier, monospace;
+}
+.firma {
+    height: 50px;
+    width: 200px;
+    border-bottom: 2px solid black;
+}
+
+.firmas-secciones {
+    margin-top: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#firmas-container {
+    width: 50%;
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+.btn-submit {
+    margin-top: 10px;
+    margin-right: 5px;
+}
+.body-container {
+    
+    width: 100%;
+}
+.fixed_header tbody{
+    display:block;
+    overflow:auto;
+    height:200px;
+    width:100%;
+  }
+  .fixed_header thead tr{
+    display:block;
+  }

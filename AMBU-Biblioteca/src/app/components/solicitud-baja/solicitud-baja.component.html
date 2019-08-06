@@ -1,0 +1,102 @@
+<ngx-ui-loader [loaderId]="'load'" [text]="'Cargando datos'"></ngx-ui-loader>
+<div class="solicitud-container">
+  <div class="col-lg-8 col-md-8 col-sm-8">
+    <h1>Solicitudes</h1>
+  </div>
+
+  <div>
+    <section>
+      <div class="form-container">
+        <form action="" [formGroup]="formGroupSolicitud" (ngSubmit)="submit()">
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="form-group">
+              <label for="numeroFormulario">Número de solicitud</label>
+              <input type="text" class="form-control form-control-sm" formControlName="numeroFormulario"
+                id="numeroFormulario" placeholder="Escriba el número de formulario"
+                [ngClass]="{'is-invalid': fGSolicitud.numeroFormulario.errors && fGSolicitud.numeroFormulario.touched}">
+              <div *ngIf="fGSolicitud.numeroFormulario.errors?.required" class="invalid-feedback">
+                <div class="form-control-feedback text-danger" *ngIf="fGSolicitud.numeroFormulario.errors?.required">
+                  * El número de activo es requerido
+                </div>
+              </div>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" formControlName="tipoSolicitud" id="tipoSolicitud"
+                placeholder="Escriba el número de formulario"
+                [ngClass]="{'is-invalid': fGSolicitud.tipoSolicitud.errors && fGSolicitud.tipoSolicitud.touched}"
+                (change)="checkedChange()">
+              <label class="form-check-label" for="tipoSolicitud">
+                ¿Solicitud de traslado?
+              </label>
+            </div>
+            <div class="form-group" *ngIf="isTraspaso">
+              <label for="usuario">Persona a asignar</label>
+              <select class="form-control form-control-sm" formControlName="usuario" id="usuario"
+                placeholder="Escriba el número de formulario"
+                [ngClass]="{'is-invalid': fGSolicitud.usuario.errors && fGSolicitud.usuario.touched}"
+                (change)="usuarioSelecionado(s.value)" #s>
+                <option value="">Selecione un usuario</option>
+                <option [value]="usu.id" *ngFor="let usu of listaUsuario">{{usu.cus_identificacion}}</option>
+              </select>
+              <div *ngIf="fGSolicitud.usuario.errors?.required" class="invalid-feedback">
+                <div class="form-control-feedback text-danger" *ngIf="fGSolicitud.usuario.errors?.required">
+                  * El nuevo responsable es requerido
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="activos" class="col-lg-12 col-md-12 col-sm-12">
+            <h2 class="sections">Activos Vigentes</h2>
+            <div class="table-container">
+              <table class="table table-bordered text-center">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col" width="8%">N° Activo</th>
+                    <th scope="col" width="8%">Descripción</th>
+                    <th scope="col" width="8%">Serie</th>
+                    <th scope="col" width="8%">Modelo</th>
+                    <th scope="col" width="8%">Marca</th>
+                    <th scope="col" width="8%">Observaciones</th>
+                    <!-- <th scope="col" width="5%">Estado</th> -->
+                    <th scope="col" width="8%">Costo</th>
+                    <th scope="col" width="8%">
+                      {{isTraspaso? "Transferir" : "Dardebaja"}}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let act of listaActivos; let i = index">
+                    <td>{{act.act_numero_activo}}</td>
+                    <td>{{act.act_descripcion}}</td>
+                    <td>{{act.act_serie}}</td>
+                    <td>{{act.act_modelo}}</td>
+                    <td>{{act.act_marca}}</td>
+                    <td>{{act.act_observacion}}</td>
+                    <!-- <td>{{act.act_estatus? "N/A" : "D"}}</td> -->
+                    <td>{{act.act_costo}}</td>
+                    <td>
+                      <input type="checkbox" (change)="agregarActivoSolicitud(act.id)">
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="form-group col-lg-12 col-md-12 col-sm-12">
+            <button class="btn btn-primary btn-submit" [disabled]="isFormularioValido || isSubmit"
+              type="submit">Guardar</button>
+            <span placement="top" ngbTooltip="Completa el formulario correctamente para realizar esta acción">
+              <button class="btn btn-primary btn-submit" (click)="generarPdf()" [disabled]="isFormularioValido"
+                type="button">Descargar PDF</button>
+            </span>
+          </div>
+        </form>
+      </div>
+    </section>
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <app-pdf-generador [usuario]="usuario" [listaActivosSolicitud]="listaActivosSolicitud" [nuevoUsuario]="nuevoUsuario"
+        [isTraspaso]="isTraspaso" [numeroFormulario]="numeroFormulario"></app-pdf-generador>
+      </div>
+  </div>
+
+</div>
