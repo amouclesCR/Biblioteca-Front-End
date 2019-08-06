@@ -4,6 +4,7 @@ import { UsuarioService, DataStorageService, AlertasService, MensajesAlertasServ
 import { Usuario } from 'src/app/interfaces/index';
 import { Location } from '@angular/common';
 import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-perfil-mantenimiento',
   templateUrl: './perfil-mantenimiento.component.html',
@@ -12,8 +13,8 @@ import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
 export class PerfilMantenimientoComponent implements OnInit {
 
   // ATRIBUTOS
-  private formGroupPerfil: FormGroup;
-  private usuario: Usuario;
+  public formGroupPerfil: FormGroup;
+  public usuario: Usuario;
   constructor(
     private formBuilderPerfil: FormBuilder, 
     private usuarioServicio: UsuarioService, 
@@ -40,7 +41,7 @@ export class PerfilMantenimientoComponent implements OnInit {
     this.usuario.cus_identificacion = this.fGPerfil['identificacion'].value;
     this.usuarioServicio.updateUsuario(this.usuario).subscribe(
       res => {
-        this.dataStoreServicio.setObjectValue('USUARIO', this.usuario);
+        this.dataStoreServicio.setObjectValue(environment.USUARIO, this.usuario);
         this.alertas.successInfoAlert("Perfil actualizado correctamente");
         this.location.back();
       },
@@ -55,7 +56,7 @@ export class PerfilMantenimientoComponent implements OnInit {
   }
 
   getUsuario() {
-    this.usuario = this.dataStoreServicio.getObjectValue("USUARIO");
+    this.usuario = this.dataStoreServicio.getObjectValue(environment.USUARIO);
   }
 
   get fGPerfil() {

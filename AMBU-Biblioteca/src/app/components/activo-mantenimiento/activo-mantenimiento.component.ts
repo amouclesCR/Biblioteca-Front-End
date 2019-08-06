@@ -13,13 +13,13 @@ import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
 export class ActivoMantenimientoComponent implements OnInit {
 
   // ATRIBUTOS
-  private formGroupActivo: FormGroup;
-  private activo: Activo;
-  private listaSeccion: Seccion[];
-  private listaUsuario: Usuario[];
-  private id: number;
-  private btnMensaje: string;
-  private isSubmit = false;
+  public formGroupActivo: FormGroup;
+  public activo: Activo;
+  public listaSeccion: Seccion[];
+  public listaUsuario: Usuario[];
+  public id: number;
+  public btnMensaje: string;
+  public isSubmit = false;
 
   constructor(
     private activoService: ActivoService,

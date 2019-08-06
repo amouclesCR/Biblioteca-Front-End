@@ -11,3 +11,28 @@
     border-bottom-right-radius: 5%;
     padding: 2%;
 }
+.register__section{
+    position: relative;
+    left: 9px;
+    margin-left: 156px;
+}
+
+
+.form-register {
+    margin-left: 4px;
+    position: absolute;
+    left: 184px;
+    top: 34px;
+    background-color: black;
+    color: white;
+    height: 549px;
+    width: 500px;
+    border: 2px solid #d2d1d1;
+   }
+
+.linea-divisora {
+    border-right: #d2d1d1 solid 2px;
+}
+.button-container {
+    margin-top: 10px;
+}

@@ -12,18 +12,18 @@ import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
 export class SeccionListComponent implements OnInit {
 
   // ATRIBUTOS
-  private listaSeccion: Seccion[];
-  private faEdit = faEdit;
-  private faBook= faBook;
-  private faPlus = faPlus;
-  private pageSize = 10;
-  private page = 1;
+  public listaSeccion: Seccion[];
+  public faEdit = faEdit;
+  public faBook= faBook;
+  public faPlus = faPlus;
+  public pageSize = 10;
+  public page = 1;
 
   constructor(
     private seccionService: SeccionService,
     private router: Router,
     private ngxService: NgxUiLoaderService,
-    private permisos: PermisosService,
+    public permisos: PermisosService,
     private mensajeAlertas: MensajesAlertasService,
     private alertas: AlertasService
   ) { }
@@ -53,6 +53,9 @@ export class SeccionListComponent implements OnInit {
 
   editar(id: number) {
     this.router.navigate(['dashboard/seccion-actualizar', id]);
+  }
+  get seccion() {
+    return this.listaSeccion.length > 0;
   }
   ngOnInit() {
     this.ngxService.startLoader('load');

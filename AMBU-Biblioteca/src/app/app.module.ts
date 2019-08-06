@@ -7,7 +7,6 @@ import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { SeccionListComponent } from './components/seccion-list/seccion-list.component';
 import { SeccionMantenimientoComponent } from './components/seccion-mantenimiento/seccion-mantenimiento.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -22,16 +21,12 @@ import { SolicitudBajaComponent } from './components/solicitud-baja/solicitud-ba
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { PerfilMantenimientoComponent } from './components/perfil-mantenimiento/perfil-mantenimiento.component';
-import { DepartamentoComponent } from './components/departamento/departamento.component';
-import { DepartamentoMantenimientoComponent } from './components/departamento-mantenimiento/departamento-mantenimiento.component';
-import { SolicitudBajaListaComponent } from './components/solicitud-baja-lista/solicitud-baja-lista.component';
 import { PdfGeneradorComponent } from './components/pdf-generador/pdf-generador.component';
 import { PdfGeneratorService } from './services/pdf-generator.service';
 import { SolicitudesComponent } from './components/solicitudes/solicitudes.component';
 import { AccountComponent } from './components/account/account.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { RecoveryComponent } from './components/recovery/recovery.component';
-import { ScannerComponent } from './components/scanner/scanner.component';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { NgxUiLoaderModule } from  'ngx-ui-loader';
@@ -41,7 +36,6 @@ import { NgxUiLoaderModule } from  'ngx-ui-loader';
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    NavbarComponent,
     SeccionListComponent,
     SeccionMantenimientoComponent,
     SeccionDetallesComponent,
@@ -53,15 +47,11 @@ import { NgxUiLoaderModule } from  'ngx-ui-loader';
     SidebarComponent,
     PerfilComponent,
     PerfilMantenimientoComponent,
-    DepartamentoComponent,
-    DepartamentoMantenimientoComponent,
-    SolicitudBajaListaComponent,
     PdfGeneradorComponent,
     SolicitudesComponent,
     AccountComponent,
     RegistroComponent,
     RecoveryComponent,
-    ScannerComponent
   ],
   imports: [
     BrowserModule,

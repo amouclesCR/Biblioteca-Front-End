@@ -7,7 +7,7 @@
   </div>
 <div class="row">
   <div class="col-lg-12 col-md-12 col-sm-12">
-    <table class="table">
+    <table class="table text-center">
       <thead class="thead-dark">
         <tr>
           <th>
@@ -24,7 +24,7 @@
           </th>
         </tr>
       </thead>
-      <tbody>
+      <tbody *ngIf="solicitudes">
         <tr *ngFor="let sol of listaSolicitudes | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
           <td>
             {{sol.sbja_numero_formulario}}
@@ -39,13 +39,16 @@
             <button class="btn btn-danger" (click)="rechazarSolicitud(sol.id)">Rechazar</button>
           </td>
           <td>
-            <button class="btn btn-primary" (click)="verSolicitud(sol.id)">Ver Solicitud</button>
+            <button class="btn btn-info" (click)="verSolicitud(sol.id)">Ver Solicitud</button>
           </td>
         </tr>
       </tbody>
     </table>
-    <ngb-pagination [collectionSize]="listaSolicitudes.length" [(page)]="page" [pageSize]="pageSize"
+    <ngb-pagination [collectionSize]="listaSolicitudes.length" [(page)]="page" [pageSize]="pageSize" *ngIf="solicitudes"
     aria-label="Default pagination"></ngb-pagination>
+    <div *ngIf="!solicitudes">
+      No hay solicitudes pendientes
+    </div>
   </div>
 </div>
 </div>

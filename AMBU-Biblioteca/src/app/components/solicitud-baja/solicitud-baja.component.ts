@@ -4,6 +4,7 @@ import { Usuario, Activo, Solicitud } from 'src/app/interfaces/index';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { PdfGeneratorService } from 'src/app/services/index';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-solicitud-baja',
   templateUrl: './solicitud-baja.component.html',
@@ -12,16 +13,16 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 export class SolicitudBajaComponent implements OnInit {
 
   // ATRIBUTOS
-  private usuario: Usuario;
-  private solicitud: Solicitud;
-  private formGroupSolicitud: FormGroup;
-  private listaActivos: Activo[];
-  private listaActivosSolicitud: Activo[];
-  private listaUsuario: Usuario[];
-  private isTraspaso: boolean;
-  private nuevoUsuario: string;
-  private isSubmit: boolean;
-  private listaActivosSubmit: number[];
+  public usuario: Usuario;
+  public solicitud: Solicitud;
+  public formGroupSolicitud: FormGroup;
+  public listaActivos: Activo[];
+  public listaActivosSolicitud: Activo[];
+  public listaUsuario: Usuario[];
+  public isTraspaso: boolean;
+  public nuevoUsuario: Usuario;
+  public isSubmit: boolean;
+  public listaActivosSubmit: number[];
 
 
   constructor(
@@ -66,7 +67,7 @@ export class SolicitudBajaComponent implements OnInit {
   getActivos() {
     this.activoServicio.getActivosByUsuario(this.usuario.id).subscribe(
       res => {
-        this.listaActivos = res.body;
+        this.listaActivos = res.body.filter(item => item.act_estatus = true);
         this.getUsuarios();
       },
       err => {
@@ -144,7 +145,7 @@ export class SolicitudBajaComponent implements OnInit {
 
   usuarioSelecionado(id: number) {
     if (id) {
-      this.nuevoUsuario = this.listaUsuario.find(item => item.id == id).cus_identificacion;
+      this.nuevoUsuario = this.listaUsuario.find(item => item.id == id);
     }
   }
 
@@ -174,7 +175,7 @@ export class SolicitudBajaComponent implements OnInit {
 
   ngOnInit() {
     this.ngxService.startLoader('load');
-    this.usuario = this.dataStorageService.getObjectValue("USUARIO");
+    this.usuario = this.dataStorageService.getObjectValue(environment.USUARIO);
     this.IniciarFormulario();
     this.getActivos();
     this.listaActivosSolicitud = [];

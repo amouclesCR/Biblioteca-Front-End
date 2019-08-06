@@ -10,4 +10,5 @@ export interface Usuario {
     cus_rol_modelo: Rol;
     first_name: string;
     date_joined?: Date;
+    token?: string;
 }

@@ -14,7 +14,7 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 export class RegistroComponent implements OnInit {
 
   //  ATRIBUTOS
-  private formGroupRegistro: FormGroup;
+  public formGroupRegistro: FormGroup;
 
   constructor( 
     private formBuilderRegistro: FormBuilder,
@@ -30,7 +30,7 @@ export class RegistroComponent implements OnInit {
   iniciarFormulario() {
     this.formGroupRegistro = this.formBuilderRegistro.group({
       identificacion: ['', Validators.required],
-      correo: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
+      correo: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\\.+[a-z]{2,3}$')]],
       clave: ['', Validators.required],
       username: ['', Validators.required],
       confirmacion: ['', Validators.required],

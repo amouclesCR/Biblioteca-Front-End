@@ -10,7 +10,7 @@ export class SidebarComponent implements OnInit {
 
   constructor(
     private login: LoginService,
-    private permisos: PermisosService
+    public permisos: PermisosService
   ) { }
 
   // FUNCIONES

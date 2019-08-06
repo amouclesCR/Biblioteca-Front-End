@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Activo } from '../interfaces/index';
+import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
+import { Activo, Usuario } from '../interfaces/index';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { DataStorageService } from './dataStorage.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,10 +12,11 @@ export class ActivoService {
   private readonly ACTIVO = "activo/";
   private readonly ACTIVOBYUSUARIO = "activobyusuario/";
   private readonly ACTIVOBYNUMEROACTIVO = "activobynumeroactivo/";
-  private readonly  ACTIVOBYSECCION = "activobyseccion/";
+  private readonly ACTIVOBYSECCION = "activobyseccion/";
 
   constructor(
-    private httpactivo: HttpClient
+    private httpactivo: HttpClient,
+    private dataStorage: DataStorageService
   ) { }
 
   // FUNCIONES
@@ -31,7 +33,7 @@ export class ActivoService {
   }
 
   getActivos() {
-    return this.httpactivo.get<Activo[]>(environment.SERVERURL + this.ACTIVO, { observe: 'response' });
+    return this.httpactivo.get<Activo[]>(environment.SERVERURL + this.ACTIVO, { observe: 'response'});
   }
 
   getActivo(id: number) {

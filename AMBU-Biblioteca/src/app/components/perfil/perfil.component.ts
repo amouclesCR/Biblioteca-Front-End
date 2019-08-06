@@ -3,6 +3,8 @@ import { DataStorageService, ActivoService, SolicitudService, MensajesAlertasSer
 import { Usuario, Activo, Solicitud } from 'src/app/interfaces/index';
 import { Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.component.html',
@@ -11,12 +13,13 @@ import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
 export class PerfilComponent implements OnInit {
 
   // ATRIBUTOS
-  private usuario: Usuario
-  private listaActivos: Activo[];
-  private listaSolicitudes: Solicitud[];
-  private pageActivos = 1;
-  private pageSolicitudes = 1;
-  private pageSize = 10;
+  public usuario: Usuario
+  public listaActivos: Activo[];
+  public listaSolicitudes: Solicitud[];
+  public pageActivos = 1;
+  public pageSolicitudes = 1;
+  public pageSize = 10;
+  public faEdit = faEdit;
   constructor(
     private dataSoterage: DataStorageService,
     private activoServicio: ActivoService, 
@@ -78,7 +81,7 @@ export class PerfilComponent implements OnInit {
     this.listaActivos = [];
     this.listaSolicitudes = [];
     this.ngxService.startLoader('load');
-    this.usuario = this.dataSoterage.getObjectValue("USUARIO");
+    this.usuario = this.dataSoterage.getObjectValue(environment.USUARIO);
     this.obtenerSolicitudes();
   }
 

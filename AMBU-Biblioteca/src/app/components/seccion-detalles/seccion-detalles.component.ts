@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivoService, SeccionService, AlertasService, MensajesAlertasService } from 'src/app/services/index';
+import { ActivoService, SeccionService, AlertasService, MensajesAlertasService, PermisosService } from 'src/app/services/index';
 import { Activo, Seccion } from '../../interfaces/index';
 import { faEdit, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -12,14 +12,14 @@ import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
 export class SeccionDetallesComponent implements OnInit {
 
   // ATRIBUTOS
-  private listaActivo: Activo[];
-  private seccion: Seccion;
-  private faEdit = faEdit;
-  private faPlus = faPlus;
-  private id: number;
-  private vacio: boolean;
-  private pag = 1;
-  private pageSize = 5;
+  public listaActivo: Activo[];
+  public seccion: Seccion;
+  public faEdit = faEdit;
+  public faPlus = faPlus;
+  public id: number;
+  public vacio: boolean;
+  public pag = 1;
+  public pageSize = 5;
 
   constructor(
     private activoServicio: ActivoService,
@@ -29,6 +29,7 @@ export class SeccionDetallesComponent implements OnInit {
     private ngxService: NgxUiLoaderService,
     private alertas: AlertasService,
     private mensajeAlertas: MensajesAlertasService,
+    public permisos: PermisosService
   ) { }
 
   // FUNCIONES
@@ -51,7 +52,7 @@ export class SeccionDetallesComponent implements OnInit {
     );
   }
 
-  agregar(id: number) {
+  agregar() {
     this.router.navigate(['dashboard/activo-crear']);
   }
 

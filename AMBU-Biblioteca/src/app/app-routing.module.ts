@@ -11,9 +11,6 @@ import { UsuarioListComponent } from './components/usuario-list/usuario-list.com
 import { SolicitudBajaComponent } from './components/solicitud-baja/solicitud-baja.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { PerfilMantenimientoComponent } from './components/perfil-mantenimiento/perfil-mantenimiento.component';
-import { DepartamentoComponent } from './components/departamento/departamento.component';
-import { DepartamentoMantenimientoComponent } from './components/departamento-mantenimiento/departamento-mantenimiento.component';
-import { SolicitudBajaListaComponent } from './components/solicitud-baja-lista/solicitud-baja-lista.component';
 import { PdfGeneradorComponent } from './components/pdf-generador/pdf-generador.component';
 import { SolicitudesComponent } from './components/solicitudes/solicitudes.component';
 import { UsuarioMantenimientoComponent } from './components/usuario-mantenimiento/usuario-mantenimiento.component';
@@ -22,7 +19,6 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { RecoveryComponent } from './components/recovery/recovery.component';
 import { AutenticacionGuard } from './guards/autenticacion.guard';
 import { AutorizadoGuard } from './guards/autorizado.guard';
-import { ScannerComponent } from './components/scanner/scanner.component';
 const routes: Routes = [
   {path: 'account', component: AccountComponent, children: [
     {path: 'login', component: LoginComponent},
@@ -44,9 +40,7 @@ const routes: Routes = [
     {path: 'solicitudes', component: SolicitudesComponent, canActivate: [AutorizadoGuard], data: {role: ['admin']}},
     {path: 'perfil', component: PerfilComponent},
     {path: 'perfil-editar', component: PerfilMantenimientoComponent},
-    {path: 'departamento-mantenimiento/:id', component: DepartamentoMantenimientoComponent},
     {path: 'visualizar-pdf/:id', component: PdfGeneradorComponent},
-    {path: 'scanner', component: ScannerComponent},
     {path: '**', pathMatch: 'full', redirectTo: 'seccion-list'}
   ], canActivate: [AutenticacionGuard], data: {role: ['normal','admin']}},
   {path: '**', pathMatch: 'full', redirectTo: 'dashboard/'}

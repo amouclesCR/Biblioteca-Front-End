@@ -11,9 +11,9 @@ import { Router } from '@angular/router';
 export class SolicitudesComponent implements OnInit {
 
   //  ATRIBUTOS
-  private listaSolicitudes: Solicitud[];
-  private page = 1;
-  private pageSize = 10;
+  public listaSolicitudes: Solicitud[];
+  public page = 1;
+  public pageSize = 10;
 
   constructor(
     private solicitudServicio: SolicitudService,
@@ -74,6 +74,9 @@ export class SolicitudesComponent implements OnInit {
   removerSolicitud(id: number) {
     let index = this.listaSolicitudes.findIndex(item => item.id == id);
     this.listaSolicitudes.splice(index, 1);
+  }
+  get solicitudes() {
+    return this.listaSolicitudes.length > 0;
   }
 
   ngOnInit() {

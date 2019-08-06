@@ -4,7 +4,9 @@
     <div class="col-lg-6 col-md-6 col-sm-6">
       <h1 class="">Perfil
         <span>
-          <button (click)="editarPerfil()" class="btn btn-primary">modificar</button>
+          <button (click)="editarPerfil()" class="btn btn-primary"> Modificar
+            <fa-icon [icon]="faEdit"></fa-icon>
+          </button>
         </span>
       </h1>
     </div>
@@ -12,38 +14,42 @@
   <section class="table-seccion">
     <div class="col-lg-12 col-md-12 col-sm-12">
       <h2>Mis activos</h2>
+      <div class="form-group" *ngIf="activos">
+        <label class="text-success">Activos vigentes (N/I)</label>
+        <label class="segundo-label text-danger"> Activos dados de baja (D)</label>
+      </div>
       <div class="table-scroll">
-        <table class="table table-bordered" *ngIf="activos">
+        <table class="table text-center" *ngIf="activos">
           <thead class="thead-dark">
             <tr>
-              <th scope="col" width="5%">#</th>
+              <!-- <th scope="col" width="5%">#</th> -->
               <th scope="col" width="10%">N° Activo</th>
               <th scope="col" width="10%">Descripción</th>
               <th scope="col" width="10%">Serie</th>
               <th scope="col" width="10%">Modelo</th>
               <th scope="col" width="10%">Marca</th>
               <th scope="col" width="10%">Observaciones</th>
-              <th scope="col" width="10%">Estado</th>
+              <!-- <th scope="col" width="10%">Estado</th> -->
               <th scope="col" width="10%">Costo</th>
             </tr>
           </thead>
           <tbody>
-            <tr
+            <tr [ngClass]="{'alert-success': act.act_estatus, 'alert-danger': !act.act_estatus}"
               *ngFor="let act of listaActivos | slice: (pageActivos-1) * pageSize : (pageActivos-1) * pageSize + pageSize; let i = index">
-              <td>{{i}}</td>
+              <!-- <td>{{i}}</td> -->
               <td>{{act.act_numero_activo}}</td>
               <td>{{act.act_descripcion}}</td>
               <td>{{act.act_serie}}</td>
               <td>{{act.act_modelo}}</td>
               <td>{{act.act_marca}}</td>
               <td>{{act.act_observacion}}</td>
-              <td>{{act.act_estatus?"N/I":"D"}}</td>
+              <!-- <td>{{act.act_estatus?"N/I":"D"}}</td> -->
               <td>{{act.act_costo}}</td>
             </tr>
           </tbody>
         </table>
         <ngb-pagination [collectionSize]="listaActivos.length" [(page)]="pageActivos" [pageSize]="pageSize"
-          aria-label="Default pagination"></ngb-pagination>
+          aria-label="Default pagination" *ngIf="activos"></ngb-pagination>
       </div>
       <div *ngIf="!activos">
         <p>
@@ -57,10 +63,10 @@
     <div class="col-lg-12 col-md-12 col-sm-12">
       <h2>Mis solicitudes</h2>
       <div class="table-scroll">
-        <table class="table table-bordered" *ngIf="solicitudes">
+        <table class="table text-center" *ngIf="solicitudes">
           <thead class="thead-dark">
             <tr>
-              <th scope="col" width="5%">#</th>
+              <!-- <th scope="col" width="5%">#</th> -->
               <th scope="col" width="10%">N° Formulario</th>
               <th scope="col" width="10%">Estado</th>
               <th scope="col" width="10%">Tipo de Solicitud</th>
@@ -70,16 +76,18 @@
           <tbody>
             <tr
               *ngFor="let sol of listaSolicitudes | slice: (pageSolicitudes-1) * pageSize : (pageSolicitudes-1) * pageSize + pageSize; let i = index">
-              <td>{{i}}</td>
+              <!-- <td>{{i}}</td> -->
               <td>{{sol.sbja_numero_formulario}}</td>
-              <td>{{sol.sbja_estado_solicitud=="A"? "Aprovada" : sol.sbja_estado_solicitud=="E"? "Espera" : "Rechazada"}}</td>
+              <td>
+                {{sol.sbja_estado_solicitud=="A"? "Aprovada" : sol.sbja_estado_solicitud=="E"? "Espera" : "Rechazada"}}
+              </td>
               <td>{{sol.sbja_solicitud_traspaso? "Traspaso" : "De baja"}}</td>
-              <td><Button class="btn btn-primary" (click)="verSolicitud(sol.id)">Ver Solicitud</Button></td>
+              <td><Button class="btn btn-info" (click)="verSolicitud(sol.id)">Ver Solicitud</Button></td>
             </tr>
           </tbody>
         </table>
         <ngb-pagination [collectionSize]="listaSolicitudes.length" [(page)]="pageSolicitudes" [pageSize]="pageSize"
-          aria-label="Default pagination"></ngb-pagination>
+          aria-label="Default pagination" *ngIf="solicitudes"></ngb-pagination>
       </div>
       <div *ngIf="!solicitudes">
         <p>

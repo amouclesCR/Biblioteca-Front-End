@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faPlus, faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { UsuarioService, PermisosService, AlertasService, MensajesAlertasService } from '../../services/index';
 import { Usuario } from 'src/app/interfaces/index';
 import { Router } from '@angular/router';
@@ -12,17 +12,18 @@ import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
 export class UsuarioListComponent implements OnInit {
 
   // ATRIBUTOS
-  private faPlus = faPlus;
-  private faEdit = faEdit;
-  private listaUsuarios: Usuario[];
-  private page = 1;
-  private pageSize = 10;
+  public faPlus = faPlus;
+  public faEdit = faEdit;
+  public faTrash = faTrash;
+  public listaUsuarios: Usuario[];
+  public page = 1;
+  public pageSize = 10;
 
   constructor(
     private usuarioServicio: UsuarioService,
     private router: Router,
     private ngxService: NgxUiLoaderService,
-    private permisos: PermisosService,
+    public permisos: PermisosService,
     private mensajeAlertas: MensajesAlertasService,
     private alertas: AlertasService
   ) { }
@@ -44,7 +45,27 @@ export class UsuarioListComponent implements OnInit {
   editarUsuario(id: number) {
     this.router.navigate(['dashboard/usuario-mantenimiento', id]);
   }
-  
+
+  eliminarUsuario(id: number) {
+    this.ngxService.startLoader('load');
+    this.usuarioServicio.eliminarUsuario(id).subscribe(
+      res => {
+        this.ngxService.stopLoader('load');
+        let index = this.listaUsuarios.findIndex(item => item.id == id);
+        this.listaUsuarios.splice(index, 1);
+        this.alertas.successInfoAlert("Usuario elimnado correctamente");
+      },
+      err => {
+        this.ngxService.stopLoader('load');
+        this.alertas.errorAlert(this.mensajeAlertas.mensajeStatusCode(err.status));
+      }
+    );
+  }
+
+  get usuarios() {
+    return this.listaUsuarios.length > 0;
+  }
+
   ngOnInit() {
     this.listaUsuarios = [];
     this.ngxService.startLoader('load');

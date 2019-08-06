@@ -17,8 +17,10 @@ export class PdfGeneradorComponent implements OnInit {
   @Input() nuevoUsuario: Usuario;
   @Input() isVisualizar: boolean;
   @Input() numeroFormulario: string;
-  private date: Date;
+  public date: Date;
   private solicitud: Solicitud;
+  public solicitudMensaje: string;
+  public trasladoMensaje: string;
 
   constructor(
     private activeRoute: ActivatedRoute,
@@ -37,6 +39,8 @@ export class PdfGeneradorComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.solicitudMensaje = "Solicitud de Activos para dar de baja";
+    this.trasladoMensaje = "Solicitud de Activos para traslado";
     let id = +this.activeRoute.snapshot.params['id']; 
     if (id > 0) {
       this.solicitudServicio.getSolicitud(id).subscribe(

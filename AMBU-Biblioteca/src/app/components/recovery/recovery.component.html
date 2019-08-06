@@ -1,5 +1,55 @@
 <ngx-ui-loader [loaderId]="'load'" [text]="'Cargando datos'"></ngx-ui-loader>
-<div class="recovery-container">
+<section class="recovery__section text-center">
+  <div class="container">
+    <div class="col-12">
+      <div class="form-recovery row">
+        <h2 class="col-12">Recuperar Contraseña</h2>
+        <form [formGroup]="formGroupRecovery" class="col-12" (ngSubmit)="submit()">
+          <div class="form-group col-12">
+            <label for="identificacion">Identificación</label>
+            <input type="text" class="form-control form-control-sm text-center" formControlName="identificacion"
+              id="identificacion" autocomplete="username" placeholder="Escriba su identificación"
+              [ngClass]="{'is-invalid': fGRecovery.identificacion.errors && fGRecovery.identificacion.touched}">
+            <div *ngIf="fGRecovery.identificacion.errors?.required" class="invalid-feedback">
+              <div class="form-control-feedback text-danger" *ngIf="fGRecovery.identificacion.errors?.required">
+                * La identificación es requerida
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-12">
+            <label for="correo">Correo</label>
+            <input type="text" class="form-control form-control-sm text-center" formControlName="correo" id="correo"
+              placeholder="Escriba el correo"
+              [ngClass]="{'is-invalid': fGRecovery.correo.errors && fGRecovery.correo.touched}">
+            <div *ngIf="fGRecovery.correo.errors?.required" class="invalid-feedback">
+              <div class="form-control-feedback text-danger" *ngIf="fGRecovery.correo.errors?.required">
+                * El correo es requerido
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-12">
+            <label for="clave">Clave</label>
+            <input type="password" class="form-control form-control-sm text-center" formControlName="clave" id="clave"
+              autocomplete="new-password" placeholder="Escriba la clave"
+              [ngClass]="{'is-invalid': fGRecovery.clave.errors && fGRecovery.clave.touched}">
+            <div *ngIf="fGRecovery.clave.errors?.required" class="invalid-feedback">
+              <div class="form-control-feedback text-danger" *ngIf="fGRecovery.clave.errors?.required">
+                * La clave es requerida
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-12">
+            <button class="btn btn-lg btn-block btn-primary btn-margin" type="submit" [disabled]="formGroupRecovery.invalid">Confirmar</button>
+          </div>
+        </form>
+      </div>
+      <div class="row back__image">
+        <img src="../../../assets/imagenes/logo-una.png" alt="Logo de la Universidad Nacional de Costa Rica">
+      </div>
+    </div>
+  </div>
+</section>
+<!-- <div class="recovery-container">
   <div class="col-4">
     <h1>Recovery</h1>
     <form [formGroup]="formGroupRecovery" (ngSubmit)="submit()">
@@ -41,4 +91,4 @@
       </div>
     </form>
   </div>
-</div>
+</div> -->
